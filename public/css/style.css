@@ -1,0 +1,77 @@
+.bienvenida{
+    margin-top: 10px;
+    align-items: center;
+}
+.welcome-photo{
+    width: 100px;
+    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    border: 1px solid black;
+    border-radius: 100%;
+}
+
+.inicio{
+    margin-top: 20px;
+    padding: 10px;
+    max-height: 500px;
+}
+
+.image{
+    width: 250px;
+    height: 300px;
+    border: 2px solid black;
+}
+
+.leftdiag-container{
+    display: flex;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+}
+
+.principal-card{
+    margin-top: 10px;
+    align-items: center;
+}
+
+.principal-btn{
+    width: 250px;
+}
+
+.principal-list{
+    height: 450px;
+}
+
+.principal-list-container{
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.principal-photo{
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    border: 1px solid black;
+    border-radius: 100%;
+}
+
+.vr{
+    padding: 1px;
+    height: 100%;
+    align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+    .principal-list{
+        height: 100%;
+    }
+  }
