@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Señalesemg extends Migration
+class CreateSenalesemgTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class Señalesemg extends Migration
      */
     public function up()
     {
-        Schema::create('paciente', function (Blueprint $table) {
+        Schema::create('senalesemg', function (Blueprint $table) {
             $table->id();
             $table->string('senal');
             $table->foreignId('user_id');

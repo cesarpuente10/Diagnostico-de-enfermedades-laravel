@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Reportes extends Migration
+class CreateReportesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,12 @@ class Reportes extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('reportes', function (Blueprint $table) {
+            $table->id();
+            $table->string('reporte_id');
+            $table->foreignId('user_id');
+            $table->timestamps();
+        });
     }
 
     /**
