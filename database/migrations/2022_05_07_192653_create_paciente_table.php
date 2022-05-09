@@ -15,7 +15,7 @@ class CreatePacienteTable extends Migration
     {
         Schema::create('paciente', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->unique();
             $table->timestamps();
         });
     }
