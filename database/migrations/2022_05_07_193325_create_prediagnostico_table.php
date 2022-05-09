@@ -15,7 +15,7 @@ class CreatePrediagnosticoTable extends Migration
     {
         Schema::create('prediagnostico', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->unique();
             $table->timestamp('fecha');
             $table->integer('edad');
             $table->char('sexo');

@@ -17,7 +17,7 @@ class CreateMedicoTable extends Migration
             $table->id();
             $table->string('especialidad');
             $table->string('cedula');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->unique();
             $table->timestamps();
         });
     }

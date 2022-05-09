@@ -15,9 +15,9 @@ class CreateDiagnosticoTable extends Migration
     {
         Schema::create('diagnostico', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->string('datosemg');
-            $table->string('reporte_id');
+            $table->foreignId('user_id')->unique();
+            $table->foreignId('datosemg_id');
+            $table->foreignId('reporte_id');
             $table->timestamps();
         });
     }
