@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Diagnostico extends Migration
+class CreateDiagnosticoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class Diagnostico extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('datosemg');
-            $table->string('reporte');
+            $table->string('reporte_id');
             $table->timestamps();
         });
     }
