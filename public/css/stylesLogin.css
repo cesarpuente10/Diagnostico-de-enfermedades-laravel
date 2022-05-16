@@ -1,0 +1,81 @@
+h1{
+    color:gray;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-top: 100px;
+    
+
+}
+
+/*Diseño del form*/
+form{
+    margin-top: 80px;
+    margin-left: 33%;
+   
+}
+
+form input{
+    border: 2px solid gray;
+    outline:none;
+
+}
+
+label{
+    color: gray;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#correo{
+    padding: 5px;
+    display: block;
+    width: 50%;
+    margin-bottom:2%;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+
+    
+}
+
+#pass{
+    padding: 5px;
+    display: block;
+    width: 50%;
+    margin-bottom:2%;
+    border-top-style: hidden;
+    border-left-style: hidden;
+    border-right-style: hidden;
+    
+}/*--------------------*/
+
+/*Diseño del boton registrarse*/
+#button:hover{
+    background-color:  whitesmoke
+ }
+
+ #button{
+    margin-left: 39%;
+    font-size: 18px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+    border-radius: .30rem;
+    border: 1px solid gray;
+    padding: 5px 15px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+input{
+    font-size: 20px;
+}
+
+#size{
+    font-size: 20px;
+}
+/*--------------------*/
+
+
