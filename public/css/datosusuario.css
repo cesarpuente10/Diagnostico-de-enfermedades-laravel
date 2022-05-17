@@ -1,0 +1,18 @@
+.Data{
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  margin-top: 10%;
+  margin-left: 6%;
+}
+.boxes{
+    color: gray;
+    height: 20px;
+    width: 445px;
+
+}
+
+h1{
+    color: gray;
+    margin-top: 10%;
+    font-size: 250%;
+}
