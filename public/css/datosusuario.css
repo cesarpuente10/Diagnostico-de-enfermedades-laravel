@@ -1,11 +1,8 @@
 .Data{
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-<<<<<<< Updated upstream
   margin-top: 10%;
-=======
->>>>>>> Stashed changes
-  margin-left: 6%;
+  margin-left:6%;
 }
 .boxes{
     color: gray;
@@ -16,9 +13,6 @@
 
 h1{
     color: gray;
-<<<<<<< Updated upstream
     margin-top: 10%;
-=======
->>>>>>> Stashed changes
     font-size: 250%;
 }
