@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+<<<<<<< Updated upstream
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
@@ -49,6 +50,44 @@
   </nav>
     <br>
     <br>
+=======
+    <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/formpre.css') }}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"        crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"        crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"        crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="contNavbar">
+        <div class="pos-f-t navbarPaciente">
+            <div id="nav1">
+                <div class="dropdown">
+                    <i class="fa-solid fa-bars fa-2x boton-nav " id="username dropdownMenu2" href="#"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                    <div class="dropdown-menu menuoption" aria-labelledby="dropdownMenu2">
+                        <button class="dropdown-item menuoption" type="button" href="index.html">Cerrar Sesión</button>
+                        <button class="dropdown-item menuoption" type="button">Ver Perfíl</button>
+                        <button class="dropdown-item menuoption" type="button">Saber más</button>
+                    </div>
+                </div>
+                <a href="">
+                    <h6>Diagnósticos</h6>
+                </a>
+
+            </div>
+            <!--
+            <img src="uaslp-vector-logo.png" alt="">
+            -->
+            <img src="{{url('/images/uaslp-vector-logo.png')}}" alt="Image"/>
+        </div>
+        <div class="lineaNav"></div>
+    </div>
+    
+>>>>>>> Stashed changes
     <b><h1>FORMULARIO DE </h1></b>
     <b><h1>PREDIAGNÓSTICO</h1></b>
   
