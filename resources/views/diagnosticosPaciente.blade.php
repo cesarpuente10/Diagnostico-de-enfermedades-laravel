@@ -102,7 +102,7 @@
                         <th scope="row">3</th>
                         <td>12/05/2022</td>
                         <td>Músculo sano</td>
-                        <td><button type="button" class="btn btn-light">Abrir</button></td>
+                        <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>
                     </tr>
                 </tbody>
             </table>
