@@ -5,19 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Paciente</title>
-    <link rel="stylesheet" href="stylesPaciente.css">
-
-    <meta charset="UTF-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <!--Scripts-->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!--Styles-->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styleindexPaciente.css') }}" rel="stylesheet">
-
-    
-    
+    <title>Registro Medico</title>
+    <link rel="stylesheet" href="stylesMedico.css">
 </head>
 
 <body>
@@ -51,6 +40,12 @@
         <div >
             <label for="pass">Confirmar contraseña</label>
             <input type="password" id="pass">
+        </div>
+
+
+        <div>
+            <label for="cert">Certificado médico</label>
+            <input type="text" id="cert">
         </div>
 
         <div class="check">

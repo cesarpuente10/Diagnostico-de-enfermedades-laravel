@@ -1,4 +1,5 @@
 body{
+    font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -60,11 +61,4 @@ a:link, a:visited, a:active {
     color: rgb(112, 112, 112);
     text-decoration: none;
 }
-.menuoption{
-    
-}
-/* Fin navBar*/
 
-.contenedor{
-
-}
