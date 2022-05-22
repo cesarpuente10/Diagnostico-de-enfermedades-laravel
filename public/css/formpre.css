@@ -1,0 +1,82 @@
+h1{
+    text-align: left;
+    font-family: 'Monserrat',sans-serif;
+    color: grey;
+    text-anchor: middle;
+    margin-left: 5%;
+    margin-top: 35px;
+}
+hr{
+    
+    border-style: none;
+    border-color: #383838;
+    border-width: 5px;
+    height: 2px;
+    width: 50%;
+    }
+label{
+    color: black;
+    font-size: medium;
+    
+}
+textarea{
+    margin: auto;
+   
+}
+
+table,th {
+    
+    text-align: center;
+    width: 50%;
+    background-color: #035397;
+    color:black;
+  }
+  table,td{
+      text-align: center;
+      background-color: lightgray;
+      width: 50%;
+  }
+  .titles{
+      background-color: gray;
+  }
+body{
+    background-color: #EDE6DB;
+    
+}
+
+.chechbox{
+    background-color: black;
+}
+
+.myDiv{
+    border-radius: 10px;
+    border-color: black;
+    color:gray;
+    margin: auto;
+    margin-right: 40px;
+    float: right;
+    background-color: whitesmoke;
+    width: 20%;
+    height: 20%;
+    text-align: justify;
+    font-family: 'Monserrat',sans-serif;        
+    
+}
+
+.else{
+    margin: auto;
+    margin-left: 5%;
+    
+}
+.name{
+    height: 20px;
+    width: 145px;
+}
+.age{
+    height:20px ;
+    width:60px ;
+}
+.send
+{
+    margin-top: 5px;
+}
