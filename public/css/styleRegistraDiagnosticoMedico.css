@@ -1,0 +1,39 @@
+.contenedor{
+    display: flex;
+    width: 90%;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.contenido{
+    width: 60%;
+    margin-left: 10%;
+}
+
+h1{
+    text-align: center;
+
+}
+
+.btnSi{
+    background-color: rgb(197, 208, 240);
+}
+.btnNo{
+    background-color: rgb(187, 57, 57);
+}
+.drop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.lineaCont{
+    width: 1px;
+    height: 110px;
+    /*height: 100;*/
+    
+    background-color: rgb(86, 85, 85);
+}

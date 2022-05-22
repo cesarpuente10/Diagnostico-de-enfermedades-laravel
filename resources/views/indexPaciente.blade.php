@@ -7,6 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Paciente</title>
     <link rel="stylesheet" href="stylesPaciente.css">
+
+    <meta charset="UTF-8">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!--Scripts-->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--Styles-->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styleindexPaciente.css') }}" rel="stylesheet">
+
+    
+    
 </head>
 
 <body>

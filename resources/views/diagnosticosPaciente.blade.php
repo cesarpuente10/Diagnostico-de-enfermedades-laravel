@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PantallaNavbar</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -19,6 +18,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/stylesWelcome1.css') }}" rel="stylesheet">
     -->
+    <script src="https://kit.fontawesome.com/e00854f1d9.js" crossorigin="anonymous"></script>  -->
+     
+    <meta charset="utf-8">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!--Scripts-->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!--Styles-->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/stylelListaDiagnostico.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
+    
+    <!--
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -32,7 +43,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-
+    -->
+    <!--
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -54,23 +79,35 @@
 
             </div>
             <img src="uaslp-vector-logo.png" alt="">
+            <!--
+            <img src="uaslp-vector-logo.png" alt="">
+            -->
+            <img src="{{url('/images/uaslp-vector-logo.png')}}" alt="Image"/>
         </div>
         <div class="lineaNav"></div>
     </div>
     <div class="contenedor" id="uno">
         <div class="contenido">
             <h1>Registrar diagnósticos</h1>
+            <h1>Diagnósticos</h1>
             <table class="table table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+
                         <th scope="col">Paciente</th>
                         <th scope="col">Generar diagnóstico</th>
+
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Resultado</th>
+                        <th scope="col">Reporte</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
+
                         <td>Nombre del paciente</td>
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Generar
@@ -89,6 +126,22 @@
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                            Generar
                           </button></td>
+                        <td>10/05/2022</td>
+                        <td>Neuropatía</td>
+                        <td><button type="button" class="btn btn-light">Abrir</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>11/05/2022</td>
+                        <td>Miopatía</td>
+                        <td><button type="button" class="btn btn-light">Abrir</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>12/05/2022</td>
+                        <td>Músculo sano</td>
+                        <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>
+
                     </tr>
                 </tbody>
             </table>
@@ -119,8 +172,6 @@
   </div>
 
  
-
-
 </body>
 
 </html>
