@@ -9,16 +9,6 @@
     <link rel="stylesheet" type="text/css" href="./styleNavBar.css" />
     <link rel="stylesheet" type="text/css" href="./styleDiagnostico.css" />
     <script src="https://kit.fontawesome.com/e00854f1d9.js" crossorigin="anonymous"></script>
-    <!-- header bueno 
-    <meta charset="utf-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    Scripts
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    Styles
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/stylesWelcome1.css') }}" rel="stylesheet">
-    -->
-    <script src="https://kit.fontawesome.com/e00854f1d9.js" crossorigin="anonymous"></script>  -->
      
     <meta charset="utf-8">
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -29,26 +19,6 @@
     <link href="{{ asset('css/stylelListaDiagnostico.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
     
-    <!--
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    -->
-    <!--
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -61,31 +31,7 @@
 </head>
 
 <body>
-    <div class="contNavbar">
-        <div class="pos-f-t navbarPaciente">
-            <div id="nav1">
-                <div class="dropdown">
-                    <i class="fa-solid fa-bars fa-2x boton-nav " id="username dropdownMenu2" href="#"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                    <div class="dropdown-menu menuoption" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item menuoption" type="button" href="index.html">Cerrar Sesión</button>
-                        <button class="dropdown-item menuoption" type="button">Ver Perfíl</button>
-                        <button class="dropdown-item menuoption" type="button">Saber más</button>
-                    </div>
-                </div>
-                <a href="">
-                    <h6>Diagnósticos</h6>
-                </a>
-
-            </div>
-            <img src="uaslp-vector-logo.png" alt="">
-            <!--
-            <img src="uaslp-vector-logo.png" alt="">
-            -->
-            <img src="{{url('/images/uaslp-vector-logo.png')}}" alt="Image"/>
-        </div>
-        <div class="lineaNav"></div>
-    </div>
+    @include('navbar')
     <div class="contenedor" id="uno">
         <div class="contenido">
             <h1>Registrar diagnósticos</h1>
@@ -112,6 +58,9 @@
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Generar
                            </button></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
@@ -119,6 +68,9 @@
                         <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                             Generar
                            </button></td>
+                           <td></td>
+                           <td></td>
+                           <td></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
@@ -132,12 +84,16 @@
                     </tr>
                     <tr>
                         <th scope="row">2</th>
+                        <td></td>
+                        <td></td>
                         <td>11/05/2022</td>
                         <td>Miopatía</td>
                         <td><button type="button" class="btn btn-light">Abrir</button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
+                        <td></td>
+                        <td></td>
                         <td>12/05/2022</td>
                         <td>Músculo sano</td>
                         <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>

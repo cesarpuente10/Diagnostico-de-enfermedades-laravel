@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
+
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -60,83 +61,82 @@
 
     </div>
     
-   
-    <table>
+    <form action="submitdata" method="post">
+      @csrf
+      <table>
         <tr>
-         <b> <th>Expediente de paciente</th></b>
+          <b> <th>Expediente de paciente</th></b>
         </tr>
         <tr>
           <td class="titles">Datos del paciente</td>
         </tr>
         <tr>
           <td>
-            <label>Nombre del paciente: <input type="text"class="name"> </label>
-            
+            <label>Nombre del paciente: <input type="text"class="name"> </label>  
             <label>Sexo: </label>
             <label>Masculino <input type="checkbox"><br></label>
             <label>Femenino <input type="checkbox"><br></label>
           </td>
-          </td>
         </tr>
         <tr>
           <td>
-            <label>Edad: <input type="text" class="age"> </label>
+            <label>Edad: <input type="number" class="age"> </label>
             <label>Originario de: <input type="text" class="name"> </label>
             <label>Fecha: <input type="date"> </label>
           </td>
         </tr>
       </table><br>
 
-      
+        
 
-      <table>
-        <tr>
-          <td class="titles">Observaciones iniciales del paciente</td>
-        </tr>
-        <tr>
-          <td>
-            <label>Peso: <input type="text" class="age"> </label>
-            <label>Estatura: <input type="text" class="age"> </label>
-            <label>Presión arterial: <input type="text" class="age"> </label>
-          </td>
+        <table>
+          <tr>
+            <td class="titles">Observaciones iniciales del paciente</td>
+          </tr>
           <tr>
             <td>
-              <label>Frecuencia cardiaca: <input type="text" class="age"> </label>
-              <label>Frecuencia respiratoria: <input type="text" class="age"> </label>
-              <label>Temperatura (en grados celsius): <input type="text" class="age"> </label>
+              <label>Peso: <input type="number" class="age"> </label>
+              <label>Estatura: <input type="number" class="age"> </label>
+              <label>Presión arterial: <input type="number" class="age"> </label>
+            </td>
+            <tr>
+              <td>
+                <label>Frecuencia cardiaca: <input type="number" class="age"> </label>
+                <label>Frecuencia respiratoria: <input type="number" class="age"> </label>
+                <label>Temperatura (en grados celsius): <input type="number" class="age"> </label>
+              </td>
+            </tr>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <th>Historial</th>
+          </tr>
+        </table>
+        <table>
+          <tr>
+            <td>Archivo</td>
+            <td>Diagnóstico</td>
+          </tr>
+        </table><br>
+        
+        <table>
+          <tr>
+            <td>
+              <label >Subir archivo previo de señales mio-eléctricas (.txt) <input type="file"class="file"><br></label><br>
             </td>
           </tr>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <th>Historial</th>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td>Archivo</td>
-          <td>Diagnóstico</td>
-        </tr>
       </table><br>
-      
+        <hr>
+
+        
+        
       <table>
         <tr>
-          <td>
-            <label >Subir archivo previo de señales mio-eléctricas (.txt) <input type="file"class="file"><br></label><br>
-          </td>
+          <th><input type="submit" class="send"></th>
         </tr>
-    </table><br>
-      <hr>
-
-      
-      
-    <table>
-      <tr>
-        <th><input type="submit" class="send"></th>
-      </tr>
-    </table>
-      
+      </table>
+    </form>
     
       
      

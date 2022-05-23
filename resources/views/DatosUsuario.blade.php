@@ -1,56 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos del usuario</title>
-</head>
-<body>
-    <b><h1>Datos del usuario</h1></b>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  </head>
-    <title>Datos del usuario</title>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        </h2>
+    </x-slot>
 
-    <link rel="stylesheet" href="css/datosusuario.css">
-</head>
-<body>
-    
-    <div class="Data">
+    <form method="POST" class="Data">
+        @csrf
         <b><h1>Datos del usuario</h1></b><br>
         <label>Nombre del paciente</label><br>
-        <input type="text" value="Nombre y apellido" class="boxes"> <img src="pencil-square.svg" alt=""><div class="edit">
+        <input type="text" placeholder="Nombre y apellido" class="boxes"> <img src="pencil-square.svg" alt=""><div class="edit">
             </div><br>
         <br>
         <label>Edad</label><br>
-        <input type="text" value="Edad del paciente"class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
+        <input type="text" placeholder="Edad del paciente"class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
             
             </div><br>
         <br>
         <label>Lugar de origen</label><br>
-        <input type="text" value="Origen" class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
+        <input type="text" placeholder="Origen" class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
 
             </div><br>
         <br>
         <label>Peso</label><br>
-        <input type="text" value="Peso" class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
+        <input type="text" placeholder="Peso" class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
            
             </div><br>
         <br>
         <label>Estatura</label><br>
-        <input type="text" value="Estatura" class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
+        <input type="text" placeholder="Estatura" class="boxes"><img src="pencil-square.svg" alt=""><div class="edit">
             
             </div><br>
         <br>
-        <button type="button" class="btn btn-primary">Guardar Cambios</button>
-        
-    </div>
-    <i class="fa-solid fa-user"></i>
-    
+        <input type="submit" class="btn btn-primary" value="Guardar Cambios">
+        </form>
 
-
-    
-</body>
-</html>
+</x-app-layout>
