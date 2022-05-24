@@ -8,7 +8,7 @@
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="assets/css/registerStyles.css">
+        <link rel="stylesheet" href="css/registerStyles.css">
     </head>
     <body>
         <div class="content">
