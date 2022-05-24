@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Medico</title>
-    <link rel="stylesheet" href="./CSS/stylesMedico.css">
+    <link rel="stylesheet" href="assets/css/stylesMedico.css">
 </head>
 
 <body>
     <div class="RePM">
-        <input type="submit" value="REGISTRARSE COMO PACIENTE" id="rPaciente" name="rPaciente">
-        <input type="submit"  value="REGISTRARSE COMO MÉDICO" id="rMedico" name="rMedico">
+        <input type="submit" value="REGISTARSE COMO PACIENTE" id="rPaciente" name="rPaciente">
+        <input type="submit"  value="REGISTRASE COMO MÉDICO" id="rMedico" name="rMedico">
     </div>
 
     <form>
@@ -54,7 +54,8 @@
         </div>
 
         <div>
-           <input id="button" type="submit" value="Registrarse">
+            <a href="{{ route('successlogin') }}"> <input id="button" type="submit" value="Registrarme"> </a>
+
         </div>
     </form>
 
