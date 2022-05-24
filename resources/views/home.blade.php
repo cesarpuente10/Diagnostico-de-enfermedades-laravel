@@ -11,7 +11,7 @@
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"/>
 
         <!-- Css Links -->
-        <link rel="stylesheet" href="assets/css/indexStyle.css"/>
+        <link rel="stylesheet" href="css/indexStyle.css"/>
 
         <title>Document</title>
     </head>
