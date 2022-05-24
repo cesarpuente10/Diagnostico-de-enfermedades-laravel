@@ -13,16 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::view('/', 'home') -> name('home');
+Route::view('logIn', 'login') -> name('login');
+Route::view('register', 'register') -> name('registro');
+
+
+
+
+
+
+
+
+Route::view('RegistroExitoso', 'successlogin') -> name('successlogin');
+Route::view('Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
+
+
+Route::get('blog', 'BlogController@index') -> name('blog.index');
+Route::get('blog/{post:slug}', 'BlogController@show') -> name('blog.show');
+
+Route::view('contactos', 'contact') -> name('contact');
+
+/* Route::get('/', function () {
+    return view('welcome');
 });
-
-Route::get('/a', function () {
-    return view('home2');
-})->name('home2');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+ */
