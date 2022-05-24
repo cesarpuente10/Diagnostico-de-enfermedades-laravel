@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+    color: #353535;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    justify-content: left;
+}
+
+.content .logIn {
+    width: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logIn div {
+    padding: 100px 50px;
+    border: solid;
+    border-top-right-radius: 20px;
+}
+
+.logIn div .bi {
+    font-size: 30px;
+}
+
+.logIn div h1 {
+    padding-top: 10px;
+}
+
+.logIn div form input[type=text],
+input[type=password] {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: none;
+    border-style: none;
+    border-bottom: 2px solid;
+}
+
+.logIn div form button {
+
+    margin-top: 15px;
+    background: none;
+    border: none;
+    text-align: center;
+    width: 100%;
+    padding: 5px;
+    background-color: #FF4242;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.logIn div form button:hover {
+
+    background-color: #F7CB15;
+    color: #353535;
+}
+
+
+.content .registerBanner {
+    width: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .registerBanner div {
+    padding: 50px 70px;
+    padding-right: 100px;
+}
+
+.content .registerBanner div .imgLogIn {
+    width: 100%;
+    min-height: 300px;
+    background-image: url('../img/Domain.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 50px;
+}
+
+a.btn {
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.btn:hover {
+    color: #FF4242;
+}
+
+p.error {
+    color: #FF4242;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+
+@media screen and (max-width: 800px) {
+
+    .content {
+        flex-direction: column;
+    }
+
+    .content .logIn {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #fff;
+    }
+
+    .content .registerBanner {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #fff;
+    }
+}
