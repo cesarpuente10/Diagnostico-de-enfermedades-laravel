@@ -11,6 +11,8 @@
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="css/datosusuario.css">
         <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/logInStyles.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/indexStyle.css') }}"/>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -28,12 +30,6 @@
         crossorigin="anonymous"></script>
     </head>
     <body>
-        @if (Auth::user())
-            @include('layouts.navigation')
-        @else
-            <h1>Aqui debe de haber otro navbar</h1>
-            {{-- @include('layouts.navnolog') --}}
-        @endif
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
