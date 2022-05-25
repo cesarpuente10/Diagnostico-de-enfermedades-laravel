@@ -25,10 +25,12 @@ require __DIR__.'/auth.php';
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::view('/asistepacientesmedico', 'asistePacientesMedico') -> name('asistePacientesMedico');
 
+Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
 
-
-
+Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('lista_de_pacientes');
+Route::view('/diagnosticospaciente', 'diagnosticosPaciente') -> name('lista_de_pacientes');
 
 Route::view('RegistroExitoso', 'successlogin') -> name('successlogin');
 Route::view('Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');

@@ -1,35 +1,16 @@
-<!doctype html>
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <!--Scripts-->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!--Styles-->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styleRegistraDiagnosticoMedico.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    <!--Este usuario es medico, por lo tanto, la opoción junto al botón de menú debe ser "Pacientes"-->
 
-</head>
+    <!--Esta pantalla es parte del flujo del Medico, en específico cuando presiona el botón de "Pacientes" del
+    navbar-->
+    <!--La información que se manejará aquí son los pacientes que estén relacionados con ese médico en específico
+    ID de Paciente, Nombre, última asistencia realizada y "más información" es la liga al perfil del paciente-->
 
-<!--Esta pantalla es parte del flujo del Medico, en específico cuando presiona el botón de "Pacientes"-->
+<x-app-layout>
 
-@include('navbar')
-
-  <div class="contenedor" id="uno">
+<div class="contenedor" id="uno">
         <div class="contenido">
-            <h1>Médicos</h1>
+            <h1>Pacientes Registrados</h1>
             <table class="table table table-hover">
                 <thead>
                     <tr>
@@ -40,77 +21,79 @@
                 <tbody>
                     <tr data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <th scope="row">1</th>
-                        <td>Nombre del médico</td>
+                        <td>Nombre del paciente</td>
                         <td><div class="collapse" id="collapseExample">
                         <div class="card card-body drop">
                             <p>
-                            <i class="fa-solid fa-user-doctor fa-4x"></i>
+                            <i class="fa-solid fa-user fa-4x"></i>
                             </p>
                             <div class="lineaCont"></div>
-                            <div class = "contenidoDrop">
+                            <div>
+                                <p>
+                                    Última asistencia realizada:
+                                </p>
                                 <a href="">
-                                    <p> Ir a perfil completo</p> 
+                                    <p>más información</p>
                                 </a>
-                                <p> Número de Pacientes:</p>
                             </div>
                             <div class="lineaCont"></div>
                             <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Solicitar asistencia
+                                Asistir
                            </button>
                         </div>
                     </div></td>
                            
                     </tr>
-
                     <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <th scope="row">2</th>
-                        <td>Nombre del médico</td>
+                        <td>Nombre del paciente</td>
                         <td><div class="collapse" id="collapseExample2">
                         <div class="card card-body drop">
                             <p>
-                            <i class="fa-solid fa-user-doctor fa-4x"></i>
+                            <i class="fa-solid fa-user fa-4x"></i>
                             </p>
                             <div class="lineaCont"></div>
-                            <div class = "contenidoDrop">
+                            <div>
+                                <p>
+                                    Última asistencia realizada:
+                                </p>
                                 <a href="">
-                                    <p> Ir a perfil completo</p> 
+                                    <p>más información</p>
                                 </a>
-                                <p> Número de Pacientes:</p>
                             </div>
                             <div class="lineaCont"></div>
                             <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Solicitar asistencia
+                                Asistir
                            </button>
                         </div>
                     </div></td>
                            
                     </tr>
-
                     <tr data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <th scope="row">3</th>
-                        <td>Nombre del médico</td>
+                        <td>Nombre del paciente</td>
                         <td><div class="collapse" id="collapseExample3">
                         <div class="card card-body drop">
                             <p>
-                            <i class="fa-solid fa-user-doctor fa-4x"></i>
+                            <i class="fa-solid fa-user fa-4x"></i>
                             </p>
                             <div class="lineaCont"></div>
-                            <div class = "contenidoDrop">
+                            <div>
+                                <p>
+                                    Última asistencia realizada:
+                                </p>
                                 <a href="">
-                                    <p> Ir a perfil completo</p> 
+                                    <p>más información</p>
                                 </a>
-                                <p> Número de Pacientes:</p>
                             </div>
                             <div class="lineaCont"></div>
                             <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Solicitar asistencia
+                                Asistir
                            </button>
                         </div>
                     </div></td>
                            
                     </tr>
-
-                    
                 </tbody>
             </table>
         </div>
@@ -138,7 +121,6 @@
     </div>
   </div>
 
+  
+</x-app-layout>
 
-</body>
-
-</html>
