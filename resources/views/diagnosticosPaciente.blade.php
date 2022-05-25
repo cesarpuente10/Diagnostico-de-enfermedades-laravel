@@ -30,20 +30,17 @@
         crossorigin="anonymous"></script>
 </head>
 
+<!--Esta pantalla es parte del flujo del paciente cuando presiona el botón "Diagnósticos"
+    De su navbar-->
 <body>
     @include('navbar')
     <div class="contenedor" id="uno">
         <div class="contenido">
-            <h1>Registrar diagnósticos</h1>
             <h1>Diagnósticos</h1>
             <table class="table table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-
-                        <th scope="col">Paciente</th>
-                        <th scope="col">Generar diagnóstico</th>
-
                         <th scope="col">Fecha</th>
                         <th scope="col">Resultado</th>
                         <th scope="col">Reporte</th>
@@ -51,49 +48,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-
-                        <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Generar
-                           </button></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Generar
-                           </button></td>
-                           <td></td>
-                           <td></td>
-                           <td></td>
-                    </tr>
+                    
                     <tr>
                         <th scope="row">3</th>
-                        <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                           Generar
-                          </button></td>
                         <td>10/05/2022</td>
                         <td>Neuropatía</td>
                         <td><button type="button" class="btn btn-light">Abrir</button></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
-                        <td></td>
-                        <td></td>
                         <td>11/05/2022</td>
                         <td>Miopatía</td>
                         <td><button type="button" class="btn btn-light">Abrir</button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td></td>
-                        <td></td>
                         <td>12/05/2022</td>
                         <td>Músculo sano</td>
                         <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>
