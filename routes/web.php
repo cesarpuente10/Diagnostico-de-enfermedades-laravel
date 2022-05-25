@@ -14,10 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home') -> name('home');
-Route::view('logIn', 'login') -> name('login');
-Route::view('register', 'register') -> name('registro');
 
+Route::view('/datosusuario', 'DatosUsuario') -> name('datosusuario');
 
+Route::get('/dashboard', function () {
+    return view('welcome');
+});
+
+require __DIR__.'/auth.php';
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 
