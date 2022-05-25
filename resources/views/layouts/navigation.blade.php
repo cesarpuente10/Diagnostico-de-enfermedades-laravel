@@ -2,12 +2,13 @@
     <div class="contNavbar">
         <div class="pos-f-t navbarPaciente">
             <div id="nav1">
+                
                 <div class="dropdown">
                     <i class="fa-solid fa-bars fa-2x boton-nav " id="username dropdownMenu2" href="#"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                    <div class="dropdown-menu menuoption" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item menuoption" type="button">Ver Perfíl</button>
-                        <button class="dropdown-item menuoption" type="button">Saber más</button>
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
+                        <a href="/perfil" class="dropdown-item menuoption">Ver perfíl de {{ Auth::user()->name }}</a>
+                        <a href="/sabermas" class="dropdown-item menuoption">Saber más</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -17,23 +18,16 @@
                                 {{ ('Cerrar Sesión') }}
                             </a>
                         </form>
-                    </div>
+                    </ul>
                 </div>
                 <a href="">
                     <h6>Diagnósticos</h6>
                 </a>
     
             </div>
-            <a href="{{ route('dashboard') }}"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
+            <a href="{{ route('home') }}"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
             
         </div>
         <div class="lineaNav"></div>
     </div>
-    
-
-
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
 </nav>
