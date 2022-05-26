@@ -20,8 +20,14 @@
                         </form>
                     </ul>
                 </div>
-                <a href="">
-                    <h6>Diagnósticos</h6>
+                    @if (Auth::user()->role == 1)
+                    <a href="{{ route('diagnosticosPaciente') }}">
+                        <h6>Diagnósticos</h6>
+                        
+                    @else
+                    <a href="#">
+                        <h6>Pacientes</h6>
+                    @endif
                 </a>
     
             </div>

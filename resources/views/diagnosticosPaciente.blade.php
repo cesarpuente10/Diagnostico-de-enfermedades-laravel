@@ -12,7 +12,7 @@
             <table class="table table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col"># de Reporte</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Resultado</th>
                         <th scope="col">Reporte</th>
@@ -20,13 +20,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>10/05/2022</td>
-                        <td>Neuropatía</td>
+                    @for($i = 0; $i < count($diagnosticos); $i++)
+                      <tr>
+                        <th scope="row">{{ $reportes[$i]->id }}</th>
+                        <td>{{ $diagnosticos[$i]->created_at->format('j F, Y') }}</td>
+                        <td>Neuropatía {{ $reportes[$i]->resultado }}</td>
                         <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>
-                    </tr>
+                      </tr>
+                    @endfor
+                    
                     <tr>
                         <th scope="row">2</th>
                         <td>11/05/2022</td>

@@ -5,6 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
+use App\Models\asistencia;
+use App\Models\diagnostico;
+use App\Models\medico;
+use App\Models\paciente;
+use App\Models\prediagnostico;
+use App\Models\preguntas;
+use App\Models\reporte;
+use App\Models\senalesemg;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -40,5 +50,30 @@ class HomeController extends Controller
         $users = User::all();
 
         return view('verMasMedicosPaciente')->with('users', $users);
+    }
+    
+    public function diagnostico()
+    {
+        $diagnostico = diagnostico::find(Auth::id())->get();
+        
+    }
+
+    public function cambiarnombre()
+    {
+        $diags = diagnostico::all();
+        $diags = diagnostico::where();
+        
+    }
+
+    public function asistencia()
+    {
+        $reportes = reporte::first();
+        $diagnosticos = diagnostico::where('user_id', Auth::id())->get();
+        foreach($diagnosticos as $diagnostico){
+            $reportes = reporte::find($diagnostico->reporte_id)->get();
+        }
+        return view('diagnosticosPaciente')
+        ->with('diagnosticos', $diagnosticos)
+        ->with('reportes', $reportes);
     }
 }
