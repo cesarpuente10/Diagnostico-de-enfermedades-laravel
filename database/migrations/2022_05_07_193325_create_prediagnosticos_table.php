@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrediagnosticoTable extends Migration
+class CreatePrediagnosticosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePrediagnosticoTable extends Migration
      */
     public function up()
     {
-        Schema::create('prediagnostico', function (Blueprint $table) {
+        Schema::create('prediagnosticos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique();
             $table->timestamp('fecha');
