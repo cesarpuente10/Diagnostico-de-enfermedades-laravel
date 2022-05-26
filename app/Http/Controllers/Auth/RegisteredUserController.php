@@ -53,22 +53,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if ($user->role == 1) {
-            # es medico
-            $medico = new medico();
-            $medico->user_id = $user->id;
-            $medico->especialidad = $request->especialidad;
-            $medico->cedula = $request->cedula;
-            $medico->save();
-            
-        } else {
-            # es paciente
-            $paciente = new paciente();
-            $paciente->user_id = $user->id;
-            $paciente->save();
-        }
-        
-
         return redirect()->back();
     }
 }
