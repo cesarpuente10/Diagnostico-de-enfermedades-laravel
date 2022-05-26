@@ -2,7 +2,7 @@
 
     <form method="POST" class="Data">
         @csrf
-        <b><h1>Datos del usuario</h1></b><br>
+        <b><h1 class="DatoUsuario">Datos del usuario</h1></b><br>
         <label>Nombre del paciente</label><br>
         <input type="text" placeholder="Nombre y apellido" class="boxes"> <img src="pencil-square.svg" alt=""><div class="edit">
             </div><br>
