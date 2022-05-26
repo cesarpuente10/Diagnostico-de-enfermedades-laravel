@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsistenciaTable extends Migration
+class CreateDiagnosticosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAsistenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('asistencia', function (Blueprint $table) {
+        Schema::create('diagnosticos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('medico_id');
-            $table->foreignId('paciente_id');
-            $table->timestamp('fecha'); //con hora
+            $table->foreignId('user_id')->unique();
+            $table->foreignId('datosemg_id');
+            $table->foreignId('reporte_id');
             $table->timestamps();
         });
     }

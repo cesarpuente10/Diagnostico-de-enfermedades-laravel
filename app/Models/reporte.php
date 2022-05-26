@@ -11,6 +11,7 @@ class reporte extends Model
 
     protected $fillable = [
         'user_id',
-        'reporte'
+        'reporte',
+        'resultado',
     ];
 }

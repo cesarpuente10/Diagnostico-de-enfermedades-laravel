@@ -17,6 +17,7 @@ class CreateReportesTable extends Migration
             $table->id();
             $table->string('reporte');
             $table->foreignId('user_id');
+            $table->string('resultado');
             $table->timestamps();
         });
     }
