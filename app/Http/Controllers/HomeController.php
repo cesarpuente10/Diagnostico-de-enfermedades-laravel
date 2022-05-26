@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\preguntas;
+use App\Models\User;
+
 
 class HomeController extends Controller
 {
@@ -25,5 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function action_index() {
+            $users = User::all();
+            return view('asistePacientesMedico')->with('users', $users);
     }
 }

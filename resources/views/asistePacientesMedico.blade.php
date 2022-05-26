@@ -19,81 +19,80 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <th scope="row">1</th>
-                        <td>Nombre del paciente</td>
-                        <td><div class="collapse" id="collapseExample">
-                        <div class="card card-body drop">
-                            <p>
-                            <i class="fa-solid fa-user fa-4x"></i>
-                            </p>
-                            <div class="lineaCont"></div>
-                            <div>
+                     <!-- @if($users)
+                        @foreach($users as $user)
+                            <tr data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <th scope="row">1</th>
+                        
+                                
+                                    @if($user->role == 2)
+                                        <td>{{ $user->name }} </td>
+                                    @endif
+                        
+                            <td><div class="collapse" id="collapseExample">
+                            <div class="card card-body drop">
                                 <p>
-                                    Última asistencia realizada:
+                                <i class="fa-solid fa-user fa-4x"></i>
                                 </p>
-                                <a href="">
-                                    <p>más información</p>
-                                </a>
-                            </div>
-                            <div class="lineaCont"></div>
-                            <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Asistir
-                           </button>
-                        </div>
-                    </div></td>
-                           
-                    </tr>
+                                <div class="lineaCont"></div>
+                                <div>
+                                    <p>
+                                        Última asistencia realizada:
+                                    </p>
+                                    <a href="">
+                                        <p>más información</p>
+                                    </a>
+                                </div>
+                                <div class="lineaCont"></div>
+                                <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
+                                    Asistir
+                                </button>
+                                </div>
+                            </div></td>
+                            </tr>
+                        @endforeach
+                    @endif -->
+
+                    @if($users)
+                    @php($cont = 0)
+                    @foreach($users as $user)
+                    @if($user->role == 2)
+                    @php($cont++)
                     <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <th scope="row">2</th>
-                        <td>Nombre del paciente</td>
+                        
+                       
+
+                        <th scope="row">{{ $cont }}</th>
+
+
+                        
+                        <td>{{ $user->name }}</td>
+                        
                         <td><div class="collapse" id="collapseExample2">
-                        <div class="card card-body drop">
-                            <p>
-                            <i class="fa-solid fa-user fa-4x"></i>
-                            </p>
-                            <div class="lineaCont"></div>
-                            <div>
+                            <div class="card card-body drop">
                                 <p>
-                                    Última asistencia realizada:
+                                <i class="fa-solid fa-user fa-4x"></i>
                                 </p>
-                                <a href="">
-                                    <p>más información</p>
-                                </a>
+                                <div class="lineaCont"></div>
+                                <div>
+                                    <p>
+                                        Última asistencia realizada:
+                                    </p>
+                                    <a href="">
+                                        <p>más información</p>
+                                    </a>
+                                </div>
+                                <div class="lineaCont"></div>
+                                <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
+                                    Asistir
+                            </button>
                             </div>
-                            <div class="lineaCont"></div>
-                            <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Asistir
-                           </button>
-                        </div>
-                    </div></td>
-                           
+                        </div></td>  
                     </tr>
-                    <tr data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <th scope="row">3</th>
-                        <td>Nombre del paciente</td>
-                        <td><div class="collapse" id="collapseExample3">
-                        <div class="card card-body drop">
-                            <p>
-                            <i class="fa-solid fa-user fa-4x"></i>
-                            </p>
-                            <div class="lineaCont"></div>
-                            <div>
-                                <p>
-                                    Última asistencia realizada:
-                                </p>
-                                <a href="">
-                                    <p>más información</p>
-                                </a>
-                            </div>
-                            <div class="lineaCont"></div>
-                            <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Asistir
-                           </button>
-                        </div>
-                    </div></td>
-                           
-                    </tr>
+                    @endif
+                    @endforeach
+                    @endif
+                    
                 </tbody>
             </table>
         </div>
