@@ -19,39 +19,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                     <!-- @if($users)
-                        @foreach($users as $user)
-                            <tr data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            <th scope="row">1</th>
-                        
-                                
-                                    @if($user->role == 2)
-                                        <td>{{ $user->name }} </td>
-                                    @endif
-                        
-                            <td><div class="collapse" id="collapseExample">
-                            <div class="card card-body drop">
-                                <p>
-                                <i class="fa-solid fa-user fa-4x"></i>
-                                </p>
-                                <div class="lineaCont"></div>
-                                <div>
-                                    <p>
-                                        Última asistencia realizada:
-                                    </p>
-                                    <a href="">
-                                        <p>más información</p>
-                                    </a>
-                                </div>
-                                <div class="lineaCont"></div>
-                                <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                    Asistir
-                                </button>
-                                </div>
-                            </div></td>
-                            </tr>
-                        @endforeach
-                    @endif -->
 
                     @if($users)
                     @php($cont = 0)
