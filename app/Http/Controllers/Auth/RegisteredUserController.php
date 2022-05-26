@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\medico;
+use App\Models\paciente;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -37,17 +39,35 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role' => ['required'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        if ($user->role == 1) {
+            # es medico
+            $medico = new medico();
+            $medico->user_id = $user->id;
+            $medico->especialidad = $request->especialidad;
+            $medico->cedula = $request->cedula;
+            $medico->save();
+            
+        } else {
+            # es paciente
+            $paciente = new paciente();
+            $paciente->user_id = $user->id;
+            $paciente->save();
+        }
+        
 
         return redirect()->back();
     }
