@@ -1,4 +1,4 @@
-    <!--Este usuario es medico, por lo tanto, la opoción junto al botón de menú debe ser "Pacientes"-->
+    <!--Este usuario es medico, por lo tanto, la opción junto al botón de menú debe ser "Pacientes"-->
 
     <!--Este flujo se presenta como médico, cuando se presiona el botón de "Registrar diagnóstico",
     Muestra una lista de pacientes y se debe escoger al paciente al que se le desea hacer el diagnóstico-->
@@ -22,21 +22,21 @@
                         <th scope="row">1</th>
 
                         <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Generar
                            </button></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Generar
                            </button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
                         <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                            Generar
                           </button></td>
                         
@@ -50,12 +50,12 @@
 
   
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Registrar diagnóstico</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -63,7 +63,7 @@
           ¿Seguro desea generar un diagnóstico para este paciente?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
           <a href="indexPaciente.blade.php"><button type="button" class="btn btn-primary">Generar diagnóstico</button></a>
         </div>
       </div>
