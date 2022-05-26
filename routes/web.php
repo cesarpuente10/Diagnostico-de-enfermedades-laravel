@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home') -> name('home');
+Route::view('FormPrediagnostico', 'home') -> name('home');
 
 Route::view('/datosusuario', 'DatosUsuario') -> name('datosusuario');
 

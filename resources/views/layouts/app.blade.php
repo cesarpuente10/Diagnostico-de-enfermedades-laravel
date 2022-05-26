@@ -13,6 +13,7 @@
         <link href="{{ asset('css/styleRegistraDiagnosticoMedico.css') }}" rel="stylesheet">
         <link href="{{ asset('css/stylelListaDiagnostico.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/formpre.css">
         
 
         <!-- Fonts -->
