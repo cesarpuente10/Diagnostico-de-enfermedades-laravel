@@ -59,13 +59,8 @@
                     @if($user->role == 2)
                     @php($cont++)
                     <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        
-                       
 
                         <th scope="row">{{ $cont }}</th>
-
-
-                        
                         <td>{{ $user->name }}</td>
                         
                         <td><div class="collapse" id="collapseExample2">

@@ -28,8 +28,13 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function action_index() {
+    public function senddata_user_asistePacientesMedico() {
             $users = User::all();
             return view('asistePacientesMedico')->with('users', $users);
+    }
+
+    public function senddata_user_verMasMedicosPaciente() {
+        $users = User::all();
+        return view('verMasMedicosPaciente')->with('users', $users);
     }
 }

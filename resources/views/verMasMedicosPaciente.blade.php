@@ -18,9 +18,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
+                    @if($users)
+                    @php($cont = 0)
+                    @foreach($users as $user)
+                    @if($user->role != 2)
+                    @php($cont++)
                     <tr data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <th scope="row">1</th>
-                        <td>Nombre del médico</td>
+                        <th scope="row">{{ $cont }}</th>
+                        <td>{{ $user->name }}</td>
                         <td><div class="collapse" id="collapseExample">
                         <div class="card card-body drop">
                             <p>
@@ -38,57 +44,12 @@
                                 Solicitar asistencia
                            </button>
                         </div>
-                    </div></td>
-                           
+                    </div></td>  
                     </tr>
+                    @endif
+                    @endforeach
+                    @endif
 
-                    <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <th scope="row">2</th>
-                        <td>Nombre del médico</td>
-                        <td><div class="collapse" id="collapseExample2">
-                        <div class="card card-body drop">
-                            <p>
-                            <i class="fa-solid fa-user-doctor fa-4x"></i>
-                            </p>
-                            <div class="lineaCont"></div>
-                            <div class = "contenidoDrop">
-                                <a href="">
-                                    <p> Ir a perfil completo</p> 
-                                </a>
-                                <p> Número de Pacientes:</p>
-                            </div>
-                            <div class="lineaCont"></div>
-                            <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Solicitar asistencia
-                           </button>
-                        </div>
-                    </div></td>
-                           
-                    </tr>
-
-                    <tr data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <th scope="row">3</th>
-                        <td>Nombre del médico</td>
-                        <td><div class="collapse" id="collapseExample3">
-                        <div class="card card-body drop">
-                            <p>
-                            <i class="fa-solid fa-user-doctor fa-4x"></i>
-                            </p>
-                            <div class="lineaCont"></div>
-                            <div class = "contenidoDrop">
-                                <a href="">
-                                    <p> Ir a perfil completo</p> 
-                                </a>
-                                <p> Número de Pacientes:</p>
-                            </div>
-                            <div class="lineaCont"></div>
-                            <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                Solicitar asistencia
-                           </button>
-                        </div>
-                    </div></td>
-                           
-                    </tr>
 
                     
                 </tbody>
