@@ -111,3 +111,17 @@ button:hover {
     background-color: #F7CB15;
     color: #353535;
 }
+
+
+
+
+.info-flex{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content:space-around;
+}
+
+             
