@@ -14,8 +14,10 @@
         <link rel="stylesheet" href="{{ asset('css/logInStyles.css') }}"/>
         <link rel="stylesheet" href="{{ asset('css/indexStyle.css') }}"/>
 
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>

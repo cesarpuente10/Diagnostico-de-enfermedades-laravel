@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    
-</head>
-<body>
+<x-app-layout>
     <section class="row container bienvenida">
         <div class="col welcome-photo"></div>
         <h1 class="col">Bienvenido Nombre</h1>
@@ -25,7 +14,7 @@
             
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <div class="image"></div> <br>
-                <button type="button" class="btn btn-secondary principal-btn">Solicitar Diagnóstico</button>
+                <a href="#" type="button" class="btn btn-secondary principal-btn">Solicitar Diagnóstico</a>
             </div>
         </section>
 
@@ -94,5 +83,4 @@
         </section>
     </div>
     
-</body>
-</html>
+</x-app-layout>

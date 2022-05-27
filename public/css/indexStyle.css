@@ -71,48 +71,10 @@ img {
   margin: 30px 0px;
 }
 
-
 .arrow-right {
   padding-left: 20px;
 }
 
-.modal {
-  display: none;
-  /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgba(53, 53, 53, 0.6);
-  /* Black w/ opacity */
-}
-
-/* Modal Content */
-.modal-content {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 30px 100px;
-  border: 1px solid #888;
-  width: 80%;
-  height: 80vh;
-}
-
-.modal-content h1 {
-  padding: 30px 0px;
-}
 
 /* The Close Button */
 .close {
