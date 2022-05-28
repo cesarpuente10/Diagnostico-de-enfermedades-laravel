@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,35 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('FormPrediagnostico', 'home') -> name('home');
-
-Route::view('/datosusuario', 'DatosUsuario') -> name('datosusuario');
-
-Route::get('/dashboard', function () {
-    return view('welcome');
-});
+/*Rutas ya definidas */
 
 require __DIR__.'/auth.php';
+Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])->middleware('auth')->name('inicioMedico');
+Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia']
+)->middleware('auth')->name('diagnosticosPaciente');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+/* Hasta aquí */
+
+
+
+Route::view('/a', 'FormPrediagnostico') -> name('home');
+
+Route::get('/dashboard', function () {
+    return view('inicioUsuario');
+});
 
 Route::view('/asistepacientesmedico', 'asistePacientesMedico') -> name('asistePacientesMedico');
 
 Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
 
 Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('lista_de_pacientes');
-Route::view('/diagnosticospaciente', 'diagnosticosPaciente') -> name('lista_de_pacientes');
 
 Route::view('RegistroExitoso', 'successlogin') -> name('successlogin');
 Route::view('Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
-
-
-Route::get('blog', 'BlogController@index') -> name('blog.index');
-Route::get('blog/{post:slug}', 'BlogController@show') -> name('blog.show');
-
-Route::view('contactos', 'contact') -> name('contact');
-
-/* Route::get('/', function () {
-    return view('welcome');
-});
- */

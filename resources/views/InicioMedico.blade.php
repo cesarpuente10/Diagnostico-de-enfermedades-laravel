@@ -1,6 +1,6 @@
 <x-app-layout>
     @if (Auth::user()->role == 2)
-    {{-- Es Medico --}}
+    {{-- Es Médico --}}
     <section class="d-flex align-items-center p-3 mb-2 mt-2">
         <i class="fa-solid fa-user-doctor fa-2xl"></i>
         <div class="col fs-2 ms-2">Bienvenido {{ Auth::user()->name }}</div>
@@ -163,7 +163,7 @@
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Medico </div>
+                    <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>
@@ -172,7 +172,7 @@
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Medico </div>
+                    <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>
@@ -180,7 +180,7 @@
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Medico </div>
+                    <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>
@@ -188,7 +188,7 @@
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Medico </div>
+                    <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>
@@ -196,7 +196,7 @@
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Medico </div>
+                    <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>
@@ -205,7 +205,7 @@
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Medico </div>
+                    <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>

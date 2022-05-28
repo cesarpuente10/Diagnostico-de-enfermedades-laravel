@@ -33,10 +33,6 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
-    {
-        return view('home');
-    }
 
     public function senddata_user_asistePacientesMedico() {
 
@@ -50,6 +46,12 @@ class HomeController extends Controller
         $users = User::all();
 
         return view('verMasMedicosPaciente')->with('users', $users);
+    }
+
+    public function senddata_user_iniciomedico() {
+
+        $users = User::all();
+        return view('inicioMedico')->with('users', $users);
     }
     
     public function diagnostico()

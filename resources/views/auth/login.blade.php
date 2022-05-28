@@ -9,7 +9,7 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <br>
-                    <label for="user">Correo Electronico</label><br>
+                    <label for="user">Correo Electrónico</label><br>
                     <input type="text" name="email" id="email">
     
                     <br>
@@ -27,7 +27,7 @@
         <section class="registerBanner">
             <div>
     
-                <h1>No tienes cuenta? Registrate aqui.</h1>
+                <h1>¿No tienes cuenta? Regístrate aqui.</h1>
                 <div class="imgLogIn"></div>
                 <!-- <img src="../assets/img/Domain.png" alt=""> -->
                 <a href=" {{ route('register') }} " class="btn">Registrarse <i class="bi bi-caret-right-fill"></i> </a>

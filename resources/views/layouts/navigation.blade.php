@@ -7,7 +7,7 @@
                     <i class="fa-solid fa-bars fa-2x boton-nav " id="username dropdownMenu2" href="#"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-                        <a href="/perfil" class="dropdown-item menuoption">Ver perfíl de {{ Auth::user()->name }}</a>
+                        <a href="/perfil" class="dropdown-item menuoption">Ver perfil de {{ Auth::user()->name }}</a>
                         <a href="/sabermas" class="dropdown-item menuoption">Saber más</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

@@ -77,7 +77,7 @@
       <table>
         <tr>
           <td>
-            <label >Subir archivo previo de señales mio-eléctricas (.txt) <input type="file"class="file"><br></label><br>
+            <label >Subir archivo previo de señales bio-eléctricas (.txt) <input type="file"class="file"><br></label><br>
           </td>
         </tr>
     </table><br>
