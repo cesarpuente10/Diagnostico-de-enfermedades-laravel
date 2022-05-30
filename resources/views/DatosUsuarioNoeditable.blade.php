@@ -26,7 +26,7 @@
             
             </div><br>
         <br>
-        <input type="submit" class="btn btn-primary" value="Guardar Cambios">
+       
         
 
 </x-app-layout>
