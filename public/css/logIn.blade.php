@@ -36,7 +36,7 @@
     <section class="registerBanner">
         <div>
 
-            <h1>No tienes cuenta? Registrate aqui.</h1>
+            <h1>¿No tienes cuenta? Registrate aqui.</h1>
             <div class="imgLogIn"></div>
             <!-- <img src="../assets/img/Domain.png" alt=""> -->
             <a href=" {{ route('registro') }} " class="btn">Registrarse <i class="bi bi-caret-right-fill"></i> </a>

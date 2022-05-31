@@ -21,7 +21,7 @@
         <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
       </svg>
       
-    <h1>REGISTRO CON EXITO</h1>
+    <h1>REGISTRO CON ÉXITO</h1>
     <h3>Verifica el mensaje de confirmación en la bandeja de tu correo electrónico</h3>
     <input type="submit" class="iSession" value="Iniciar Sesión" id="iSesion" name="iSesion" >
   </div>

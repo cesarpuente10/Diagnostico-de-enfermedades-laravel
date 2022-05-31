@@ -41,7 +41,7 @@
                                         Última asistencia realizada:
                                     </p>
                                     <a href="">
-                                        <p>más información</p>
+                                        <p>Más Información</p>
                                     </a>
                                 </div>
                                 <div class="lineaCont"></div>

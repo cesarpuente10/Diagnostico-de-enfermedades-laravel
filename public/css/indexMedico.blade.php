@@ -50,7 +50,7 @@
 
         <div class="check">
             <input type="checkbox" id="check">
-            <label id="size" for="check">Acepto Terminos y Condiciones</label>
+            <label id="size" for="check">Acepto Términos y Condiciones</label>
         </div>
 
         <div>

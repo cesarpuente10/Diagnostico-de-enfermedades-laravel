@@ -32,7 +32,7 @@
                         diagnóstico preventivo...
                     </p>
                     <button class="btn" id="myBtn">
-                        Saber mas
+                        Saber más
                         <i class="bi bi-caret-right-fill arrow-right"></i>
                     </i>
                 </button>
