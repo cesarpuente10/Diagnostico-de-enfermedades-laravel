@@ -13,7 +13,7 @@
                         diseñado para que usuarios con enfermedades neuromusculares obtengan un
                         diagnóstico preventivo...
                     </p>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Saber más
                         <i class="bi bi-caret-right-fill arrow-right"></i>
                     </i>
@@ -25,11 +25,11 @@
         <div class="box">
             <div>
                 <div class="cont-img">
-                  <img src="assets/img/undraw_Books_re_8gea.png" alt="">
+                  <img src="{{url('/images/Domain.png')}}" alt="">
                 </div>
                 <!-- Aqui se enruta -->
-                <div><a class="fs-3" href=" {{ route('login') }} ">INICIA SESIÓN AQUI <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
-                <div><a class="fs-6" href=" {{ route('register') }} ">REGÍSTRATE AQUI <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
+                <div><a class="fs-3 text-black-50" href=" {{ route('login') }} ">INICIA SESIÓN AQUÍ <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
+                <div><a class="fs-6 text-black-50" href=" {{ route('registro') }} ">REGÍSTRATE AQUÍ <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
 
             </div>
 

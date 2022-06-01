@@ -31,13 +31,13 @@
                     
                     <tr>
                         <th scope="row">2</th>
-                        <td>11/05/2022</td>
+                        <td>24 May, 2022</td>
                         <td>Miopatía</td>
                         <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
-                        <td>12/05/2022</td>
+                        <td>23 May, 2022</td>
                         <td>Músculo sano</td>
                         <td><button type="button" class="btn btn-light btnSi">Abrir</button></td>
 

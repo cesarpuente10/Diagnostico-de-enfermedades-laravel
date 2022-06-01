@@ -25,13 +25,13 @@
                         <h6>Diagnósticos</h6>
                         
                     @else
-                    <a href="#">
+                    <a href="{{ route('asistePacientesMedico') }}">
                         <h6>Pacientes</h6>
                     @endif
-                </a>
+                    </a>
     
             </div>
-            <a href="{{ route('home') }}"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
+            <a href="/"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
             
         </div>
         <div class="lineaNav"></div>

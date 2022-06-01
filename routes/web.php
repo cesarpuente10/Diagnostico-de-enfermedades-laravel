@@ -14,28 +14,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Rutas ya definidas */
+
 
 require __DIR__.'/auth.php';
-Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])->middleware('auth')->name('inicioMedico');
-Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia']
-)->middleware('auth')->name('diagnosticosPaciente');
 
-/* Hasta aquí */
+Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])
+->middleware('auth')->name('inicioMedico');
+
+Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
+->middleware('auth')->name('diagnosticosPaciente');
 
 
 
-Route::view('/a', 'FormPrediagnostico') -> name('home');
+Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
-Route::get('/dashboard', function () {
-    return view('inicioUsuario');
+Route::get('/home', function () {
+    return view('home');
 });
+Route::get('/registro', function () {
+    return view('registro');
+})->name('registro');
 
-Route::view('/asistepacientesmedico', 'asistePacientesMedico') -> name('asistePacientesMedico');
+Route::get('/asistepacientesmedico', [HomeController::class, 'senddata_user_asistePacientesMedico'])
+->middleware('auth')->name('asistePacientesMedico');
 
 Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
 
-Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('lista_de_pacientes');
+Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
 
 Route::view('RegistroExitoso', 'successlogin') -> name('successlogin');
 Route::view('Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');

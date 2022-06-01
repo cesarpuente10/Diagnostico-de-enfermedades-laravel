@@ -23,7 +23,7 @@
                     @if($users)
                     @php($cont = 0)
                     @foreach($users as $user)
-                    @if($user->role == 2)
+                    @if($user->role == 1)
                     @php($cont++)
                     <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
 

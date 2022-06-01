@@ -9,12 +9,12 @@
     <div class="container-fluid row inicio">
         <section class="col-lg-7 row leftdiag-container">
             <div class="vstack gap-2 col-sm-3 principal-card">
-                <div class="image"></div> <br>
-                <button type="button" class="btn btn-secondary principal-btn">Registrar Diagnóstico</button>
+                <img class="image" src="{{url('/images/Medical prescription-pana.png')}}" alt="Image"/> <br>
+                <a href="{{ route('RegistraDiagnosticoMedico') }}" class="btn btn-secondary principal-btn">Registrar Diagnóstico</a>
             </div>
             
             <div class="vstack gap-2 col-sm-3 principal-card">
-                <div class="image"></div> <br>
+                <img class="image" src="{{url('/images/Medical prescription-bro.png')}}" alt="Image"/> <br>
                 <button type="button" class="btn btn-secondary principal-btn">Registrar Paciente</button>
             </div>
         </section>
@@ -23,21 +23,23 @@
             <div class="vr"></div>
         </div>
         
-
+        @php($cont = 0)
         <section class="principal-list overflow-auto col-lg-4">
-
             @foreach ($users as $user)
-                @if ($user->role == 1)
-                <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                    <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                        <div class="text-uppercase me-3">{{ $user->name }}</div>
-                    </div>
-                    <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-                </div>
-                
-                @endif
+                @foreach ($asistencias as $asistencia)
+                    @php($cont++)
+                    @if ($asistencia->medico_id == Auth::id() && $user->role == 1)
+                        <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
+                                <div class="text-uppercase me-3">{{ $user->name }}</div>
+                            </div>
+                            <a href="" class="btn btn-secondary principal-btn">Asistir</a>
+                        </div>
+                    @endif
+                @endforeach
             @endforeach
+            
             
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                 <div class="d-flex align-items-center">
@@ -109,6 +111,10 @@
                 </div>
                 <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
             </div>
+            @if ($cont > 0)
+                <a class="btn btn-secondary principal-btn" href="{{ route('asistePacientesMedico') }}">ver más</a>
+            @endif
+            
         </section>
     </div>
 
@@ -128,13 +134,13 @@
     <div class="container-fluid row inicio">
         <section class="col-lg-7 row leftdiag-container">
             <div class="vstack gap-2 col-sm-3 principal-card">
-                <div class="image"></div> <br>
+                <img class="image" src="{{url('/images/Medical prescription-pana.png')}}" alt="Image"/> <br>
                 <button type="button" class="btn btn-secondary principal-btn">Ver Prediagnóstico</button>
                 <button type="button" class="btn btn-secondary principal-btn">Editar Prediagnóstico</button>
             </div>
             
             <div class="vstack gap-2 col-sm-3 principal-card">
-                <div class="image"></div> <br>
+                <img class="image" src="{{url('/images/Medical prescription-bro.png')}}" alt="Image"/> <br>
                 <a href="#" type="button" class="btn btn-secondary principal-btn">Solicitar Diagnóstico</a>
             </div>
         </section>
@@ -153,7 +159,7 @@
                         <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                         <div class="text-uppercase me-3">{{ $user->name }}</div>
                     </div>
-                    <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                    <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
                 </div>
     
                 @endif
@@ -165,7 +171,7 @@
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                     <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
             </div>
 
 
@@ -174,7 +180,7 @@
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                     <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
             </div>
 
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
@@ -182,7 +188,7 @@
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                     <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
             </div>
             
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
@@ -190,7 +196,7 @@
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                     <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
             </div>
 
             <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
@@ -198,7 +204,7 @@
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                     <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
             </div>
 
 
@@ -207,7 +213,7 @@
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                     <div class="text-uppercase me-3">Nombre Médico </div>
                 </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
+                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
             </div>
         </section>
     </div>

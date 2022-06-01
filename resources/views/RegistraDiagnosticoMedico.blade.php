@@ -22,9 +22,9 @@
                         <th scope="row">1</th>
 
                         <td>Nombre del paciente</td>
-                        <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <td><a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Generar
-                           </button></td>
+                           </a></td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
