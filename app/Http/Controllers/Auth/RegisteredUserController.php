@@ -53,6 +53,10 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->back();
+        if($user['role'] == 1){
+            return view('FormPrediagnostico'); //no se manda info porque ya se guarda en la sesión el usuario registrado
+        }else{
+            return redirect()->back();
+        }
     }
 }

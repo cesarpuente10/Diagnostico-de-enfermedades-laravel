@@ -42,5 +42,5 @@ Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de
 
 Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
 
-Route::view('RegistroExitoso', 'successlogin') -> name('successlogin');
-Route::view('Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
+Route::view('/RegistroExitoso', 'successlogin') -> name('successlogin');
+Route::view('/Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
