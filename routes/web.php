@@ -30,7 +30,7 @@ Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 Route::get('/registro', function () {
     return view('registro');
 })->name('registro');
