@@ -31,7 +31,7 @@
                     </a>
     
             </div>
-            <a href="/"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
+            <a href="{{ route('inicio') }}"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
             
         </div>
         <div class="lineaNav"></div>

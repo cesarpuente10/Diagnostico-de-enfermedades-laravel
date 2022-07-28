@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         $users = User::all();
         $asistencias = asistencia::all();
-        return view('inicioMedico')
+        return view('inicio')
         ->with('users', $users)
         ->with('asistencias', $asistencias);
     }

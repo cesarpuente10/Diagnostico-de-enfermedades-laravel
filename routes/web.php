@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])
-->middleware('auth')->name('inicioMedico');
+->middleware('auth')->name('inicio');
 
 Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
 ->middleware('auth')->name('diagnosticosPaciente');
