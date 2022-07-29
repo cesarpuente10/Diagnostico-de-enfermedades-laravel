@@ -13,6 +13,7 @@
         <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/logInStyles.css') }}"/>
         <link rel="stylesheet" href="{{ asset('css/indexStyle.css') }}"/>
+        <link rel="stylesheet" href="css/registerStyles.css">
 
 
         <!-- Fonts -->

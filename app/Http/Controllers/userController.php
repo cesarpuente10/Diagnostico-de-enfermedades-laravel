@@ -12,6 +12,6 @@ class MedicoController extends Controller
     public function algo()
     {
         $algo = User::all();
-        return view('InicioMedico')->with('algo', $algo);
+        return view('inicio')->with('algo', $algo);
     }
 }

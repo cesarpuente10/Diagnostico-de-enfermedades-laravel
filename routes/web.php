@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__.'/auth.php';
 
 Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])
-->middleware('auth')->name('inicioMedico');
+->middleware('auth')->name('inicio');
 
 Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
 ->middleware('auth')->name('diagnosticosPaciente');
@@ -30,7 +30,7 @@ Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 Route::get('/registro', function () {
     return view('registro');
 })->name('registro');
@@ -42,5 +42,5 @@ Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de
 
 Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
 
-Route::view('RegistroExitoso', 'successlogin') -> name('successlogin');
-Route::view('Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
+Route::view('/RegistroExitoso', 'successlogin') -> name('successlogin');
+Route::view('/Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
