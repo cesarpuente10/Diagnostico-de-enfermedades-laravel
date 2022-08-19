@@ -26,9 +26,12 @@
 
                                 <label for="name">Nombre(s)</label>
                                 <input type="text" id="name" name="name">
+                                
+                                <label for="lastnamef">Apellido paterno</label>
+                                <input type="text" id="lastnamef" name="lastnamef">
 
-                                <label for="apellido">Apellidos</label>
-                                <input type="text" id="apellido">
+                                <label for="lastnamem">Apellido materno</label>
+                                <input type="text" id="lastnamem" name="lastnamem">
 
                                 <x-label for="email" :value="__('Correo Electrónico')" />
                                 <input type="email" id="email" name="email">
@@ -40,7 +43,7 @@
                                 <input type="password" id="password_confirmation" name="password_confirmation">
 
                                 <label for="cert">Certificado médico</label>
-                                <input type="text" id="cert" name="cert">
+                                <input type="text" id="cedula" name="cedula">
 
                                 <div>
                                 <input type="checkbox" id="check">
@@ -64,8 +67,11 @@
                                 <label for="name">Nombre(s)</label>
                                 <input type="text" id="name" name="name">
 
-                                <label for="apellido">Apellidos</label>
-                                <input type="text" id="apellido">
+                                <label for="lastnamef">Apellido paterno</label>
+                                <input type="text" id="lastnamef" name="lastnamef">
+
+                                <label for="lastnamem">Apellido materno</label>
+                                <input type="text" id="lastnamem" name="lastnamem">
 
                                 <label for="correo">Correo electrónico</label>
                                 <input type="email" id="email" name="email">

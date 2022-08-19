@@ -21,7 +21,7 @@
                     </ul>
                 </div>
                 <div class="dropdown notifications">
-                <i class="fa-solid fa-bell fa-xl"></i> 
+                <i class="fa-solid fa-bell fa-xl"> <!--<span class="badge">1</span>--></i> 
                 </div>
                     @if (Auth::user()->role == 1)
                     <a href="{{ route('diagnosticosPaciente') }}">

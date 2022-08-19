@@ -3,11 +3,12 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class InvoicePaid extends Notification
+class SolicitaAsistencia extends Notification
 {
     use Queueable;
 
@@ -16,9 +17,9 @@ class InvoicePaid extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -29,7 +30,7 @@ class InvoicePaid extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -55,7 +56,11 @@ class InvoicePaid extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'id' => $this->user->id,
+            'name' => $this->user->name,
+            'lastnamef' => $this->user->lastnamef,
+            'lastnamem' => $this->user->lastnamem,
+            'time' => Carbon::now()->diffForHumans();
         ];
     }
 }
