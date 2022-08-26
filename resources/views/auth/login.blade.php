@@ -1,5 +1,8 @@
-<x-guest-layout>
+ <x-guest-layout>
 
+    <div class="bg-black w-full h-11">
+        hola
+    </div>
     <div class="content">
         <section class="logIn">
             <div>
