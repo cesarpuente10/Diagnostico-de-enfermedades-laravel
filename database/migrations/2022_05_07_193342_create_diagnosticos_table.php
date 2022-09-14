@@ -15,9 +15,12 @@ class CreateDiagnosticosTable extends Migration
     {
         Schema::create('diagnosticos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique();
-            $table->foreignId('datosemg_id');
-            $table->foreignId('reporte_id');
+            $table->foreignId('asistencia_id');
+            $table->integer('ndiagnosticos')->default(0);
+            $table->string('reporte')->nullable();
+            $table->string('senalesemg')->nullable();
+            $table->string('comentario')->nullable();
+            $table->date('fecha');
             $table->timestamps();
         });
     }

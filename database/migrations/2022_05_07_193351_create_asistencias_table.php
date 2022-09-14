@@ -17,7 +17,7 @@ class CreateAsistenciasTable extends Migration
             $table->id();
             $table->foreignId('medico_id');
             $table->foreignId('paciente_id');
-            $table->timestamp('fecha'); //con hora
+            $table->string('estado');
             $table->timestamps();
         });
     }

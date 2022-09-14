@@ -10,11 +10,10 @@ class prediagnostico extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'paciente_id',
         'fecha',
         'edad',
         'sexo',
-        'localidad',
         'peso',
         'estatura'
     ];

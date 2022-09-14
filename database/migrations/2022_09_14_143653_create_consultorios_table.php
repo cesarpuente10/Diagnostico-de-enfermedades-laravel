@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSenalesemgTable extends Migration
+class CreateConsultoriosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateSenalesemgTable extends Migration
      */
     public function up()
     {
-        Schema::create('senalesemg', function (Blueprint $table) {
+        Schema::create('consultorios', function (Blueprint $table) {
             $table->id();
-            $table->string('senal');
-            $table->foreignId('user_id');
+            $table->foreignId('medico_id');
+            $table->string('cedula');
+            $table->string('calle');
+            $table->integer('cp');
+            $table->integer('numero');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateSenalesemgTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('consultorios');
     }
 }
