@@ -21,6 +21,8 @@ class CreatePrediagnosticosTable extends Migration
             $table->char('sexo');
             $table->float('peso');
             $table->float('estatura');
+            $table->string('tel_fijo');
+            $table->string('celular');
             $table->timestamps();
         });
     }

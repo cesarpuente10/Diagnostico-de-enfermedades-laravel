@@ -15,5 +15,6 @@ class Consultorio extends Model
         'calle',
         'cp',
         'numero',
+        'tel_fijo'
     ];
 }

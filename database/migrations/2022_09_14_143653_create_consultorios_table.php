@@ -20,6 +20,7 @@ class CreateConsultoriosTable extends Migration
             $table->string('calle');
             $table->integer('cp');
             $table->integer('numero');
+            $table->string('tel_fijo');
             $table->timestamps();
         });
     }

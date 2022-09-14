@@ -15,6 +15,8 @@ class prediagnostico extends Model
         'edad',
         'sexo',
         'peso',
-        'estatura'
+        'estatura',
+        'tel_fijo',
+        'celular'
     ];
 }
