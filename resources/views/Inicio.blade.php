@@ -1,4 +1,6 @@
 <x-app-layout>
+
+<!-- Coloca los médicos disponibles con su nombre -->
     @if (Auth::user()->role == 2)
     {{-- Es Médico --}}
     <section class="d-flex align-items-center p-3 mb-2 mt-2">
@@ -6,22 +8,7 @@
         <div class="col fs-2 ms-2">Bienvenido {{ Auth::user()->name }}</div>
     </section>
     
-    <div class="container-fluid row inicio">
-        <section class="col-lg-7 row leftdiag-container">
-            <div class="vstack gap-2 col-sm-3 principal-card">
-                <img class="image" src="{{url('/images/Medical prescription-pana.png')}}" alt="Image"/> <br>
-                <a href="{{ route('RegistraDiagnosticoMedico') }}" class="btn btn-secondary principal-btn">Registrar Diagnóstico</a>
-            </div>
-            
-            <div class="vstack gap-2 col-sm-3 principal-card">
-                <img class="image" src="{{url('/images/Medical prescription-bro.png')}}" alt="Image"/> <br>
-                <button type="button" class="btn btn-secondary principal-btn">Registrar Paciente</button>
-            </div>
-        </section>
-
-        <div class="col-lg-1">
-            <div class="vr"></div>
-        </div>
+    
         
         @php($cont = 0)
         <section class="principal-list overflow-auto col-lg-4">
@@ -41,76 +28,7 @@
             @endforeach
             
             
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre paciente </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Asistir</button>
-            </div>
+            
             @if ($cont > 0)
                 <a class="btn btn-secondary principal-btn" href="{{ route('asistePacientesMedico') }}">ver más</a>
             @endif
@@ -125,6 +43,7 @@
 
     @else
     
+    <!-- Información del paciente -->
     {{-- Es Paciente --}}
     <section class="d-flex align-items-center p-3 mb-2 mt-2">
         <i class="fa-solid fa-bed-pulse fa-2xl"></i>
@@ -135,9 +54,9 @@
         <section class="col-lg-7 row leftdiag-container">
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <img class="image" src="{{url('/images/Medical prescription-pana.png')}}" alt="Image"/> <br>
-                <button type="button" class="btn btn-secondary principal-btn">Ver Prediagnóstico</button>
-                <button type="button" class="btn btn-secondary principal-btn">Editar Prediagnóstico</button>
+                <button type="button" class="btn btn-secondary principal-btn">Prediagnóstico</button>
             </div>
+
             
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <img class="image" src="{{url('/images/Medical prescription-bro.png')}}" alt="Image"/> <br>
@@ -149,6 +68,8 @@
             <div class="vr"></div>
         </div>
         
+        
+            <!-- Modal para ver información del médico -->
 
         <section class="principal-list overflow-auto col-lg-4">
 
@@ -156,69 +77,55 @@
                 @if ($user->role == 2)
                 <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                     <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                        <div class="text-uppercase me-3">{{ $user->name }}</div>
+                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
+                        <div class="text-uppercase me-3">{{ $user->name }} {{ $user->lastnamef }}</div>
                     </div>
-                    <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
+                    
+                    <button type="button" class="btn btn-secondary principal-btn"  data-bs-toggle="modal" data-bs-target="#modalInfoMedico{{$user->id}}">Mostrar Información del Médico</button>
+                    
                 </div>
     
                 @endif
             @endforeach
             
             
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Médico </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Médico </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
-            </div>
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Médico </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
-            </div>
             
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Médico </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
-            </div>
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Médico </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
-            </div>
-
-
-            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                    <div class="text-uppercase me-3">Nombre Médico </div>
-                </div>
-                <button type="button" class="btn btn-secondary principal-btn">Pedir asistencia</button>
-            </div>
         </section>
     </div>
     @endif
 
+
     
+    <!-- Modal -->
+
+    @foreach ($users as $user)
+        @if ($user->role == 2)
+                <div class="modal fade" id="modalInfoMedico{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <h3>INFORMACIÓN DEL MÉDICO</h3>
+            
+
+            <p>{{ $user->name }}  {{  $user->lastnamef }} {{  $user->lastnamem }}</p>
+
+            <p>Direccion de consultorio</p>
+            <p>Numero de telefono</p>
+            
+            <p>{{  $user->email }}</p>
+            <button type="button" class="btn btn-secondary principal-btn">Agendar cita</button>
+        </div>
+
+        
+      </div>
+    </div>
+  </div>
+    
+     @endif
+    @endforeach
+   
     
 </x-app-layout>
