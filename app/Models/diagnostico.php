@@ -10,8 +10,11 @@ class diagnostico extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'datosemg',
-        'reporte_id'
+        'asistencia_id',
+        'senalesemg',
+        'reporte',
+        'comentario',
+        'fecha',
+        'ndiagnosticos'
     ];
 }

@@ -12,6 +12,6 @@ class asistencia extends Model
     protected $fillable = [
         'medico_id',
         'paciente_id',
-        'fecha'
+        'estado'
     ];
 }

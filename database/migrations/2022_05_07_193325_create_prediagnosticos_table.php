@@ -15,11 +15,10 @@ class CreatePrediagnosticosTable extends Migration
     {
         Schema::create('prediagnosticos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique();
+            $table->foreignId('paciente_id')->unique();
             $table->timestamp('fecha');
             $table->integer('edad');
             $table->char('sexo');
-            $table->string('localidad');
             $table->float('peso');
             $table->float('estatura');
             $table->timestamps();
