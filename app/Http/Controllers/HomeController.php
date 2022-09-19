@@ -73,10 +73,10 @@ class HomeController extends Controller
         //dd($user); para ver información de la variable
     }
 
-    public function read_info_paciente($request)
+    public function read_info_paciente($id)
     {
-        $user = User::where('user_id', $request->paciente_id)->get();
-        $prediagnostico = prediagnostico::where('paciente_id', $request->paciente_id)->get();
+        $user = User::where('user_id', $id)->get();
+        $prediagnostico = prediagnostico::where('paciente_id', $id)->get();
         return view('perfilp')
         ->with('user', $user)
         ->with('prediagnostico', $prediagnostico);

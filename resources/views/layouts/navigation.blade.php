@@ -7,8 +7,8 @@
                     <i class="fa-solid fa-bars fa-2x boton-nav " id="username dropdownMenu2" href="#"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-                        <a href="/perfil" class="dropdown-item menuoption">Ver perfil de {{ Auth::user()->name }}</a>
-                        <a href="/sabermas" class="dropdown-item menuoption" data-bs-toggle="modal" data-bs-target="#exampleModal">Saber más</a>
+                        <a href="/perfil/{{ Auth::user()->id }}" class="dropdown-item menuoption">Ver perfil de {{ Auth::user()->name }}</a>
+                        <button class="dropdown-item menuoption" data-bs-toggle="modal" data-bs-target="#exampleModal">Saber más</button>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 

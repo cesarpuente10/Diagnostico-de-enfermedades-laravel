@@ -25,6 +25,8 @@ Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
 ->middleware('auth')->name('diagnosticosPaciente');
 
 
+Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
+->middleware('auth')->name('perfilp');
 
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
