@@ -15,6 +15,7 @@
     
     <form method="POST">
     @csrf
+    <input type="hidden" name="paciente_id" value="{{ Auth::user()->id }}">
     <table>
         <tr>
          <b> <th>Expediente de paciente</th></b>
@@ -24,7 +25,7 @@
         </tr>
         <tr>
           <td>
-            <label>Nombre del paciente: <input type="text"class="name"> </label>
+            <label>Nombre del paciente: <input type="text"class="name" value="{{ Auth::user()->name }}"> </label>
             
             <label>Sexo: </label>
             <label>Masculino <input type="checkbox"><br></label>
