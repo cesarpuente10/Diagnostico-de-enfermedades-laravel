@@ -24,6 +24,9 @@ Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])
 Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
 ->middleware('auth')->name('diagnosticosPaciente');
 
+Route::get('/PantallaNoDisponible', function () {
+    return view('PantallaNoDisponible');
+})->name('PantallaNoDisponible');
 
 
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
