@@ -29,6 +29,16 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+     //Se mandan los usuarios y las asistencias hechas
+    public function senddata_user_iniciomedico() {
+
+        $users = User::all();
+        $asistencias = asistencia::all();
+        return view('inicio')
+        ->with('users', $users)
+        ->with('asistencias', $asistencias);
+    }
+
     public function crear_asistencia($request)
     {
         $asistencia = new asistencia();
@@ -166,15 +176,7 @@ class HomeController extends Controller
 
         return view('verMasMedicosPaciente')->with('users', $users);
     }
-    //Se mandan los usuarios y las asistencias hechas
-    public function senddata_user_iniciomedico() {
-
-        $users = User::all();
-        $asistencias = asistencia::all();
-        return view('inicio')
-        ->with('users', $users)
-        ->with('asistencias', $asistencias);
-    }
+    
     
     public function diagnostico()
     {
