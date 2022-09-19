@@ -42,8 +42,10 @@
                                 <label for="pass">Confirmar contraseña</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation">
 
-                                <label for="cert">Certificado médico</label>
-                                <input type="text" id="cedula" name="cedula">
+                                <label for="cert">Certificado médico Electrónico (.PDF)</label>
+                                <input type="file"class="file"></label>
+                                <!--
+                                <input type="text" id="cedula" name="cedula">-->
 
                                 <div>
                                 <input type="checkbox" id="check">
@@ -88,6 +90,7 @@
                                 </div>
                                 <button type="submit">{{ __('Registrar') }}</button>
                             </form>
+                            <a href=" {{ route('login') }} " class="btn">¿Ya tienes cuenta? Inicia Sesión <i class="bi bi-caret-right-fill"></i> </a>
                         </section>
                     </div>
                     <?php
