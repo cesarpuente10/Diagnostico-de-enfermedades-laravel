@@ -28,6 +28,8 @@ Route::get('/PantallaNoDisponible', function () {
     return view('PantallaNoDisponible');
 })->name('PantallaNoDisponible');
 
+Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
+->middleware('auth')->name('perfilp');
 
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
