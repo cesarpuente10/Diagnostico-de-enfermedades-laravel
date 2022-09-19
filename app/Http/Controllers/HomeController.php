@@ -76,7 +76,7 @@ class HomeController extends Controller
     }
 
     public function create_info_paciente($request) {
-        $user = User::where('user_id', $request->paciente_id)->get();
+        $user = User::find($request->paciente_id);
         $prediagnostico = new prediagnostico();
         $prediagnostico->paciente_id = $request->paciente_id;
         $prediagnostico->edad = $request->edad;
