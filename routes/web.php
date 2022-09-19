@@ -31,6 +31,9 @@ Route::get('/PantallaNoDisponible', function () {
 Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 ->middleware('auth')->name('perfilp');
 
+Route::get('/perfilm/{id}', [HomeController::class, 'read_info_medico'])
+->middleware('auth')->name('perfilm');
+
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
 Route::get('/home', function () {

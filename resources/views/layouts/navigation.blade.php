@@ -7,7 +7,11 @@
                     <i class="fa-solid fa-bars fa-2x boton-nav " id="username dropdownMenu2" href="#"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu2">
-                        <a href="/perfil/{{ Auth::user()->id }}" class="dropdown-item menuoption">Ver perfil de {{ Auth::user()->name }}</a>
+                        @if (Auth::user()->role == 2)
+                            <a href="/perfilm/{{ Auth::user()->id }}" class="dropdown-item menuoption">Ver perfil de {{ Auth::user()->name }}</a>
+                        @elseif (Auth::user()->role == 1)
+                        <a href="/perfilp/{{ Auth::user()->id }}" class="dropdown-item menuoption">Ver perfil de {{ Auth::user()->name }}</a>
+                        @endif
                         <button class="dropdown-item menuoption" data-bs-toggle="modal" data-bs-target="#exampleModal">Saber más</button>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
