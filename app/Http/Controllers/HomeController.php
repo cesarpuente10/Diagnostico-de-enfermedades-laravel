@@ -137,7 +137,7 @@ class HomeController extends Controller
         $user = User::find($id);
         $consultorio = consultorio::where('medico_id', $id)->get();
         //dd($consultorio);
-        return view('perfilp')
+        return view('perfilm')
         ->with('user', $user)
         ->with('consultorio', $consultorio);
     }
