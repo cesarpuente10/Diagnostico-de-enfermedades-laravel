@@ -15,6 +15,7 @@
         <link href="{{ asset('css/styleNavBar.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="assets/css/formpre.css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/stylesPageInProcess.css') }}" rel="stylesheet">
 
         
 
