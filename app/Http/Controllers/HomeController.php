@@ -39,8 +39,9 @@ class HomeController extends Controller
         ->with('asistencias', $asistencias);
     }
 
-    public function crear_asistencia($request)
+    public function create_asistencia($request)
     {
+        dd($request);
         $asistencia = new asistencia();
         $asistencia->paciente_id = $request->paciente_id;
         $asistencia->medico_id = $request->medico_id;

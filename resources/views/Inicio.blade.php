@@ -74,15 +74,15 @@
         <section class="principal-list overflow-auto col-lg-4">
 
             @foreach ($users as $user)
-                @if ($user->role == 2)
+                @if ($user->role == 2 )<!--Agregar una condición para que no muestre a los medicos con los que ya tiene asistencia-->
                 <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                     <div class="d-flex align-items-center">
                     <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
                         <div class="text-uppercase me-3">{{ $user->name }} {{ $user->lastnamef }}</div>
                     </div>
-                    
+
                     <button type="button" class="btn btn-secondary principal-btn"  data-bs-toggle="modal" data-bs-target="#modalInfoMedico{{$user->id}}">Mostrar Información del Médico</button>
-                    
+
                 </div>
     
                 @endif
@@ -116,7 +116,14 @@
             <p>Numero de telefono</p>
             
             <p>{{  $user->email }}</p>
-            <button type="button" class="btn btn-secondary principal-btn">Agendar cita</button>
+            <form method="post" action="/asistencia">
+                            @csrf
+                            <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
+                            <input type="hidden" name="medico_id" value ="{{ $user->id }}">
+                            <button type="submit" class="btn btn-secondary principal-btn">Agendar cita</button>
+                            
+                        </form>
+            
         </div>
 
         

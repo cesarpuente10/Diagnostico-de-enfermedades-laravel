@@ -34,6 +34,12 @@ Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 Route::get('/perfilm/{id}', [HomeController::class, 'read_info_medico'])
 ->middleware('auth')->name('perfilm');
 
+//Asistencias
+Route::post('/asistencia', function ($request){
+    dd($request);
+})
+->middleware('auth')->name('createasistencia');
+
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
 Route::get('/home', function () {
