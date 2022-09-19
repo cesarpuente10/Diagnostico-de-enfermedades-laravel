@@ -85,7 +85,7 @@ class HomeController extends Controller
 
     public function read_info_paciente($id)
     {
-        $user = User::where('id', $id)->get();
+        $user = User::find($id);
         $prediagnostico = prediagnostico::where('paciente_id', $id)->get();
         return view('perfilp')
         ->with('user', $user)
@@ -135,8 +135,8 @@ class HomeController extends Controller
     public function read_info_medico($id)
     {
         $user = User::find($id);
-        $consultorio = consultorio::find('medico_id', $id);
-        dd($user);
+        $consultorio = consultorio::where('medico_id', $id)->get();
+        //dd($consultorio);
         return view('perfilp')
         ->with('user', $user)
         ->with('consultorio', $consultorio);
