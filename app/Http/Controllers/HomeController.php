@@ -51,7 +51,7 @@ class HomeController extends Controller
 
     public function update_asistencia($request)
     {
-        $asistencia = asistencia::where('id', $request->asistencia_id);
+        $asistencia = asistencia::find($request->id);
         $asistencia->update([
             $asistencia->estado = $request->estado
         ]);
@@ -65,6 +65,14 @@ class HomeController extends Controller
                 $medico->nasist += 1
             ]);
         }
+        return redirect()->back();
+    }
+
+    public function delete_asistencia($id)
+    {
+        $asistencia = find($id);
+        $asistencia->delete();
+        return redirect()->back();
     }
 
     public function create_info_paciente($request) {
@@ -104,6 +112,7 @@ class HomeController extends Controller
             $prediagnostico->estatura = $request->estatura,
             $prediagnostico->fecha = $request->fecha
         ]);
+        return redirect()->back();
     }
 
     public function delete_info_paciente($request)
@@ -114,6 +123,7 @@ class HomeController extends Controller
 
         $prediagnostico->delete();
         $user->delete();
+        return redirect()->back();
     }
 
     public function create_info_medico($request) {
@@ -154,6 +164,7 @@ class HomeController extends Controller
             $consultorio->estatura = $request->estatura,
             $consultorio->fecha = $request->fecha
         ]);
+        return redirect()->back();
     }
 
     public function delete_info_medico($request)
@@ -164,7 +175,7 @@ class HomeController extends Controller
 
         $prediagnostico->delete();
         $user->delete();
-
+        return redirect()->back();
 
     }
 
