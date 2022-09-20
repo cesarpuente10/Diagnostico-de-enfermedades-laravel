@@ -37,6 +37,9 @@ Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 Route::get('/perfilp/edit/{id}', [HomeController::class, 'read_info_paciente_edit'])
 ->middleware('auth')->name('perfilpedit');
 
+Route::post('/editp', [HomeController::class, 'update_info_paciente'])
+->middleware('auth')->name('editp');
+
 Route::get('/perfilm/{id}', [HomeController::class, 'read_info_medico'])
 ->middleware('auth')->name('perfilm');
 
@@ -45,6 +48,9 @@ Route::get('/perfilm/edit/{id}', [HomeController::class, 'read_info_medico_edit'
 
 Route::post('/editm', [HomeController::class, 'update_info_medico'])
 ->middleware('auth')->name('editm');
+
+Route::post('/createprediagnostico', [HomeController::class, 'create_info_paciente'])
+->middleware('auth')->name('createprediagnostico');
 
 //Asistencias
 Route::post('/asistencia', [HomeController::class, 'create_asistencia'])
@@ -70,5 +76,5 @@ Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de
 Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
 
 Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
-Route::view('/formulario', 'FormPrediagnostico') -> name('prediagnostico');
+Route::view('/formulario', 'formularioprediagnostico') -> name('prediagnostico');
 Route::view('/consultorio', 'FormConsultorio') -> name('consultorio');

@@ -13,21 +13,20 @@
 
     </div>
 
-    <form method="POST">
+    <form method="POST" action="{{ route('createprediagnostico') }}">
     @csrf
     <input type="hidden" name="paciente_id" value="{{ Auth::user()->id }}">
-
     <div>
         <label class="form-label">Nombre del paciente: </label>
-        <input type="text" class="name" value="{{ Auth::user()->name }}">
+        <input name="name" type="text" class="name" value="{{ Auth::user()->name }}">
 
         
         <label class="form-label">Apellido Paterno: </label>
-        <input type="text" class="lastnamef" value="{{ Auth::user()->lastnamef }}">
+        <input name="lastnamef" type="text" class="lastnamef" value="{{ Auth::user()->lastnamef }}">
 
         
         <label class="form-label">Apellido Materno </label>
-        <input type="text" class="lastnamem" value="{{ Auth::user()->lastnamem }}">
+        <input name="lastnamem" type="text" class="lastnamem" value="{{ Auth::user()->lastnamem }}">
     </div>
 
     <div>
@@ -43,7 +42,7 @@
 
     <div>
         <label class="form-label">Numero de teléfono: </label>
-        <input type="number" name="tel-fijo">
+        <input type="number" name="tel_fijo">
 
         <label class="form-label">Numero de celular: </label>
         <input type="number " name="celular">

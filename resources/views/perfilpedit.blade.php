@@ -7,7 +7,9 @@
         </div><br><br>
     
         
-        <form class="row g-3 needs-validation" novalidate>
+        <form class="row g-3 needs-validation" method="POST" action="{{ route('editp') }}" novalidate>
+            @csrf
+            <input type="hidden" name="paciente_id" value="{{ $user->id }}">
             <div class="col-md-4">
                 <label class="form-label">Nombre(s)</label>
                 <input name="name" type="text" class="form-control"  value="{{ $user->name }}" required>
@@ -25,7 +27,7 @@
 
             <div class="col-md-4">
                 <label class="form-label">Fecha de nacimiento</label>
-                <input name="fecha" type="date" class="form-control"  value="{{ date('d-m-Y', strtotime($prediagnostico->fecha)) }}" required>
+                <input name="fecha" type="date" class="form-control"  value="{{ date('Y-m-d', strtotime($prediagnostico->fecha)) }}" required>
             </div>
 
             <div class="col-md-4">
@@ -41,17 +43,17 @@
 
             <div class="col-md-4">
                 <label class="form-label">Sexo</label>
-                <input name="edad" type="int" class="form-control"  value="{{ $prediagnostico->sexo}}" required>
+                <input name="sexo" type="int" class="form-control"  value="{{ $prediagnostico->sexo}}" required>
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">Peso</label>
-                <input name="edad" type="int" class="form-control"  value="{{ $prediagnostico->peso}}" required>
+                <input name="peso" type="int" class="form-control"  value="{{ $prediagnostico->peso}}" required>
             </div>
 
             <div class="col-md-4">
                 <label class="form-label">Estatura</label>
-                <input name="edad" type="int" class="form-control"  value="{{ $prediagnostico->estatura}}" required>
+                <input name="estatura" type="int" class="form-control"  value="{{ $prediagnostico->estatura}}" required>
             </div>
     
         
@@ -67,7 +69,7 @@
     
             <div class="col-12">
                 <button class="btn btn-primary" type="submit">Guardar</button>
-                <button type="button" class="btn btn-secondary">Cancelar</button>
+                <a href="/perfilp/{{ $user->id }}" class="btn btn-secondary">Cancelar</a>
             </div>
             
             

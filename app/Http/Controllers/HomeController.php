@@ -101,8 +101,13 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function create_info_paciente($request) {
-        $user = User::find($request->paciente_id);
+    public function create_info_paciente(Request $request) {
+        $user = User::find(Auth::id());
+        $user->update([
+            $user->name = $request->name,
+            $user->lastnamef = $request->lastnamef,
+            $user->lastnamem = $request->lastnamem
+        ]);
         $prediagnostico = new prediagnostico();
         $prediagnostico->paciente_id = $request->paciente_id;
         $prediagnostico->edad = $request->edad;
@@ -110,6 +115,8 @@ class HomeController extends Controller
         $prediagnostico->peso = $request->peso;
         $prediagnostico->estatura = $request->estatura;
         $prediagnostico->fecha = $request->fecha;
+        $prediagnostico->tel_fijo = $request->tel_fijo;
+        $prediagnostico->celular = $request->celular;
         $prediagnostico->save();
 
         return redirect()->route('inicio');
@@ -135,10 +142,16 @@ class HomeController extends Controller
         ->with('prediagnostico', $prediagnostico);
     }
 
-    public function update_info_paciente($request)
+    public function update_info_paciente(Request $request)
     {
-        $user = User::where('user_id', $request->paciente_id)->get();
-        $prediagnostico = prediagnostico::where('paciente_id', $request->paciente_id)->get();
+        $user = User::where('id', $request->paciente_id)->first();
+        $prediagnostico = prediagnostico::where('paciente_id', $request->paciente_id)->first();
+        $user->update([
+            $user->name = $request->name,
+            $user->lastnamef = $request->lastnamef,
+            $user->lastnamem = $request->lastnamem,
+            $user->email = $request->email
+        ]);
         $prediagnostico->update([
             $prediagnostico->paciente_id = $request->paciente_id,
             $prediagnostico->edad = $request->edad,
@@ -199,15 +212,21 @@ class HomeController extends Controller
 
     public function update_info_medico(Request $request)
     {
-        $user = User::where('id', $request->medico_id)->get();
-        $consultorio = consultorio::where('medico_id', $request->medico_id)->get();
+        $user = User::where('id', $request->medico_id)->first();
+        $consultorio = consultorio::where('medico_id', $request->medico_id)->first();
+        $user->update([
+            $user->name = $request->name,
+            $user->lastnamef = $request->lastnamef,
+            $user->lastnamem = $request->lastnamem,
+            $user->email = $request->email
+        ]);
         $consultorio->update([
             $consultorio->medico_id = $request->medico_id,
-            $consultorio->edad = $request->edad,
-            $consultorio->sexo = $request->sexo,
-            $consultorio->peso = $request->peso,
-            $consultorio->estatura = $request->estatura,
-            $consultorio->fecha = $request->fecha
+            $consultorio->calle = $request->calle,
+            $consultorio->cp = $request->cp,
+            $consultorio->numero_ext = $request->numero_ext,
+            $consultorio->numero_int = $request->numero_ext,
+            $consultorio->tel_fijo = $request->tel_fijo
         ]);
         return redirect()->back();
     }
