@@ -10,28 +10,16 @@
     
     
         
-        @php($cont = 0)
         <section class="principal-list overflow-auto col-lg-4">
-            @foreach ($users as $user)
-                @foreach ($asistencias as $asistencia)
-                    @php($cont++)
-                    @if ($asistencia->medico_id == Auth::id() && $user->role == 1)
+            @foreach ($asistencias as $asistencia)
                         <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                             <div class="d-flex align-items-center">
                                 <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                                <div class="text-uppercase me-3">{{ $user->name }}</div>
+                                <div class="text-uppercase me-3">{{ $asistencia }}</div>
                             </div>
                             <a href="" class="btn btn-secondary principal-btn">Asistir</a>
                         </div>
-                    @endif
-                @endforeach
             @endforeach
-            
-            
-            
-            @if ($cont > 0)
-                <a class="btn btn-secondary principal-btn" href="{{ route('asistePacientesMedico') }}">ver más</a>
-            @endif
             
         </section>
     </div>

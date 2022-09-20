@@ -24,9 +24,9 @@ Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])
 Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
 ->middleware('auth')->name('diagnosticosPaciente');
 
-Route::get('/PantallaNoDisponible', function () {
+Route::get('/pantallaNoDisponible', function () {
     return view('PantallaNoDisponible');
-})->name('PantallaNoDisponible');
+})->name('pantallaNoDisponible');
 
 Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 ->middleware('auth')->name('perfilp');
@@ -56,5 +56,6 @@ Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de
 
 Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
 
-Route::view('/RegistroExitoso', 'successlogin') -> name('successlogin');
-Route::view('/Formulario', 'FormPrediagnostico') -> name('FormPrediagnostico');
+Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
+Route::view('/formulario', 'FormPrediagnostico') -> name('prediagnostico');
+Route::view('/consultorio', 'FormConsultorio') -> name('consultorio');

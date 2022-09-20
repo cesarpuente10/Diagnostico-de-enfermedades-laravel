@@ -10,6 +10,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -41,25 +42,30 @@ class RegisteredUserController extends Controller
             'lastnamem' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'role' => ['required'],
+            'role' => ['required']
         ]);
-
+        /* if($request->hasFile("cedula")){
+            $file = $request->file('cedula');
+            $filename = $request->name.$request->lastnamef.$request->lastnamem.'.'.$request->file('cedula')->guessExtension();
+            $file-> move(public_path('cedulas'), $filename);
+            dd($file);
+        } */
         $user = User::create([
             'name' => $request->name,
             'lastnamef' => $request->lastnamef,
             'lastnamem' => $request->lastnamem,
             'email' => $request->email,
             'role' => $request->role,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($request->password)
         ]);
         event(new Registered($user));
 
         Auth::login($user);
 
         if($user['role'] == 1){
-            return redirect('/Formulario'); //no se manda info porque ya se guarda en la sesión el usuario registrado
-        }else{
-            return redirect()->back();
+            return redirect()->route('prediagnostico'); //no se manda info porque ya se guarda en la sesión el usuario registrado
+        }elseif($user['role'] == 2){
+            return redirect()->route('consultorio');
         }
     }
 }
