@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
-Route::get('/', [HomeController::class, 'senddata_user_iniciomedico'])
+Route::get('/', [HomeController::class, 'senddata_user_inicio'])
 ->middleware('auth')->name('inicio');
 
-Route::get('/diagnosticosPaciente', [HomeController::class, 'asistencia'])
-->middleware('auth')->name('diagnosticosPaciente');
+Route::get('/diagnosticospaciente', [HomeController::class, 'asistencia'])
+->middleware('auth')->name('diagnosticospaciente');
 
 Route::get('/pantallaNoDisponible', function () {
     return view('PantallaNoDisponible');
@@ -50,7 +50,7 @@ Route::get('/registro', function () {
 })->name('registro');
 
 Route::get('/asistepacientesmedico', [HomeController::class, 'senddata_user_asistePacientesMedico'])
-->middleware('auth')->name('asistePacientesMedico');
+->middleware('auth')->name('asistepacientesmedico');
 
 Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
 

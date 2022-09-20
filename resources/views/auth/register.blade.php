@@ -19,7 +19,7 @@
                     <div class="content-reg">
                         <section class="register">
                             <h1>Registro Medico</h1>
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
                             
                                 <input type="hidden" name="role" value="2">
@@ -42,10 +42,8 @@
                                 <label for="pass">Confirmar contraseña</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation">
 
-                                <label for="cert">Certificado médico Electrónico (.PDF)</label>
-                                <input type="file"class="file"></label>
-                                <!--
-                                <input type="text" id="cedula" name="cedula">-->
+                                <label for="cedula">Cédula del médico Electrónico (.PDF)</label>
+                                <input name="cedula" id="cedula" type="file" class="file"></label>
 
                                 <div>
                                 <input type="checkbox" id="check">

@@ -30,13 +30,19 @@ class HomeController extends Controller
      */
 
      //Se mandan los usuarios y las asistencias hechas
-    public function senddata_user_iniciomedico() {
-
+    public function senddata_user_inicio() {
         $users = User::all();
-        $asistencias = asistencia::all();
-        return view('inicio')
-        ->with('users', $users)
-        ->with('asistencias', $asistencias);
+        $asistencias = $this->read_asistencias();
+        if(Auth::user()->role == 1){
+            //es un paciente y se manda a la pantalla de paciente
+
+            return view('iniciop')->with('users', $users)->with('asistencias',$asistencias);
+        }elseif(Auth::user()->role == 2){
+            //es un medico y se manda a la pantalla de medico
+
+            return view('iniciom')->with('users', $users)->with('asistencias',$asistencias);
+        }
+        
     }
 
     public function create_asistencia($request)
@@ -48,6 +54,28 @@ class HomeController extends Controller
         $asistencia->estado = 'pendiente';
         $asistencia->save();
         return redirect()->back();
+    }
+
+    public function read_asistencias()
+    {
+        $nombres = array();
+        if(Auth::user()->role == 2)
+        {
+            $asistencias = asistencia::where('medico_id', Auth::id())->get();
+            foreach ($asistencias as $asistencia) {
+                $user = User::where('id', $asistencia->paciente_id)->first();
+                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+                $nombres[] = $name;
+            }
+        }else if(Auth::user()->role == 1){
+            $asistencias = asistencia::where('paciente_id', Auth::id())->get();
+            foreach ($asistencias as $asistencia) {
+                $user = User::where('id', $asistencia->medico_id)->first();
+                $name = $user->name . " " . $user->apellidop . " " . $user->apellidom;
+                $nombres[] = $name;
+            }
+        }
+        return $asistencias;
     }
 
     public function update_asistencia($request)
