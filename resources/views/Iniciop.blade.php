@@ -28,21 +28,45 @@
 
         <section class="principal-list overflow-auto col-lg-4">
 
-            @foreach ($users as $user)
-                @if ($user->role == 2 )<!--Agregar una condición para que no muestre a los medicos con los que ya tiene asistencia-->
-                <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                    <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
-                        <div class="text-uppercase me-3">{{ $user->name }} {{ $user->lastnamef }}</div>
+            @php
+                $medicosdisponibles = 0;
+            @endphp
+            @foreach ($medicos as $medico)
+                @php
+                    $asistido = 0;
+                @endphp
+                @foreach ($asistencias as $asistencia)
+                    @if ($asistencia->medico_id == $medico->id)
+                        @php
+                            if ($asistencia->medico_id == $medico->id) {
+                                $asistido = 1;
+                            }
+                        @endphp
+                    @endif
+                @endforeach
+                @if ($asistido == 0)
+                @php
+                    $medicosdisponibles += 1;
+                @endphp
+                    <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
+                        <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
+                            <div class="text-uppercase me-3">{{ $medico->name }} {{ $medico->lastnamef }}</div>
+                        </div>
+
+                        <button type="button" class="btn btn-secondary principal-btn"  data-bs-toggle="modal" data-bs-target="#modalInfoMedico{{$medico->id}}">Mostrar Información del Médico</button>
+
                     </div>
 
-                    <button type="button" class="btn btn-secondary principal-btn"  data-bs-toggle="modal" data-bs-target="#modalInfoMedico{{$user->id}}">Mostrar Información del Médico</button>
-
-                </div>
-    
                 @endif
             @endforeach
-            
+            @if ($medicosdisponibles == 0)
+                <div>No hay medicos diponibles en este momento</div>
+            @endif
+
+            @if ($medicosdisponibles == 10)
+                <button>Ver más médicos</button>
+            @endif
             
             
         </section>
@@ -52,9 +76,9 @@
     
     <!-- Modal -->
 
-    @foreach ($users as $user)
-        @if ($user->role == 2)
-                <div class="modal fade" id="modalInfoMedico{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @foreach ($medicos as $medico)
+        @if ($medico->role == 2)
+                <div class="modal fade" id="modalInfoMedico{{$medico->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -64,16 +88,16 @@
             <h3>INFORMACIÓN DEL MÉDICO</h3>
             
 
-            <p>{{ $user->name }}  {{  $user->lastnamef }} {{  $user->lastnamem }}</p>
+            <p>{{ $medico->name }}  {{  $medico->lastnamef }} {{  $medico->lastnamem }}</p>
 
             <p>Direccion de consultorio</p>
             <p>Numero de telefono</p>
             
-            <p>{{  $user->email }}</p>
-            <form method="post" action="/asistencia">
+            <p>{{  $medico->email }}</p>
+            <form method="post" action="{{ route('asistencia') }}">
                             @csrf
                             <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
-                            <input type="hidden" name="medico_id" value ="{{ $user->id }}">
+                            <input type="hidden" name="medico_id" value ="{{ $medico->id }}">
                             <button type="submit" class="btn btn-secondary principal-btn">Agendar cita</button>
                             
                         </form>

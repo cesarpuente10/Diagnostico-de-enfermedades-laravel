@@ -9,13 +9,17 @@
             
             <section class="principal-list overflow-auto col-lg-4">
                 @foreach ($asistencias as $asistencia)
-                            <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
-                                <div class="d-flex align-items-center">
-                                    <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
-                                    <div class="text-uppercase me-3">{{ $asistencia }}</div>
-                                </div>
-                                <a href="" class="btn btn-secondary principal-btn">Asistir</a>
-                            </div>
+                @if ($asistencia->estado == 'pendiente')
+                    <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-bed-pulse fa-2xl me-2"></i>
+                            <div class="text-uppercase me-3">{{ $asistencia->nombrepaciente }}</div>
+                        </div>
+                        <a href="" class="btn btn-secondary principal-btn">Asistir</a>
+                        <button>Aceptar</button>
+                        <button>Rechazar</button>
+                    </div>
+                @endif
                 @endforeach
                 
             </section>
