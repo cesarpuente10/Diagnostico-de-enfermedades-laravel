@@ -120,8 +120,17 @@ class HomeController extends Controller
     public function read_info_paciente($id)
     {
         $user = User::find($id);
-        $prediagnostico = prediagnostico::where('paciente_id', $id)->get();
+        $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
         return view('perfilp')
+        ->with('user', $user)
+        ->with('prediagnostico', $prediagnostico);
+    }
+
+    public function read_info_paciente_edit($id)
+    {
+        $user = User::find($id);
+        $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
+        return view('perfilpedit')
         ->with('user', $user)
         ->with('prediagnostico', $prediagnostico);
     }
@@ -171,16 +180,26 @@ class HomeController extends Controller
     public function read_info_medico($id)
     {
         $user = User::find($id);
-        $consultorio = consultorio::where('medico_id', $id)->get();
+        $consultorio = consultorio::where('medico_id', $id)->first();
         //dd($consultorio);
         return view('perfilm')
         ->with('user', $user)
         ->with('consultorio', $consultorio);
     }
 
-    public function update_info_medico($request)
+    public function read_info_medico_edit($id)
     {
-        $user = User::where('user_id', $request->medico_id)->get();
+        $user = User::find($id);
+        $consultorio = consultorio::where('medico_id', $id)->first();
+        //dd($consultorio);
+        return view('perfilmedit')
+        ->with('user', $user)
+        ->with('consultorio', $consultorio);
+    }
+
+    public function update_info_medico(Request $request)
+    {
+        $user = User::where('id', $request->medico_id)->get();
         $consultorio = consultorio::where('medico_id', $request->medico_id)->get();
         $consultorio->update([
             $consultorio->medico_id = $request->medico_id,

@@ -14,7 +14,8 @@ class Consultorio extends Model
         'cedula',
         'calle',
         'cp',
-        'numero',
+        'numero_ext',
+        'numero_int',
         'tel_fijo'
     ];
 }

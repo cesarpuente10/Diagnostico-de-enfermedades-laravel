@@ -8,69 +8,59 @@
     
     <form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
-            <label for="validationCustom01" class="form-label">Nombre(s)</label>
-            <input type="text" class="form-control" id="validationCustom01" value="" required>
+            <label class="form-label">Nombre(s)</label>
+            <p>{{ $user->name }}</p>
         </div>
 
         <div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Apellido paterno</label>
-            <input type="text" class="form-control" id="validationCustom02" value="" required>
+            <label class="form-label">Apellido paterno</label>
+            <p>{{ $user->lastnamef }}</p>
         </div>
 
         <div class="col-md-4">
-            <label for="validationCustom03" class="form-label">Apellido materno</label>
-            <input type="text" class="form-control" id="validationCustom03" value="" required>
+            <label class="form-label">Apellido materno</label>
+            <p>{{ $user->lastnamem}}</p>
         </div>
 
-        <div class="col-md-6">
-            <label for="validationCustom04" class="form-label">Estado</label>
-            <input type="text" class="form-control" id="validationCustom04" required>
-            <div class="invalid-feedback">
-                Ingrese un estado valido.
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <label for="validationCustom05" class="form-label">Ciudad</label>
-            <input type="text" class="form-control" id="validationCustom05" required>
-            <div class="invalid-feedback">
-                Ingrese una ciudad valida.
-            </div>
+        <div class="col-md-4">
+            <label >Correo Electrónico</label>
+            <p>{{ $user->email }}</p>
         </div>
 
         <div class="col-md-3">
-            <label for="validationCustom06" class="form-label">Dirección del consultorio</label>
-            <input type="text" class="form-control" id="validationCustom06" required>
+            <label class="form-label">Dirección del consultorio</label>
+            <p>{{ $consultorio->calle}}</p>
+        </div>
+
+
+        <div class="col-md-3">
+            <label class="form-label">Número exterior</label>
+            <p>{{ $consultorio->num_ext}}</p>
         </div>
 
         <div class="col-md-3">
-            <label for="validationCustom07" class="form-label">Número interior</label>
-            <input type="number" name="numeros" class="form-control" id="validationCustom07" required>
+            <label class="form-label">Número interior</label>
+            <p>{{ $consultorio->num_int}}</p>
+        </div>
+
+
+        <div class="col-md-3">
+            <label class="form-label">Código postal</label>
+            <p>{{ $consultorio->cp}}</p>
         </div>
 
         <div class="col-md-3">
-            <label for="validationCustom08" class="form-label">Número exterior</label>
-            <input  type="number" name="numeros" class="form-control" id="validationCustom08" required>
-        </div>
-
-        <div class="col-md-3">
-            <label for="validationCustom09" class="form-label">Código postal</label>
-            <input  type="number" name="numeros" class="form-control" id="validationCustom09" required>
-        </div>
-
-        <div class="col-md-3">
-            <label for="validationCustom10" class="form-label">Número telefónico del consultorio</label>
-            <input type="number" name="phone" class="form-control" id="validationCustom10" required>
+            <label class="form-label">Número telefónico del consultorio</label>
+            <p>{{ $consultorio->tel_fijo}}</p>
         </div>
 
         <div>
             <label for="cedula"><strong>Cédula profesional:</strong></label>
-            <input type="file" name="cedula" id="cedula"> 
+            <p>{{ $consultorio->cedula}}</p>
 
         </div><br>
         <div class="col-12">
-            <button class="btn btn-primary" type="submit">Guardar</button>
-            <button type="button" class="btn btn-secondary">Editar</button>
+            <a href="/perfilm/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
         </div>
         
         

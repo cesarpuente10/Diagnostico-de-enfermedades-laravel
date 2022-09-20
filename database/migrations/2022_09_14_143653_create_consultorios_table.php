@@ -19,7 +19,8 @@ class CreateConsultoriosTable extends Migration
             $table->string('cedula');
             $table->string('calle');
             $table->integer('cp');
-            $table->integer('numero');
+            $table->integer('numero_ext');
+            $table->integer('numero_int');
             $table->string('tel_fijo');
             $table->timestamps();
         });

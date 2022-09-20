@@ -34,15 +34,24 @@ Route::get('/pantallaNoDisponible', function () {
 Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 ->middleware('auth')->name('perfilp');
 
+Route::get('/perfilp/edit/{id}', [HomeController::class, 'read_info_paciente_edit'])
+->middleware('auth')->name('perfilpedit');
+
 Route::get('/perfilm/{id}', [HomeController::class, 'read_info_medico'])
 ->middleware('auth')->name('perfilm');
+
+Route::get('/perfilm/edit/{id}', [HomeController::class, 'read_info_medico_edit'])
+->middleware('auth')->name('perfilmedit');
+
+Route::post('/editm', [HomeController::class, 'update_info_medico'])
+->middleware('auth')->name('editm');
 
 //Asistencias
 Route::post('/asistencia', [HomeController::class, 'create_asistencia'])
 ->middleware('auth')->name('asistencia');
 
 Route::post('/prediagnostico', [HomeController::class, 'create_info_paciente'])
-->middleware('auth')->name('asistencia');
+->middleware('auth')->name('prediagnostico');
 
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
