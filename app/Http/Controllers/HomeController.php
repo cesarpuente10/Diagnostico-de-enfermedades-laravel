@@ -10,6 +10,8 @@ use App\Models\diagnostico;
 use App\Models\prediagnostico;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -31,23 +33,19 @@ class HomeController extends Controller
 
      //Se mandan los usuarios y las asistencias hechas
     public function senddata_user_inicio() {
-        $users = User::all();
         $asistencias = $this->read_asistencias();
         if(Auth::user()->role == 1){
             //es un paciente y se manda a la pantalla de paciente
-
-            return view('iniciop')->with('users', $users)->with('asistencias',$asistencias);
+            $medicos = User::where('role', 2)->orderBy('n_asist', 'ASC')->limit(10)->get();
+            return view('iniciop')->with('medicos', $medicos)->with('asistencias', $asistencias);
         }elseif(Auth::user()->role == 2){
             //es un medico y se manda a la pantalla de medico
-
-            return view('iniciom')->with('users', $users)->with('asistencias',$asistencias);
+            return view('iniciom')->with('asistencias',$asistencias);
         }
-        
     }
 
-    public function create_asistencia($request)
+    public function create_asistencia(Request $request)
     {
-        dd($request);
         $asistencia = new asistencia();
         $asistencia->paciente_id = $request->paciente_id;
         $asistencia->medico_id = $request->medico_id;
@@ -58,21 +56,20 @@ class HomeController extends Controller
 
     public function read_asistencias()
     {
-        $nombres = array();
         if(Auth::user()->role == 2)
         {
             $asistencias = asistencia::where('medico_id', Auth::id())->get();
             foreach ($asistencias as $asistencia) {
                 $user = User::where('id', $asistencia->paciente_id)->first();
                 $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
-                $nombres[] = $name;
+                $asistencia->nombrepaciente = $name;
             }
         }else if(Auth::user()->role == 1){
             $asistencias = asistencia::where('paciente_id', Auth::id())->get();
             foreach ($asistencias as $asistencia) {
                 $user = User::where('id', $asistencia->medico_id)->first();
                 $name = $user->name . " " . $user->apellidop . " " . $user->apellidom;
-                $nombres[] = $name;
+                $asistencia->nombremedico = $name;
             }
         }
         return $asistencias;

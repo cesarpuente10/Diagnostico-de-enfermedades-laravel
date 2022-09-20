@@ -18,16 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__.'/auth.php';
 
+//pagina inicial
 Route::get('/', [HomeController::class, 'senddata_user_inicio'])
 ->middleware('auth')->name('inicio');
 
 Route::get('/diagnosticospaciente', [HomeController::class, 'asistencia'])
 ->middleware('auth')->name('diagnosticospaciente');
 
+//no disponible
 Route::get('/pantallaNoDisponible', function () {
     return view('PantallaNoDisponible');
 })->name('pantallaNoDisponible');
 
+//perfiles
 Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 ->middleware('auth')->name('perfilp');
 
@@ -35,10 +38,11 @@ Route::get('/perfilm/{id}', [HomeController::class, 'read_info_medico'])
 ->middleware('auth')->name('perfilm');
 
 //Asistencias
-Route::post('/asistencia', function ($request){
-    dd($request);
-})
-->middleware('auth')->name('createasistencia');
+Route::post('/asistencia', [HomeController::class, 'create_asistencia'])
+->middleware('auth')->name('asistencia');
+
+Route::post('/prediagnostico', [HomeController::class, 'create_info_paciente'])
+->middleware('auth')->name('asistencia');
 
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
