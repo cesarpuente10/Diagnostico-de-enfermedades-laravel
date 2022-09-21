@@ -41,10 +41,6 @@
 
                                 <label for="pass">Confirmar contraseña</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation">
-
-                                <label for="cedula">Cédula del médico Electrónico (.PDF)</label>
-                                <input name="cedula" id="cedula" type="file" class="file"></label>
-
                                 <div>
                                 <input type="checkbox" id="check">
                                 <label id="size" for="check">Acepto Terminos y Condiciones</label>

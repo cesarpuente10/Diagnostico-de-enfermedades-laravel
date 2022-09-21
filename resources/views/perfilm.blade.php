@@ -56,7 +56,7 @@
 
         <div>
             <label for="cedula"><strong>Cédula profesional:</strong></label>
-            <p>{{ $consultorio->cedula}}</p>
+            <p>Cedula: <a href="{{ asset('cedulas/'.$consultorio->cedula) }}">{{ $consultorio->cedula }}</a></p>
 
         </div><br>
         <div class="col-12">

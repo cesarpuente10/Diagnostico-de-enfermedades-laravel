@@ -175,15 +175,20 @@ class HomeController extends Controller
     }
 
     public function create_info_medico(Request $request) {
-        
+        $medico = User::find(Auth::id());
         $consultorio = new consultorio();
         $consultorio->medico_id = $request->medico_id;
-        $consultorio->cedula = $request->cedula;
         $consultorio->calle = $request->calle;
         $consultorio->cp = $request->cp;
         $consultorio->numero_ext = $request->numero_ext;
         $consultorio->numero_int = $request->numero_int;
         $consultorio->tel_fijo = $request->tel_fijo;
+        if($request->hasFile("cedula")){
+            $file = $request->file('cedula');
+            $filename = $medico->name.$medico->lastnamef.$medico->lastnamem.$medico->id.'.pdf';
+            $file-> move(public_path('cedulas'), $filename);
+        }
+        $consultorio->cedula = $filename;
         $consultorio->save();
 
         return redirect()->route('inicio');
@@ -229,7 +234,12 @@ class HomeController extends Controller
             $consultorio->numero_int = $request->numero_int,
             $consultorio->tel_fijo = $request->tel_fijo
         ]);
-        return redirect()->back();
+        if($request->hasFile("cedula")){
+            $file = $request->file('cedula');
+            $filename = $consultorio->cedula;
+            $file-> move(public_path('cedulas'), $filename);
+        }
+        return redirect()->route('perfilm', ['id' => $request->medico_id]);
     }
 
     public function delete_info_medico($request)

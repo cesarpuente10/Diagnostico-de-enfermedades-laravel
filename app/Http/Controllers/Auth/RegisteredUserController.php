@@ -44,12 +44,7 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'role' => ['required']
         ]);
-        /* if($request->hasFile("cedula")){
-            $file = $request->file('cedula');
-            $filename = $request->name.$request->lastnamef.$request->lastnamem.'.'.$request->file('cedula')->guessExtension();
-            $file-> move(public_path('cedulas'), $filename);
-            dd($file);
-        } */
+        
         $user = User::create([
             'name' => $request->name,
             'lastnamef' => $request->lastnamef,
