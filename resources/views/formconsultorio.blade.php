@@ -4,7 +4,7 @@
     <br>
     <b><h1>INFORMACIÓN DEL CONSULTORIO</h1></b>
     
-    <form method="POST">
+    <form method="POST" action="{{ route('createinfoconsultorio') }}">
     @csrf
     <input type="hidden" name="medico_id" value="{{ Auth::user()->id }}">
 
@@ -20,13 +20,16 @@
 
         <label class="form-label">No. Interior: </label>
         <input type="number" name="numero_int">
+
+        <label class="form-label">Número de teléfono: </label>
+        <input type="number" name="tel_fijo">
         
     </div>
 
 
     <div>
         <label class="form-label">Subir Cédula Profesional(.pdf)</label>
-        <input type="file" class="form-control">
+        <input type="file" class="form-control" name="cedula">
     </div>
 
     <div>

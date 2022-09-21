@@ -35,12 +35,12 @@
 
         <div class="col-md-3">
             <label class="form-label">Número exterior</label>
-            <p>{{ $consultorio->num_ext}}</p>
+            <p>{{ $consultorio->numero_ext}}</p>
         </div>
 
         <div class="col-md-3">
             <label class="form-label">Número interior</label>
-            <p>{{ $consultorio->num_int}}</p>
+            <p>{{ $consultorio->numero_int}}</p>
         </div>
 
 

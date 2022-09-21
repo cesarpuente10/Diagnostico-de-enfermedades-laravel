@@ -64,15 +64,7 @@
         <input type="number" name="estatura" min="0" max="300">
     </div>
 
-    <div>
-        <h2>Archivo Diagnóstico</h2>
-    </div>
-
-    <div>
-        <label class="form-label">Subir archivo previo de señales bio-eléctricas (.txt)</label>
-        <input type="file" class="form-control">
-    </div>
-
+    
     <div>
         <input type="submit" class="btn-primary">
     </div>

@@ -52,6 +52,9 @@ Route::post('/editm', [HomeController::class, 'update_info_medico'])
 Route::post('/createprediagnostico', [HomeController::class, 'create_info_paciente'])
 ->middleware('auth')->name('createprediagnostico');
 
+Route::post('/createinfoconsultorio', [HomeController::class, 'create_info_medico'])
+->middleware('auth')->name('createinfoconsultorio');
+
 //Asistencias
 Route::post('/asistencia', [HomeController::class, 'create_asistencia'])
 ->middleware('auth')->name('asistencia');

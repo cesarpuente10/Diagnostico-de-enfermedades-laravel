@@ -96,7 +96,7 @@ class HomeController extends Controller
 
     public function delete_asistencia($id)
     {
-        $asistencia = find($id);
+        $asistencia = asistencia::find($id);
         $asistencia->delete();
         return redirect()->back();
     }
@@ -174,14 +174,15 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function create_info_medico($request) {
-        $user = User::where('user_id', $request->medico_id)->get();
+    public function create_info_medico(Request $request) {
+        
         $consultorio = new consultorio();
         $consultorio->medico_id = $request->medico_id;
         $consultorio->cedula = $request->cedula;
         $consultorio->calle = $request->calle;
         $consultorio->cp = $request->cp;
-        $consultorio->numero = $request->numero;
+        $consultorio->numero_ext = $request->numero_ext;
+        $consultorio->numero_int = $request->numero_int;
         $consultorio->tel_fijo = $request->tel_fijo;
         $consultorio->save();
 
@@ -225,7 +226,7 @@ class HomeController extends Controller
             $consultorio->calle = $request->calle,
             $consultorio->cp = $request->cp,
             $consultorio->numero_ext = $request->numero_ext,
-            $consultorio->numero_int = $request->numero_ext,
+            $consultorio->numero_int = $request->numero_int,
             $consultorio->tel_fijo = $request->tel_fijo
         ]);
         return redirect()->back();
@@ -237,7 +238,7 @@ class HomeController extends Controller
         $consultorio = consultorio::where('medico_id', $request->medico_id)->get();
         //Buscar y borrar cosas del medico
 
-        $prediagnostico->delete();
+        $consultorio->delete();
         $user->delete();
         return redirect()->back();
 
