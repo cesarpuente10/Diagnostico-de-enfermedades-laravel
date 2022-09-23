@@ -35,9 +35,14 @@ class HomeController extends Controller
     public function senddata_user_inicio() {
         $asistencias = $this->read_asistencias();
         if(Auth::user()->role == 1){
+            $hasPrediagnostico = false;
             //es un paciente y se manda a la pantalla de paciente
             $medicos = User::where('role', 2)->orderBy('n_asist', 'ASC')->limit(10)->get();
-            return view('iniciop')->with('medicos', $medicos)->with('asistencias', $asistencias);
+            $prediagnostico = prediagnostico::where('paciente_id', Auth::user()->id)->first();
+            if($prediagnostico != null)
+                $hasPrediagnostico = true;
+            //dd($hasPrediagnostico);
+            return view('iniciop')->with('medicos', $medicos)->with('asistencias', $asistencias)->with('hasPrediagnostico', $hasPrediagnostico);
         }elseif(Auth::user()->role == 2){
             //es un medico y se manda a la pantalla de medico
             return view('iniciom')->with('asistencias',$asistencias);
@@ -83,6 +88,14 @@ class HomeController extends Controller
         $medicos = User::where('role', 2)->get();
         return view('asistenciaspaciente')->with('medicos', $medicos)->with('asistencias', $asistencias);
     }
+
+    public function senddata_medico_pacientes() {
+        $asistencias = $this->read_asistencias();
+        //es un médico y se manda a la pantalla de los pacientes que tiene
+        $pacientes = User::where('role', 1)->get();
+        return view('verpacientes')->with('pacientes', $pacientes)->with('asistencias', $asistencias);
+    }
+
     //Valores aceptados por una asistencia: "aceptado", "rechazado", "enProceso", "cancelada"
     public function update_asistencia(Request $request)
     {
@@ -92,16 +105,19 @@ class HomeController extends Controller
             $asistencia->estado = $request->estado
         ]);
         if ($request->estado == 'aceptado') {
-            $paciente = User::where('id', $request->paciente_id);
-            $medico = User::where('id', $request->medico_id);
+            $paciente = User::find($asistencia->paciente_id);
+            $medico = User::find($asistencia->medico_id);
+            //$paciente = User::where('id', $asistencia->paciente_id);
+            //$medico = User::where('id', $asistencia->medico_id);
+            //dd($paciente->name);
             $paciente->update([
-                $paciente->nasist += 1
+                $paciente->n_asist += 1
             ]);
             $medico->update([
-                $medico->nasist += 1
+                $medico->n_asist += 1
             ]);
         }
-        dd($asistencia->estado);        
+        //dd($asistencia->estado);        
         return redirect()->back();
     }
 
@@ -139,6 +155,7 @@ class HomeController extends Controller
     {
         $user = User::find($id);
         $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
+        //dd($prediagnostico);
         return view('perfilp')
         ->with('user', $user)
         ->with('prediagnostico', $prediagnostico);
@@ -147,6 +164,7 @@ class HomeController extends Controller
     public function read_info_paciente_edit($id)
     {
         $user = User::find($id);
+        //$prediagnostico = prediagnostico::find($id);
         $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
         return view('perfilpedit')
         ->with('user', $user)

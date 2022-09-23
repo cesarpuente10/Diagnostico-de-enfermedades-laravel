@@ -15,7 +15,7 @@
             <table class="table table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">#id del paciente</th>
                         <th scope="col">Médico</th>
                     </tr>
                 </thead>
@@ -24,15 +24,15 @@
                     
                     @php($cont = 0)
                     @foreach ($asistencias as $asistencia)
-                    @foreach ($medicos as $medico)
-                    @if($medico->id == $asistencia->medico_id && Auth::user()->id == $asistencia->paciente_id )
+                    @foreach ($pacientes as $paciente)
+                    @if($paciente->id == $asistencia->paciente_id && Auth::user()->id == $asistencia->medico_id )
                     
-                    <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <tr data-bs-toggle="collapse" href="#collapseExample{{ $paciente->id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-                        <th scope="row"></th>
-                        <td>{{ $asistencia->name }}</td>
+                        <th scope="row">{{ $paciente->id }}</th>
+                        <td>{{ $paciente->name }} {{ $paciente->lastnamef }} {{ $paciente->lastnamem }}</td>
                         
-                        <td><div class="collapse" id="collapseExample2">
+                        <td><div class="collapse" id="collapseExample{{ $paciente->id }}">
                             <div class="card card-body drop">
                                 <p>
                                 <i class="fa-solid fa-user fa-4x"></i>
@@ -40,11 +40,17 @@
                                 <div class="lineaCont"></div>
                                 <div>
                                     <p>
-                                        Última asistencia realizada:
-                                        {{ $medico->name }}
+                                    @if($asistencia->estado == "aceptado")
+                                        La asistencia se aceptó el: <br>
+                                    @elseif($asistencia->estado == "pendiente")
+                                        La asistencia se solicitó el: <br>
+                                    @elseif($asistencia->estado == "rechazado")
+                                        La asistencia se realizó el: <br>
+                                    @endif
+                                    {{ $asistencia->updated_at}}
                                     </p>
-                                    <a href="">
-                                        <p>{{ $asistencia->estado }}</p>
+                                    <a href="/perfilp/{{ $paciente->id }}">
+                                        <p>Ver información de Paciente</p>
                                     </a>
                                 </div>
                                 <div class="lineaCont"></div>

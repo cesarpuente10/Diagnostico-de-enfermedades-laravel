@@ -37,7 +37,7 @@
                             <h6 class="fa-xl">Asistencias</h6>
                         </a>
                     @else
-                    <a href="{{ route('asistepacientesmedico') }}">
+                    <a href="{{ route('verpacientes') }}">
                         <h6 class="fa-xl">Pacientes</h6>
                     @endif
                     </a>

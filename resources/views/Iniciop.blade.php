@@ -9,7 +9,9 @@
         <section class="col-lg-7 row leftdiag-container">
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <img class="image" src="{{url('/images/Medical prescription-pana.png')}}" alt="Image"/> <br>
+                <a href=" {{ route('prediagnostico') }}">
                 <button type="button" class="btn btn-secondary principal-btn">Prediagnóstico</button>
+                </a>
             </div>
 
             
@@ -78,40 +80,43 @@
 
     @foreach ($medicos as $medico)
         @if ($medico->role == 2)
-                <div class="modal fade" id="modalInfoMedico{{$medico->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <h3>INFORMACIÓN DEL MÉDICO</h3>
-            
+            <div class="modal fade" id="modalInfoMedico{{$medico->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3>INFORMACIÓN DEL MÉDICO</h3>
+                            <p>{{ $medico->name }}  {{  $medico->lastnamef }} {{  $medico->lastnamem }}</p>
 
-            <p>{{ $medico->name }}  {{  $medico->lastnamef }} {{  $medico->lastnamem }}</p>
-
-            <p>Direccion de consultorio</p>
-            <p>Numero de telefono</p>
-            
-            <p>{{  $medico->email }}</p>
-            <form method="post" action="{{ route('asistencia') }}">
-                            @csrf
-                            <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
-                            <input type="hidden" name="medico_id" value ="{{ $medico->id }}">
-                            <button type="submit" class="btn btn-secondary principal-btn">Agendar cita</button>
+                            <p>Direccion de consultorio</p>
+                            <p>Numero de telefono</p>
                             
-                        </form>
-                        
-            
-        </div>
+                            <p>{{  $medico->email }}</p>        
+                                <form method="post" action="{{ route('asistencia') }}">
+                                    @csrf
+                                    <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="medico_id" value ="{{ $medico->id }}">
+                                    @if($hasPrediagnostico)
+                                        <button type="submit" class="btn btn-secondary principal-btn">Agendar cita</button>
+                                    @else
+                                        <button type="button" disabled="true" class="btn btn-secondary principal-btn">Agendar cita</button>
+                                        <p>Para agendar una cita debe llenar el formulario de prediagnóstico</p>
+                                        <p class="">Favor de llenarlo <a href=" {{ route('prediagnostico') }}">
+                                            Aquí
+                                        </a> </p>
+                                    @endif
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        
-      </div>
-    </div>
-  </div>
     
      @endif
     @endforeach
    
+    
     
 </x-app-layout>

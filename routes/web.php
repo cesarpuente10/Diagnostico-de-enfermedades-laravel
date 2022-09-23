@@ -67,6 +67,10 @@ Route::get('/asistenciaspaciente', [HomeController::class, 'senddata_paciente_as
 Route::post('/updateasistencia', [HomeController::class, 'update_asistencia'])
 ->middleware('auth')->name('updateasistencia');
 
+//Ruta que hace una petición post y cambia el estado de la asistencia a rechazado
+Route::get('/deleteasistencia', [HomeController::class, 'delete_asistencia'])
+->middleware('auth')->name('deleteasistencia');
+
 Route::post('/prediagnostico', [HomeController::class, 'create_info_paciente'])
 ->middleware('auth')->name('prediagnostico');
 
@@ -79,8 +83,8 @@ Route::get('/registro', function () {
     return view('registro');
 })->name('registro');
 
-Route::get('/asistepacientesmedico', [HomeController::class, 'senddata_user_asistePacientesMedico'])
-->middleware('auth')->name('asistepacientesmedico');
+Route::get('/verpacientes', [HomeController::class, 'senddata_medico_pacientes'])
+->middleware('auth')->name('verpacientes');
 
 
 Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
