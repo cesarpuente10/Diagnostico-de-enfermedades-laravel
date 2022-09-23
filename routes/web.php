@@ -17,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 
 
 require __DIR__.'/auth.php';
-
 //pagina inicial
 Route::get('/', [HomeController::class, 'senddata_user_inicio'])
 ->middleware('auth')->name('inicio');
 
-Route::get('/diagnosticospaciente', [HomeController::class, 'asistencia'])
+Route::get('/diagnosticospaciente', [HomeController::class, 'senddata_paciente_diagnostico'])
 ->middleware('auth')->name('diagnosticospaciente');
 
 //no disponible
@@ -68,7 +67,7 @@ Route::post('/updateasistencia', [HomeController::class, 'update_asistencia'])
 ->middleware('auth')->name('updateasistencia');
 
 //Ruta que hace una petición post y cambia el estado de la asistencia a rechazado
-Route::get('/deleteasistencia', [HomeController::class, 'delete_asistencia'])
+Route::post('/deleteasistencia', [HomeController::class, 'delete_asistencia'])
 ->middleware('auth')->name('deleteasistencia');
 
 Route::post('/prediagnostico', [HomeController::class, 'create_info_paciente'])

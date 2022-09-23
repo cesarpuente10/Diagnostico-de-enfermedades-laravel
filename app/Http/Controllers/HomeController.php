@@ -34,6 +34,7 @@ class HomeController extends Controller
      //Se mandan los usuarios y las asistencias hechas
     public function senddata_user_inicio() {
         $asistencias = $this->read_asistencias();
+        //dd($asistencias);
         if(Auth::user()->role == 1){
             $hasPrediagnostico = false;
             //es un paciente y se manda a la pantalla de paciente
@@ -72,6 +73,7 @@ class HomeController extends Controller
             }
         }else if(Auth::user()->role == 1){
             $asistencias = asistencia::where('paciente_id', Auth::id())->get();
+            //dd($asistencias);
             foreach ($asistencias as $asistencia) {
                 $user = User::where('id', $asistencia->medico_id)->first();
                 $name = $user->name . " " . $user->apellidop . " " . $user->apellidom;
@@ -121,9 +123,9 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function delete_asistencia($id)
+    public function delete_asistencia(Request $request)
     {
-        $asistencia = asistencia::find($id);
+        $asistencia = asistencia::find($request->id);
         $asistencia->delete();
         return redirect()->back();
     }

@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#id del paciente</th>
-                        <th scope="col">Médico</th>
+                        <th scope="col">Paciente</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
                     @php($cont = 0)
                     @foreach ($asistencias as $asistencia)
                     @foreach ($pacientes as $paciente)
-                    @if($paciente->id == $asistencia->paciente_id && Auth::user()->id == $asistencia->medico_id )
+                    @if(($paciente->id == $asistencia->paciente_id && Auth::user()->id == $asistencia->medico_id) && $asistencia->estado == 'aceptado'  )
                     
                     <tr data-bs-toggle="collapse" href="#collapseExample{{ $paciente->id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
 
@@ -39,13 +39,14 @@
                                 </p>
                                 <div class="lineaCont"></div>
                                 <div>
+                                  <p> </p>
+
                                     <p>
                                     @if($asistencia->estado == "aceptado")
-                                        La asistencia se aceptó el: <br>
+                                        Asistencia Aceptada <br> Se solicitó el: <br>
+                                        
                                     @elseif($asistencia->estado == "pendiente")
-                                        La asistencia se solicitó el: <br>
-                                    @elseif($asistencia->estado == "rechazado")
-                                        La asistencia se realizó el: <br>
+                                        Asistencia Pendiente <br> Se solicitó el: <br>
                                     @endif
                                     {{ $asistencia->updated_at}}
                                     </p>
@@ -54,9 +55,12 @@
                                     </a>
                                 </div>
                                 <div class="lineaCont"></div>
-                                <button type="button" class="btn-light btn btnSi" data-toggle="modal" data-target="#exampleModal">
-                                    Asistir
-                            </button>
+                                <form method="post" action="{{ route('updateasistencia') }}">
+                                  @csrf
+                                  <input type="hidden" name="id" value ="{{ $asistencia->id }}">
+                                  <button type = "submit" name ="estado" value ="cancelada">Cancelar Asistencia</button>
+                              </form>
+                                
                             </div>
                         </div></td>  
                     </tr>
@@ -68,28 +72,11 @@
             </table>
         </div>
     </div>
+ 
 
+    
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Asistir Paciente</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ¿Seguro desea asistir al paciente "NombrePaciente"?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btnNo" data-dismiss="modal">Cerrar</button>
-          <a href="indexPaciente.blade.php"><button type="button" class="btn btn-primary">Asistir</button></a>
-        </div>
-      </div>
-    </div>
-  </div>
+  
 
   
 </x-app-layout>
