@@ -59,6 +59,14 @@ Route::post('/createinfoconsultorio', [HomeController::class, 'create_info_medic
 Route::post('/asistencia', [HomeController::class, 'create_asistencia'])
 ->middleware('auth')->name('asistencia');
 
+//Ruta para página que muestra las asistencias que tiene el paciente
+Route::get('/asistenciaspaciente', [HomeController::class, 'senddata_paciente_asistencias'])
+->middleware('auth')->name('asistenciaspaciente');
+
+//Ruta que hace una petición post y cambia el estado de la asistencia, así como también hace que se le muestre distinto al paciente
+Route::post('/updateasistencia', [HomeController::class, 'update_asistencia'])
+->middleware('auth')->name('updateasistencia');
+
 Route::post('/prediagnostico', [HomeController::class, 'create_info_paciente'])
 ->middleware('auth')->name('prediagnostico');
 
@@ -73,6 +81,7 @@ Route::get('/registro', function () {
 
 Route::get('/asistepacientesmedico', [HomeController::class, 'senddata_user_asistePacientesMedico'])
 ->middleware('auth')->name('asistepacientesmedico');
+
 
 Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
 

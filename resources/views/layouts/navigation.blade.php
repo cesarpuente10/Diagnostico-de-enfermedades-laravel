@@ -28,9 +28,14 @@
                 <i class="fa-solid fa-bell fa-xl"> <!--<span class="badge">1</span>--></i> 
                 </div>
                     @if (Auth::user()->role == 1)
-                    <a href="{{ route('diagnosticospaciente') }}">
-                        <h6 class="fa-xl">Diagnósticos</h6>
-                        
+                    <form method="post" action="{{ route('diagnosticospaciente') }}">
+                        <a type="submit">
+                            <h6 class="fa-xl">Diagnósticos</h6>
+                        </a>
+                    </form>
+                        <a href ="{{ route('asistenciaspaciente') }}">
+                            <h6 class="fa-xl">Asistencias</h6>
+                        </a>
                     @else
                     <a href="{{ route('asistepacientesmedico') }}">
                         <h6 class="fa-xl">Pacientes</h6>

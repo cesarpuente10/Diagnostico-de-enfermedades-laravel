@@ -10,25 +10,27 @@
 
 <div class="contenedor" id="uno">
         <div class="contenido">
-            <h1>Pacientes Registrados</h1>
+            
+        
             <table class="table table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Paciente</th>
+                        <th scope="col">Médico</th>
                     </tr>
                 </thead>
                 <tbody>
-        
-                    @if($users)
+
+                    
                     @php($cont = 0)
-                    @foreach($users as $user)
-                    @if($user->role == 1)
-                    @php($cont++)
+                    @foreach ($asistencias as $asistencia)
+                    @foreach ($medicos as $medico)
+                    @if($medico->id == $asistencia->medico_id && Auth::user()->id == $asistencia->paciente_id )
+                    
                     <tr data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-                        <th scope="row">{{ $cont }}</th>
-                        <td>{{ $user->name }}</td>
+                        <th scope="row"></th>
+                        <td>{{ $asistencia->name }}</td>
                         
                         <td><div class="collapse" id="collapseExample2">
                             <div class="card card-body drop">
@@ -39,9 +41,10 @@
                                 <div>
                                     <p>
                                         Última asistencia realizada:
+                                        {{ $medico->name }}
                                     </p>
                                     <a href="">
-                                        <p>más información</p>
+                                        <p>{{ $asistencia->estado }}</p>
                                     </a>
                                 </div>
                                 <div class="lineaCont"></div>
@@ -53,7 +56,7 @@
                     </tr>
                     @endif
                     @endforeach
-                    @endif
+                    @endforeach
                     
                 </tbody>
             </table>

@@ -46,6 +46,7 @@ class HomeController extends Controller
 
     public function create_asistencia(Request $request)
     {
+        //dd($request);
         $asistencia = new asistencia();
         $asistencia->paciente_id = $request->paciente_id;
         $asistencia->medico_id = $request->medico_id;
@@ -74,10 +75,19 @@ class HomeController extends Controller
         }
         return $asistencias;
     }
-
-    public function update_asistencia($request)
+    
+     //Se mandan los médicos con los que realizó asistencia
+     public function senddata_paciente_asistencias() {
+        $asistencias = $this->read_asistencias();
+        //es un paciente y se manda a la pantalla de paciente
+        $medicos = User::where('role', 2)->get();
+        return view('asistenciaspaciente')->with('medicos', $medicos)->with('asistencias', $asistencias);
+    }
+    //Valores aceptados por una asistencia: "aceptado", "rechazado", "enProceso", "cancelada"
+    public function update_asistencia(Request $request)
     {
         $asistencia = asistencia::find($request->id);
+        //dd($asistencia->estado);
         $asistencia->update([
             $asistencia->estado = $request->estado
         ]);
@@ -91,6 +101,7 @@ class HomeController extends Controller
                 $medico->nasist += 1
             ]);
         }
+        dd($asistencia->estado);        
         return redirect()->back();
     }
 
