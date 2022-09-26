@@ -59,10 +59,11 @@
             <p>Cedula: <a href="{{ asset('cedulas/'.$consultorio->cedula) }}">{{ $consultorio->cedula }}</a></p>
 
         </div><br>
-        <div class="col-12">
-            <a href="/perfilm/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
-        </div>
-        
+        @if (Auth::user()->id == $user->id)
+            <div class="col-12">
+                <a href="/perfilm/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
+            </div>
+        @endif
         
     </form>
 </div>

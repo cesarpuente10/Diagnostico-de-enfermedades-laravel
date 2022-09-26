@@ -64,10 +64,12 @@
             <label class="form-label">Número telefónico del celular</label>
             <p>{{$prediagnostico->celular}}</p>
         </div><br>
-
-        <div class="col-12">
-            <a href="/perfilp/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
-        </div>
+        @if (Auth::user()->id == $user->id)
+            <div class="col-12">
+                <a href="/perfilp/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
+            </div>
+        @endif
+        
         
         
     </div>
