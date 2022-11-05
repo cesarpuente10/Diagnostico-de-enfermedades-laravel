@@ -1,78 +1,76 @@
 <x-app-layout>
 
-<br>
-    <br>
-    <b><h1>FORMULARIO DE </h1></b>
-    <b><h1>PREDIAGNÓSTICO</h1></b>
-  
+
+<section class="d-flex justify-content-center">
+    <div class="card col-sm-6 p-3" >
     <div class="else">
     <div class="myDiv">
-      <h2>¿Qué es un formulario de prediagnóstico?</h2>
-      <p>Es un sistema experto, capaz de interpretar los síntomas que explica el usuario utilizando el lenguaje natural.</p>
-      <b><p>Favor de responder este cuestionario digital para la interpretación del sistema</p></b>
+        <b><h1>FORMULARIO DE PREDIAGNÓSTICO</h1></b>
+        <b><p>Favor de responder este cuestionario digital para la interpretación del sistema</p></b>
 
     </div>
 
     <form method="POST" action="{{ route('createprediagnostico') }}">
     @csrf
     <input type="hidden" name="paciente_id" value="{{ Auth::user()->id }}">
-    <div>
+
+    <div class="mb-2">
         <label class="form-label">Nombre del paciente: </label>
-        <input name="name" type="text" class="name" value="{{ Auth::user()->name }}">
+        <input name="name" type="text" class="name form-control" value="{{ Auth::user()->name }}">
 
-        
+    <div class="mb-2">
         <label class="form-label">Apellido Paterno: </label>
-        <input name="lastnamef" type="text" class="lastnamef" value="{{ Auth::user()->lastnamef }}">
-
-        
+        <input name="lastnamef" type="text" class="lastnamef form-control" value="{{ Auth::user()->lastnamef }}">
+    </div>
+    <div class="mb-2">
         <label class="form-label">Apellido Materno </label>
-        <input name="lastnamem" type="text" class="lastnamem" value="{{ Auth::user()->lastnamem }}">
+        <input name="lastnamem" type="text" class="lastnamem form-control" value="{{ Auth::user()->lastnamem }}">
+    </div>
     </div>
 
-    <div>
+    <div class="mb-2">
         <label class="form-label">Sexo: </label>
-
-        <input type="radio" name="sexo" id="hombre" value="Masculino">
-        <label class="form-label" for="hombre">Masculino </label>
-        
-        <input type="radio" name="sexo" id="mujer" value="Femenino">
-        <label class="form-label" for="mujer">Femenino </label>
-        
+        <input type="radio" name="sexo" id="hombre" value="Masculino"> Masculino
+        <input type="radio" name="sexo" id="mujer" value="Femenino"> Femenino
     </div>
 
-    <div>
+    <div class="mb-2">
         <label class="form-label">Numero de teléfono: </label>
-        <input type="number" name="tel_fijo">
-
+        <input type="number" name="tel_fijo" class="form-control">
+    </div>
+    <div class="mb-2">
         <label class="form-label">Numero de celular: </label>
-        <input type="number " name="celular">
+        <input type="number " name="celular" class="form-control">
     </div>
 
     <div>
         <label class="form-label">Edad: </label>
-        <input type="number" name="edad" >
+        <input type="number" name="edad" class="form-control" >
         <label class="form-label">Fecha de nacimiento: </label>
-        <input type="date" name="fecha">
+        <input type="date" name="fecha" class="form-control">
     </div>
 
-   
 
-    <div>
+
+    <div class="mb-2">
         <label class="form-label">Peso: </label>
-        <input type="number" name="peso" min="0" max="200">
+        <input type="number" name="peso" min="0" max="200" class="form-control">
+    </div>
+    <div class="mb-2">
         <label class="form-label">Estatura: </label>
-        <input type="number" name="estatura" min="0" max="300">
+        <input type="number" name="estatura" min="0" max="300" class="form-control">
     </div>
 
-    
-    <div>
-        <input type="submit" class="btn-primary">
+
+    <div class="mb-2">
+        <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center ">
     </div>
-    
+</div>
+
 
     </form>
 
-
+</section>
 
 
 </x-app-layout>
