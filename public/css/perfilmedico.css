@@ -1,0 +1,47 @@
+
+.form-perfil-edit{
+    padding-left: 30px;   
+    display: flex;
+    justify-content: center;
+   
+}
+  
+
+.img-style{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding-top: 60px;
+}
+
+.btn-edit{
+ display: inline-block;
+}
+
+.edit-titulo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    
+}
+
+.h1-titulo{
+    margin-top: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+}
+
+.derecho{
+    width: 350px;
+}
+
+.izquierdo{
+    margin-left:350px;
+    width: 350px;
+
+}
+
+
+
+
+
+
