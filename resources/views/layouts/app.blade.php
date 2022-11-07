@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="assets/css/formpre.css">
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
         <link href="{{ asset('css/stylesPageInProcess.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/perfilmedico.css') }}" rel="stylesheet">
 
         
 
