@@ -1,5 +1,5 @@
 <x-app-layout>
-    
+
     <section class="d-flex align-items-center p-3 mb-2 mt-2">
         <i class="fa-solid fa-bed-pulse fa-2xl"></i>
         <div class="col fs-2 ms-2">Bienvenido {{ Auth::user()->name }}</div>
@@ -14,7 +14,7 @@
                 </a>
             </div>
 
-            
+
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <img class="image" src="{{url('/images/Medical prescription-bro.png')}}" alt="Image"/> <br>
                 <a href="#" type="button" class="btn btn-secondary principal-btn">Solicitar Diagnóstico</a>
@@ -24,8 +24,8 @@
         <div class="col-lg-1">
             <div class="vr"></div>
         </div>
-        
-        
+
+
             <!-- Modal para ver información del médico -->
 
         <section class="principal-list overflow-auto col-lg-4">
@@ -69,13 +69,13 @@
             @if ($medicosdisponibles > 10)
                 <button>Ver más médicos</button>
             @endif
-            
-            
+
+
         </section>
     </div>
 
 
-    
+
     <!-- Modal -->
 
     @foreach ($medicos as $medico)
@@ -92,8 +92,8 @@
 
                             <p>Direccion de consultorio</p>
                             <p>Numero de telefono</p>
-                            
-                            <p>{{  $medico->email }}</p>        
+
+                            <p>{{  $medico->email }}</p>
                                 <form method="post" action="{{ route('asistencia') }}">
                                     @csrf
                                     <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
@@ -113,10 +113,10 @@
                 </div>
             </div>
 
-    
+
      @endif
     @endforeach
-   
-    
-    
+
+
+
 </x-app-layout>

@@ -113,3 +113,4 @@ Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('
 Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
 Route::view('/formulario', 'formularioprediagnostico') -> name('prediagnostico');
 Route::view('/consultorio', 'FormConsultorio') -> name('consultorio');
+Route::view('/listadiagmedico', 'listaDiagnosticosMedico') -> name('listadiagmedico');
