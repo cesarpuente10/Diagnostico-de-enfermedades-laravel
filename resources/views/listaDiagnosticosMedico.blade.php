@@ -1,25 +1,45 @@
 <x-app-layout>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>Diagnóstico 1</tr>
-                    <thead>
-                        <tr>
-                            <th>Fecha de reporte</th>
-                            <th>Link al reporte</th>
-                            <th>Link a señales EMG</th>
-                            <th>Comentario</th>
-                            <th>Accion</th>
-                        </tr>
 
-                    </thead>
-                </thead>
-            </table>
-
-        </div>
+    <div class="col-sm-12 d-flex justify-content-center">
+        <h1 class="text-center">Diagnósticos</h1>
     </div>
-</div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <table class="table table-striped">
+      <thead>
+      <h3>Nombre Completo del Médico</h3>
+        <tr>
+          <th scope="col">Fecha de reporte</th>
+          <th scope="col">Link del reporte</th>
+          <th scope="col">Link a señales EMG</th>
+          <th scope="col">Comentario</th>
+          <td scope="col">Edición</td>
+        </tr>
+      </thead>
+      <tbody>
 
-</x-app-layout>
+          <tr>
+              <td>15/05/22</td>
+              <td>Información</td>
+              <td>Información</td>
+              <td>Comentario</td>
+              <td>
+                <div class="btn-group" role="group">
+                <form action="" method="POST">
+                  <input type="hidden" name="" value="">
+                  <button type="submit" class="btn btn-primary">Editar</button>
+                </form>
+                <form action="" method="POST">
+                  <input type="hidden" name="" value="">
+                  <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+                </div>
+             </td>
+          </tr>
+      </tbody>
+    </table>
+        </div>
+      </div>
+    </div>
+    </x-app-layout>
