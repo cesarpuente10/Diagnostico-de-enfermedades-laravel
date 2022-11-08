@@ -115,3 +115,4 @@ Route::view('/formulario', 'formularioprediagnostico') -> name('prediagnostico')
 Route::view('/consultorio', 'FormConsultorio') -> name('consultorio');
 
 Route::view('/tabladiagmedi','pantallamedicodiagnostico')-> name('tablalista');
+Route::view('/listadiagmedico', 'listaDiagnosticosMedico') -> name('listadiagmedico');
