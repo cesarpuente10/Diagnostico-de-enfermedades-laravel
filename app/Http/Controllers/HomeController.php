@@ -316,8 +316,7 @@ class HomeController extends Controller
             $senalesfile = $request->file('senalesemg');
             $filenamesenales = $diagnostico->asistencia_id . '_' . $diagnostico->fecha->format('d-m-Y') . '.txt';
             $senalesfile-> move(public_path('SenalesEMG'), $filenamesenales);
-            
-            dd($filenamesenales);
+
             $diagnostico->reporte = $filenamereporte;
             $diagnostico->senalesemg = $filenamesenales;
         }
