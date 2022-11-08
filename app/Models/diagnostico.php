@@ -11,6 +11,7 @@ class diagnostico extends Model
 
     protected $fillable = [
         'asistencia_id',
+        'diagnostico',
         'senalesemg',
         'reporte',
         'comentario',

@@ -16,6 +16,7 @@ class CreateDiagnosticosTable extends Migration
         Schema::create('diagnosticos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('asistencia_id');
+            $table->string('diagnostico')->nullable();
             $table->string('reporte')->nullable();
             $table->string('senalesemg')->nullable();
             $table->string('comentario')->nullable();
