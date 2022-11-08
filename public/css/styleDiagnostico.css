@@ -1,13 +1,16 @@
-.contenedor{
-    display: flex;
+.contenedor-diagnostico{
+    display: block;     /* Just for the demo          */
+    overflow-y: auto;    /* Trigger vertical scroll    */
+    overflow-x: hidden;  /* Hide the horizontal scroll */
     width: 90%;
     height: 90vh;
     justify-content: center;
     align-items: center;
-    
 }
-
-.contenido{
+.table-cont{
+    width: 80%;
+}
+.contenido-listDiag{
     width: 60%;
     margin-left: 10%;
 }

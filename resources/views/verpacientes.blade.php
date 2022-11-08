@@ -8,15 +8,17 @@
 
 <x-app-layout>
 
-<div class="contenedor" id="uno">
-        <div class="contenido">
+<div class="contenedor-diagnostico" id="uno">
+        <div class="contenido-listDiag">
             
         
-            <table class="table table table-hover">
+            <table class="table table table-hover table-cont">
                 <thead>
                     <tr>
                         <th scope="col">#id del paciente</th>
                         <th scope="col">Paciente</th>
+                        <th scope="col">información</th>
+                        <th scope="col">No. de Diagnósticos</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,9 +40,7 @@
                                 <i class="fa-solid fa-user fa-4x"></i>
                                 </p>
                                 <div class="lineaCont"></div>
-                                <div>
-                                  <p> </p>
-
+                                <div class="buttons-verPacientes">
                                     <p>
                                     @if($asistencia->estado == "aceptado")
                                         Asistencia Aceptada <br> Se solicitó el: <br>
@@ -53,16 +53,24 @@
                                     <a href="/perfilp/{{ $paciente->id }}">
                                         <p>Ver información de Paciente</p>
                                     </a>
+                                    <form method="post" action="{{ route('updateasistencia') }}">
+                                        @csrf
+                                        <input type="hidden" name="id" value ="{{ $asistencia->id }}">
+                                        <button class="btn-alert" type = "submit" name ="estado" value ="cancelada">Cancelar Asistencia</button>
+                                    </form>
                                 </div>
-                                <div class="lineaCont"></div>
-                                <form method="post" action="{{ route('updateasistencia') }}">
-                                  @csrf
-                                  <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                                  <button type = "submit" name ="estado" value ="cancelada">Cancelar Asistencia</button>
-                              </form>
                                 
+                            <div class="lineaCont"></div>
+                            <div class="buttons-verPacientes">
+                                <a href="/formularioDiagnostico/{{ $asistencia->id }}"><button>Generar Diagnóstico</button> </a>
+                                <a href="/verdiagnosticos">
+                                    <button>Ver Diagnósticos</button>
+                                </a>
                             </div>
-                        </div></td>  
+                            
+                             
+                        </div></td> 
+                        <td> # </td> 
                     </tr>
                     @endif
                     @endforeach

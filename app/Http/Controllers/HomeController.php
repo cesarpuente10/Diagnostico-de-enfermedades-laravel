@@ -8,10 +8,12 @@ use App\Models\asistencia;
 use App\Models\Consultorio;
 use App\Models\diagnostico;
 use App\Models\prediagnostico;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
+
 
 class HomeController extends Controller
 {
@@ -285,7 +287,67 @@ class HomeController extends Controller
 
     }
 
+    //Diagnosticos
 
+    public function info_asistencia($id_asistencia)
+    {
+        //dd($id_asistencia);
+        $asistencia = asistencia::find($id_asistencia);
+        //dd($asistencia);
+        $paciente = User::find($asistencia->paciente_id);
+        //dd($paciente);
+        return view('formulariodiagnostico')->with('asistencia', $asistencia)->with('paciente', $paciente);
+    }
+
+    //Creación del Diagnostico
+    public function create_diagnostico(Request $request)
+    {
+        $asistencias = $this->read_asistencias();
+        //es un médico y se manda a la pantalla de los pacientes que tiene
+        $pacientes = User::where('role', 1)->get();
+        $diagnostico= new diagnostico();
+        $diagnostico->asistencia_id = $request->asistencia_id;
+        $diagnostico->fecha = Carbon::now();
+        $diagnostico->reporte = $request->reporte;
+        $diagnostico->senalesemg = $request->senalesemg;
+        $diagnostico->reporte = $request->reporte;
+        $diagnostico->comentario = $request->comentario;
+        $diagnostico->save();
+        //dd(return view('formulariodiagnostico')->with('diagnostico', $diagnostico)->with('asistencia', $asistencia)->with('paciente', $paciente););
+        return view('verpacientes')
+                ->with('pacientes', $pacientes)
+                ->with('asistencias', $asistencias);
+        
+        //return redirect()->route('formulariodiagnostico',['diagnostico']);
+    }
+    //actualización del Diagnostico
+
+    public function update_diagnostico(Request $request)
+    {
+        $diagnostico = diagnostico::find($request->diag_id);
+        
+        $diagnostico->update([
+            $diagnostico->reporte = $request->reporte,
+            $diagnostico->senalesemg = $request->senalesemg,
+            $diagnostico->reporte = $request->reporte,
+            $diagnostico->comentario = $request->comentario
+        ]);
+        if($request->fecha >= $diagnostico->fecha)
+        $diagnostico->update([
+            $diagnostico->fecha = $request->fecha
+        ]);
+        dd($diagnostico);        
+        return redirect()->back();
+    }
+
+
+    //Eliminación del Diagnostico
+    public function delete_diagnostico(Request $request)
+    {
+        $asistencia = asistencia::find($request->id);
+        $asistencia->delete();
+        return redirect()->back();
+    }
 
     /* //Se mandan los usuarios medicos
     public function senddata_user_verMasMedicosPaciente() {

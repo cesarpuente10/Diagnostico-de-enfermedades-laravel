@@ -66,7 +66,7 @@
                 <div>No hay medicos diponibles en este momento</div>
             @endif
 
-            @if ($medicosdisponibles == 10)
+            @if ($medicosdisponibles > 10)
                 <button>Ver más médicos</button>
             @endif
             

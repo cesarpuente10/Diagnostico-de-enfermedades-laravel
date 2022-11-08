@@ -66,10 +66,13 @@
         <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center ">
     </div>
 </div>
-
-
     </form>
-
+    <div class="mb-2">
+        <a href=" http://diagnostico-de-enfermedades-laravel.test">
+            <button class="col-12 btn btn-outline-danger d-flex justify-content-center "> Cancelar </button>
+            </a>
+        
+    </div>
 </section>
 
 
