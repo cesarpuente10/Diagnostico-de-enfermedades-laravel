@@ -1,11 +1,11 @@
 <x-app-layout>
-
-<h3>Diagnostico de "Nombre del paciente"</h3>
-<h4>Diagnostico #1</h4>
-
-<div>
-<table class="table table-striped">
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <table class="table table-striped">
   <thead>
+  <h3>Diagnostico de "Nombre del paciente"</h3>
+  <h4>Diagnostico #1</h4>
     <tr>
       <th scope="col">Fecha de reporte</th>
       <th scope="col">Link del reporte</th>
@@ -22,7 +22,8 @@
           <td>Información</td>
           <td>Comentario</td>
           <td>
-           <form action="" method="POST">
+            <div class="btn-group" role="group">
+            <form action="" method="POST">
               <input type="hidden" name="" value=""> 
               <button type="submit" class="btn btn-primary">Editar</button>
             </form>
@@ -30,9 +31,12 @@
               <input type="hidden" name="" value=""> 
               <button type="submit" class="btn btn-danger">Eliminar</button>
             </form>
+            </div>
          </td>
       </tr>
   </tbody>
 </table>
+    </div>
+  </div>
 </div>
 </x-app-layout>
