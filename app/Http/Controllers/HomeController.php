@@ -308,10 +308,18 @@ class HomeController extends Controller
         $diagnostico= new diagnostico();
         $diagnostico->asistencia_id = $request->asistencia_id;
         $diagnostico->fecha = Carbon::now();
-        $diagnostico->reporte = $request->reporte;
-        $diagnostico->senalesemg = $request->senalesemg;
-        $diagnostico->reporte = $request->reporte;
+        if($request->hasFile("reporte")){
+            $reportfile = $request->file('reporte');
+            $filenamereporte = $diagnostico->asistencia_id . '_' . $diagnostico->fecha->format('d/m/Y') . '.pdf';
+            $reportfile-> move(public_path('reportes'), $filenamereporte);
+            $senalesfile = $request->file('senalesemg');
+            $filenamesenales = $diagnostico->asistencia_id . '_' . $diagnostico->fecha->format('d/m/Y') . '.txt';
+            $senalesfile-> move(public_path('SenalesEMG'), $filenamesenales);
+        }
+        $diagnostico->reporte = $filenamereporte;
+        $diagnostico->senalesemg = $filenamesenales;
         $diagnostico->comentario = $request->comentario;
+        dd($diagnostico);
         $diagnostico->save();
         //dd(return view('formulariodiagnostico')->with('diagnostico', $diagnostico)->with('asistencia', $asistencia)->with('paciente', $paciente););
         return view('verpacientes')

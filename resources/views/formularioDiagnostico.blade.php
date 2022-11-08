@@ -13,7 +13,7 @@
     @php
         //dd($diagnostico);
     @endphp
-    <form method="POST" action="{{ route('diagnostico') }}">
+    <form method="POST" action="{{ route('diagnostico') }}" enctype="multipart/form-data">
     @csrf
     <div class="mb-2">
         <label class="form-label">Fecha del diagnóstico </label>
@@ -22,11 +22,11 @@
 
     <div class="mb-2">
         <label class="form-label">Subir Reporte(.pdf)</label>
-        <input type="file" class="form-control" name="reporte">
+        <input type="file" class="form-control" name="reporte" accept=".pdf">
     </div>
     <div class="mb-2">
         <label class="form-label">Archivo de señales EMG(.txt .bin)</label>
-        <input type="file" class="form-control" name="senalesemg">
+        <input type="file" class="form-control" name="senalesemg" accept=".txt">
     </div>
 
     <div class="mb-2">

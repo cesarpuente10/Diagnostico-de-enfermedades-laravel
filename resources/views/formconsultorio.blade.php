@@ -4,7 +4,7 @@
 
     <b><h1>INFORMACIÓN DEL CONSULTORIO</h1></b>
     
-    <form method="POST" action="{{ route('createinfoconsultorio') }}">
+    <form method="POST" action="{{ route('createinfoconsultorio') }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="medico_id" value="{{ Auth::user()->id }}">
 
@@ -38,7 +38,7 @@
 
     <div class="mb-2">
         <label class="form-label">Subir Cédula Profesional(.pdf)</label>
-        <input type="file" class="form-control" name="cedula">
+        <input type="file" class="form-control" name="cedula" accept=".pdf">
     </div>
 
     <div class="mb-2">

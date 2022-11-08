@@ -71,13 +71,10 @@ Route::post('/deleteasistencia', [HomeController::class, 'delete_asistencia'])
 ->middleware('auth')->name('deleteasistencia');
 
 //diagnósticos
-
 Route::get('/formularioDiagnostico/{id}', [HomeController::class, 'info_asistencia'])
 ->middleware('auth')->name('formularioDiagnostico');
 
-
 //Creación
-
 Route::post('/diagnostico', [HomeController::class, 'create_diagnostico'])
 ->middleware('auth')->name('diagnostico');
 //Lectura

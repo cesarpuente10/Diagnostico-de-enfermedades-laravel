@@ -10,7 +10,7 @@
 
     </div>
 
-    <form method="POST" action="{{ route('createprediagnostico') }}">
+    <form method="POST" action="{{ route('createprediagnostico') }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="paciente_id" value="{{ Auth::user()->id }}">
 
