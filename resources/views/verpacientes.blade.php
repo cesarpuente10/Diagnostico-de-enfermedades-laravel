@@ -1,8 +1,3 @@
-
-    <!--Este usuario es medico, por lo tanto, la opoción junto al botón de menú debe ser "Pacientes"-->
-
-    <!--Esta pantalla es parte del flujo del Medico, en específico cuando presiona el botón de "Pacientes" del
-    navbar-->
     <!--La información que se manejará aquí son los pacientes que estén relacionados con ese médico en específico
     ID de Paciente, Nombre, última asistencia realizada y "más información" es la liga al perfil del paciente-->
 
@@ -26,15 +21,14 @@
                     
                     @php($cont = 0)
                     @foreach ($asistencias as $asistencia)
-                    @foreach ($pacientes as $paciente)
-                    @if(($paciente->id == $asistencia->paciente_id && Auth::user()->id == $asistencia->medico_id) && $asistencia->estado == 'aceptado'  )
+                    @if(Auth::user()->id == $asistencia->medico_id && $asistencia->estado == 'aceptado'  )
                     
-                    <tr data-bs-toggle="collapse" href="#collapseExample{{ $paciente->id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <tr data-bs-toggle="collapse" href="#collapseExample{{ $asistencia->paciente_id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-                        <th scope="row">{{ $paciente->id }}</th>
-                        <td>{{ $paciente->name }} {{ $paciente->lastnamef }} {{ $paciente->lastnamem }}</td>
+                        <th scope="row">{{ $asistencia->paciente_id }}</th>
+                        <td>{{ $asistencia->nombrepaciente }}</td>
                         
-                        <td><div class="collapse" id="collapseExample{{ $paciente->id }}">
+                        <td><div class="collapse" id="collapseExample{{ $asistencia->paciente_id }}">
                             <div class="card card-body drop">
                                 <p>
                                 <i class="fa-solid fa-user fa-4x"></i>
@@ -48,9 +42,9 @@
                                     @elseif($asistencia->estado == "pendiente")
                                         Asistencia Pendiente <br> Se solicitó el: <br>
                                     @endif
-                                    {{ $asistencia->updated_at}}
+                                    {{ date('d/M/Y', strtotime($asistencia->created_at))}}
                                     </p>
-                                    <a href="/perfilp/{{ $paciente->id }}">
+                                    <a href="/perfilp/{{ $asistencia->paciente_id }}">
                                         <p>Ver información de Paciente</p>
                                     </a>
                                     <form method="post" action="{{ route('updateasistencia') }}">
@@ -62,18 +56,19 @@
                                 
                             <div class="lineaCont"></div>
                             <div class="buttons-verPacientes">
-                                <a href="/formularioDiagnostico/{{ $asistencia->id }}"><button>Generar Diagnóstico</button> </a>
-                                <a href="/verdiagnosticos">
+                                <a href="/formularioDiagnostico/{{ $asistencia->id }}">
+                                    <button>Generar Diagnóstico</button> 
+                                </a>
+                                <a href="/verasistencia/{{ $asistencia->id }}">
                                     <button>Ver Diagnósticos</button>
                                 </a>
                             </div>
                             
                              
                         </div></td> 
-                        <td> # </td> 
+                        <td> #{{ $asistencia->ndiagnosticos }} </td> 
                     </tr>
                     @endif
-                    @endforeach
                     @endforeach
                     
                 </tbody>

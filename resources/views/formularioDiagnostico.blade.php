@@ -21,6 +21,11 @@
     </div>
 
     <div class="mb-2">
+        <label class="form-label"> Diagnóstico: </label><br>
+        <textarea name="diagnostico" class="name form-control" cols="10" rows="10"></textarea>
+    </div>
+
+    <div class="mb-2">
         <label class="form-label">Subir Reporte(.pdf)</label>
         <input type="file" class="form-control" name="reporte" accept=".pdf">
     </div>
@@ -32,7 +37,6 @@
     <div class="mb-2">
         <label class="form-label"> Comentario: </label><br>
         <textarea name="comentario" class="name form-control" cols="10" rows="10"></textarea>
-    
     </div>
 
     <input type="hidden" name="asistencia_id" value ="{{ $asistencia->id }}">

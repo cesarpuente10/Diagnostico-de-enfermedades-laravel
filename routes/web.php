@@ -14,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/diagnosticospaciente/{id}', [HomeController::class, 'send_diagnosticos_paciente']) 
+->middleware('auth')->name('diagnosticospaciente');
 
+Route::post('/deletediag', [HomeController::class, 'delete_diagnostico_paciente'])
+->middleware('auth')->name('deletediagnostico');
+
+Route::get('/verasistencia/{id}', [HomeController::class, 'send_diagnosticos'])
+->middleware('auth')->name('verasistencia');
 
 require __DIR__.'/auth.php';
 //pagina inicial
 Route::get('/', [HomeController::class, 'senddata_user_inicio'])
 ->middleware('auth')->name('inicio');
-
-Route::get('/diagnosticospaciente', [HomeController::class, 'senddata_paciente_diagnostico'])
-->middleware('auth')->name('diagnosticospaciente');
 
 //no disponible
 Route::get('/pantallaNoDisponible', function () {
@@ -111,5 +115,4 @@ Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
 Route::view('/formulario', 'formularioprediagnostico') -> name('prediagnostico');
 Route::view('/consultorio', 'FormConsultorio') -> name('consultorio');
 
-Route::view('/tabladiagmedi','pantallamedicodiagnostico')-> name('tablalista');
-Route::view('/listadiagmedico', 'listaDiagnosticosMedico') -> name('listadiagmedico');
+
