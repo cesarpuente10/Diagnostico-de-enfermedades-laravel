@@ -73,7 +73,6 @@ class HomeController extends Controller
                 $user = User::where('id', $asistencia->paciente_id)->first();
                 $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
                 $asistencia->nombrepaciente = $name;
-                $asistencia->paciente_id = $user->id;
             }
         }else if(Auth::user()->role == 1){
             $asistencias = asistencia::where('paciente_id', Auth::id())->get();
@@ -388,6 +387,9 @@ class HomeController extends Controller
     public function send_diagnosticos($asistencia_id)
     {
         $asistencia = asistencia::find($asistencia_id);
+        $user = User::where('id', $asistencia->paciente_id)->first();
+        $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+        $asistencia->nombrepaciente = $name;
         $diagnosticos = diagnostico::where('asistencia_id', $asistencia_id)->get();
         return view('verasistencia')
         ->with('asistencia', $asistencia)
