@@ -48,9 +48,17 @@
                     <input name="edad" type="int" class="form-control"  value="{{ $prediagnostico->edad}}" required>
                 </div>
 
-                <div>
+
+                <div class="mb-2">
                     <label class="edit-titulo">Sexo:</label>
-                    <input name="sexo" type="int" class="form-control"  value="{{ $prediagnostico->sexo}}" required>
+                    @if($prediagnostico->sexo == "Masculino")
+                        <input type="radio" name="sexo" id="hombre" value="Masculino" checked="checked"> Masculino
+                        <input type="radio" name="sexo" id="mujer" value="Femenino"> Femenino
+                    
+                    @else
+                        <input type="radio" name="sexo" id="hombre" value="Masculino" > Masculino
+                        <input type="radio" name="sexo" id="mujer" value="Femenino" checked="checked"> Femenino
+                    @endif
                 </div>
 
                 <div>

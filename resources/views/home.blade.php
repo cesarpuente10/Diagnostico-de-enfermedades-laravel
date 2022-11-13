@@ -29,7 +29,7 @@
                 </div>
                 <!-- Aqui se enruta -->
                 <div><a class="fs-3 text-black-50" href=" {{ route('login') }} ">INICIA SESIÓN AQUÍ <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
-                <div><a class="fs-6 text-black-50" href=" {{ route('register') }} ">REGÍSTRATE AQUÍ <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
+                <div><a class="fs-6 text-black-50" href="/register?flag=1">REGÍSTRATE AQUÍ <i class="bi bi-caret-right-fill arrow-right"></i></a></div>
 
             </div>
 

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <section class="d-flex align-items-center p-3 mb-2 mt-2">
+    <section class="d-flex align-items-center px-3 mb-2 mt-2">
         <i class="fa-solid fa-bed-pulse fa-2xl"></i>
         <div class="col fs-2 ms-2">Bienvenido {{ Auth::user()->name }}</div>
     </section>

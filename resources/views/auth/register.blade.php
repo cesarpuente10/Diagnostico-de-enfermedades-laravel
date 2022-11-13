@@ -1,6 +1,6 @@
 <x-guest-layout>
     <?php 
-    $bandera = 0;
+    $bandera = 1;
     ?>
     <div class="registro">
         <div class="info-flex">
@@ -27,10 +27,10 @@
                                 <label for="name">Nombre(s)</label>
                                 <input type="text" id="name" name="name">
                                 
-                                <label for="lastnamef">Apellido paterno</label>
+                                <label for="lastnamef">Apellido Paterno</label>
                                 <input type="text" id="lastnamef" name="lastnamef">
 
-                                <label for="lastnamem">Apellido materno</label>
+                                <label for="lastnamem">Apellido Materno</label>
                                 <input type="text" id="lastnamem" name="lastnamem">
 
                                 <x-label for="email" :value="__('Correo Electrónico')" />
@@ -39,7 +39,7 @@
                                 <label for="pass">Contraseña</label>
                                 <input type="password" id="password" name="password">
 
-                                <label for="pass">Confirmar contraseña</label>
+                                <label for="pass">Confirmar Contraseña</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation">
                                 <div>
                                 <input type="checkbox" id="check">
@@ -47,6 +47,7 @@
                                 </div>
                                 <button type="submit">{{ __('Registrar') }}</button>
                             </form>
+                            <a href=" {{ route('login') }} " class="btn">¿Ya tienes cuenta? Inicia Sesión <i class="bi bi-caret-right-fill"></i> </a>
                         </section>
                     </div>
                     <?php
@@ -63,19 +64,19 @@
                                 <label for="name">Nombre(s)</label>
                                 <input type="text" id="name" name="name">
 
-                                <label for="lastnamef">Apellido paterno</label>
+                                <label for="lastnamef">Apellido Paterno</label>
                                 <input type="text" id="lastnamef" name="lastnamef">
 
-                                <label for="lastnamem">Apellido materno</label>
+                                <label for="lastnamem">Apellido Materno</label>
                                 <input type="text" id="lastnamem" name="lastnamem">
 
-                                <label for="correo">Correo electrónico</label>
+                                <label for="correo">Correo Electrónico</label>
                                 <input type="email" id="email" name="email">
 
                                 <label for="pass">Contraseña</label>
                                 <input type="password" id="password" name="password">
 
-                                <label for="pass">Confirmar contraseña</label>
+                                <label for="pass">Confirmar Contraseña</label>
                                 <input type="password" id="password_confirmation" name="password_confirmation">
 
                                 <div>
