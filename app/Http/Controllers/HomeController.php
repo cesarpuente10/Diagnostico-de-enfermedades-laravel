@@ -319,7 +319,8 @@ class HomeController extends Controller
     public function create_diagnostico(Request $request)
     {
         $asistencias = $this->read_asistencias();
-        $asistencia = find($request->asistencia_id);
+        //dd($request);
+        $asistencia = asistencia::find($request->asistencia_id);
         $asistencia->ndiagnosticos += 1;
         $diagnostico= new diagnostico();
         $diagnostico->asistencia_id = $request->asistencia_id;
@@ -339,8 +340,7 @@ class HomeController extends Controller
         $diagnostico->comentario = $request->comentario;
         $diagnostico->save();
         //dd(return view('formulariodiagnostico')->with('diagnostico', $diagnostico)->with('asistencia', $asistencia)->with('paciente', $paciente););
-        return view('verpacientes')
-                ->with('asistencias', $asistencias);
+        return redirect()->route('verpacientes');
         
         //return redirect()->route('formulariodiagnostico',['diagnostico']);
     }
@@ -407,7 +407,7 @@ class HomeController extends Controller
     {
         //checar que el diagnostico si sea del paciente
         //borrar el diagnostico
-        $asistencia = find($request->asistencia_id);
+        $asistencia = asistencia::find($request->asistencia_id);
         $asistencia->ndiagnosticos -= 1;
         $diagnostico = diagnostico::find($request->diagnostico_id);
         $pathreporte = public_path() . '/reportes/' . $diagnostico->reporte;
