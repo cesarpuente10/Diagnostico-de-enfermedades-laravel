@@ -23,7 +23,7 @@
                   <th scope="col">Link del reporte</th>
                   <th scope="col">Link a señales EMG</th>
                   <th scope="col">Comentario</th>
-                  <td scope="col">Edición</td>
+                  <th scope="col">Edición</th>
                 </tr>
                 </thead>
 
