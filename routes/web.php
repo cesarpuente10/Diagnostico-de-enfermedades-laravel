@@ -20,6 +20,9 @@ Route::get('/diagnosticospaciente/{id}', [HomeController::class, 'send_diagnosti
 Route::post('/deletediag', [HomeController::class, 'delete_diagnostico_paciente'])
 ->middleware('auth')->name('deletediagnostico');
 
+Route::post('/editdiag', [HomeController::class, 'edit_diagnostico'])
+->middleware('auth')->name('editdiagnostico');
+
 Route::get('/verasistencia/{id}', [HomeController::class, 'send_diagnosticos'])
 ->middleware('auth')->name('verasistencia');
 
@@ -81,8 +84,11 @@ Route::get('/formularioDiagnostico/{id}', [HomeController::class, 'info_asistenc
 //Creación
 Route::post('/diagnostico', [HomeController::class, 'create_diagnostico'])
 ->middleware('auth')->name('diagnostico');
+//Edición
+Route::post('/updatediagnostico', [HomeController::class, 'update_diagnostico'])
+->middleware('auth')->name('updatediagnostico');
 //Lectura
-Route::view('/editdiagnostico', 'formularioDiagnostico') -> name('editdiagnostico');
+//Route::view('/editdiagnostico', 'formularioDiagnostico') -> name('editdiagnostico');
 
 //Edición
 Route::post('/updatediagnostico', [HomeController::class, 'update_diagnostico'])

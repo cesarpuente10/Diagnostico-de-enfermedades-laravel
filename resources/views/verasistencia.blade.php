@@ -25,12 +25,16 @@
               <td>{{ $diagnostico->comentario }}</td>
               <td>
                 <div class="btn-group" role="group">
-                <form action="" method="POST">
-                  <input type="hidden" name="" value=""> 
+                <form action="{{ route('editdiagnostico') }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
+                  <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
                   <button type="submit" class="btn btn-primary">Editar</button>
                 </form>
-                <form action="" method="POST">
-                  <input type="hidden" name="" value=""> 
+                <form action="{{ route('deletediagnostico') }}" method="POST">
+                  @csrf
+                  <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
+                  <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
                   <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
                 </div>

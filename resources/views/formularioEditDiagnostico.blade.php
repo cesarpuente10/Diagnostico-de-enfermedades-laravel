@@ -13,30 +13,35 @@
     @php
         //dd($diagnostico);
     @endphp
-    <form method="POST" action="{{ route('diagnostico') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('updatediagnostico') }}" enctype="multipart/form-data">
     @csrf
+    <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
     <div class="mb-2">
         <label class="form-label">Fecha del diagnóstico </label>
-        <input type="date" name="fecha" class="form-control">
+        <input type="date" name="fecha" class="form-control" value="{{ $diagnostico->fecha }}">
     </div>
 
     <div class="mb-2">
         <label class="form-label"> Diagnóstico: </label><br>
-        <textarea name="diagnostico" class="name form-control"></textarea>
+        <textarea name="diagnostico" class="name form-control">
+            {{ $diagnostico->diagnostico }}
+        </textarea>
     </div>
 
     <div class="mb-2">
         <label class="form-label">Subir Reporte(.pdf)</label>
-        <input type="file" class="form-control" name="reporte" accept=".pdf">
+        <input type="file" class="form-control" name="reporte" accept=".pdf" value="{{ $diagnostico->reporte }}">
     </div>
     <div class="mb-2">
         <label class="form-label">Archivo de señales EMG(.txt .bin)</label>
-        <input type="file" class="form-control" name="senalesemg" accept=".txt">
+        <input type="file" class="form-control" name="senalesemg" accept=".txt" value="{{ $diagnostico->senalesemg }}">
     </div>
 
     <div class="mb-2">
         <label class="form-label"> Comentario: </label><br>
-        <textarea name="comentario" class="name form-control" cols="10" rows="10"></textarea>
+        <textarea name="comentario" class="name form-control" cols="10" rows="10">
+            {{ $diagnostico->comentario }}
+        </textarea>
     </div>
 
     <input type="hidden" name="asistencia_id" value ="{{ $asistencia->id }}">

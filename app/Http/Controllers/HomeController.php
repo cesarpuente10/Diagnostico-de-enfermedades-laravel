@@ -291,14 +291,28 @@ class HomeController extends Controller
 
     //Diagnosticos
 
-    public function info_asistencia($id_asistencia)
+    public function info_asistencia($asistencia_id)
     {
-        //dd($id_asistencia);
-        $asistencia = asistencia::find($id_asistencia);
+        //dd($asistencia_id);
+        $asistencia = asistencia::find($asistencia_id);
         //dd($asistencia);
         $paciente = User::find($asistencia->paciente_id);
         //dd($paciente);
-        return view('formulariodiagnostico')->with('asistencia', $asistencia)->with('paciente', $paciente);
+        return view('formulariodiagnostico')
+        ->with('asistencia', $asistencia)
+        ->with('paciente', $paciente);
+    }
+
+    public function edit_diagnostico(Request $request)
+    {
+        $asistencia = asistencia::find($request->asistencia_id);
+        $paciente = User::find($asistencia->paciente_id);
+        $diagnostico = diagnostico::find($request->diagnostico_id);
+        //dd($diagnostico);
+        return view('formularioeditdiagnostico')
+        ->with('asistencia', $asistencia)
+        ->with('paciente', $paciente)
+        ->with('diagnostico', $diagnostico);
     }
 
     //Creación del Diagnostico
@@ -334,20 +348,40 @@ class HomeController extends Controller
 
     public function update_diagnostico(Request $request)
     {
-        $diagnostico = diagnostico::find($request->diag_id);
+        $diagnostico = diagnostico::find($request->diagnostico_id);
         
+        
+        if($request->hasFile("reporte")){
+            //Se borran los reportes anteriores y se guarda el nuevo junto con el nombre
+            $pathreporte = public_path() . '/reportes/' . $diagnostico->reporte;
+            File::delete($pathreporte);
+            $reportfile = $request->file('reporte');
+            $filenamereporte = $diagnostico->asistencia_id . '_' . $diagnostico->fecha . '_' . Carbon::now()->format('Y-d-M-H-i-s') . '.pdf';
+            $reportfile-> move(public_path('reportes'), $filenamereporte);
+            $diagnostico->update([
+                $diagnostico->reporte = $filenamereporte
+            ]);
+        }
+        if($request->hasFile("senalesemg")){
+            $pathsenalesemg = public_path() . '/senalesemg/' . $diagnostico->senalesemg;
+            File::delete($pathsenalesemg);
+            $senalesfile = $request->file('senalesemg');
+            $filenamesenales = $diagnostico->asistencia_id . '_' . $diagnostico->fecha . '_' . Carbon::now()->format('Y-d-M-H-i-s') . '.txt';
+            $senalesfile-> move(public_path('senalesemg'), $filenamesenales);
+            $diagnostico->update([
+                $diagnostico->senalesemg = $filenamesenales
+            ]);
+        }
         $diagnostico->update([
-            $diagnostico->reporte = $request->reporte,
-            $diagnostico->senalesemg = $request->senalesemg,
-            $diagnostico->reporte = $request->reporte,
+            $diagnostico->diagnostico = $request->diagnostico,
             $diagnostico->comentario = $request->comentario
         ]);
         if($request->fecha >= $diagnostico->fecha)
         $diagnostico->update([
             $diagnostico->fecha = $request->fecha
         ]);
-        dd($diagnostico);        
-        return redirect()->back();
+        //dd($request);
+        return redirect()->route('verasistencia', ['id' => $request->asistencia_id]);
     }
 
     public function send_diagnosticos_paciente($paciente_id)
