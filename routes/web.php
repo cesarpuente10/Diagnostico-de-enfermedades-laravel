@@ -27,9 +27,14 @@ Route::get('/verasistencia/{id}', [HomeController::class, 'send_diagnosticos'])
 ->middleware('auth')->name('verasistencia');
 
 require __DIR__.'/auth.php';
-//pagina inicial
+//pagina inicial con sesión iniciada
 Route::get('/', [HomeController::class, 'senddata_user_inicio'])
 ->middleware('auth')->name('inicio');
+
+//pagina inicial sin sesión iniciada
+Route::get('/home', function () {
+    return view('sinsesion/home');
+})->name('home');
 
 //no disponible
 Route::get('/pantallaNoDisponible', function () {
@@ -43,6 +48,7 @@ Route::get('/perfilp/{id}', [HomeController::class, 'read_info_paciente'])
 Route::get('/perfilp/edit/{id}', [HomeController::class, 'read_info_paciente_edit'])
 ->middleware('auth')->name('perfilpedit');
 
+//Editar información del paciente
 Route::post('/editp', [HomeController::class, 'update_info_paciente'])
 ->middleware('auth')->name('editp');
 
@@ -52,12 +58,21 @@ Route::get('/perfilm/{id}', [HomeController::class, 'read_info_medico'])
 Route::get('/perfilm/edit/{id}', [HomeController::class, 'read_info_medico_edit'])
 ->middleware('auth')->name('perfilmedit');
 
+//Editar información del médico
 Route::post('/editm', [HomeController::class, 'update_info_medico'])
 ->middleware('auth')->name('editm');
 
+//Ver pantalla para crear el prediagnóstico
+Route::view('/formulario', 'pacientes/formularioprediagnostico') -> name('prediagnostico');
+
+//Creación del prediagnóstico
 Route::post('/createprediagnostico', [HomeController::class, 'create_info_paciente'])
 ->middleware('auth')->name('createprediagnostico');
 
+//Ver pantalla para crear el consultorio
+Route::view('/consultorio', 'medicos/FormConsultorio') -> name('consultorio');
+
+//Creación del consultorio
 Route::post('/createinfoconsultorio', [HomeController::class, 'create_info_medico'])
 ->middleware('auth')->name('createinfoconsultorio');
 
@@ -96,18 +111,10 @@ Route::post('/updatediagnostico', [HomeController::class, 'update_diagnostico'])
 
 //Eliminación
 
-
-Route::post('/prediagnostico', [HomeController::class, 'create_info_paciente'])
-->middleware('auth')->name('prediagnostico');
-
 Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 
-Route::get('/home', function () {
-    return view('home');
-})->name('home');
-Route::get('/registro', function () {
-    return view('registro');
-})->name('registro');
+
+
 
 Route::get('/verpacientes', [HomeController::class, 'senddata_medico_pacientes'])
 ->middleware('auth')->name('verpacientes');
@@ -119,6 +126,6 @@ Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('
 
 Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
 Route::view('/formulario', 'formularioprediagnostico') -> name('prediagnostico');
-Route::view('/consultorio', 'FormConsultorio') -> name('consultorio');
+
 
 

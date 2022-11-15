@@ -46,10 +46,13 @@ class HomeController extends Controller
             if($prediagnostico != null)
                 $hasPrediagnostico = true;
             //dd($hasPrediagnostico);
-            return view('iniciop')->with('medicos', $medicos)->with('asistencias', $asistencias)->with('hasPrediagnostico', $hasPrediagnostico);
+            return view('pacientes/iniciop')
+            ->with('medicos', $medicos)
+            ->with('asistencias', $asistencias)
+            ->with('hasPrediagnostico', $hasPrediagnostico);
         }elseif(Auth::user()->role == 2){
             //es un medico y se manda a la pantalla de medico
-            return view('iniciom')->with('asistencias',$asistencias);
+            return view('medicos/iniciom')->with('asistencias',$asistencias);
         }
     }
 
@@ -79,7 +82,7 @@ class HomeController extends Controller
             //dd($asistencias);
             foreach ($asistencias as $asistencia) {
                 $user = User::where('id', $asistencia->medico_id)->first();
-                $name = $user->name . " " . $user->apellidop . " " . $user->apellidom;
+                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
                 $asistencia->nombremedico = $name;
             }
         }
@@ -89,15 +92,14 @@ class HomeController extends Controller
      //Se mandan los médicos con los que realizó asistencia
      public function senddata_paciente_asistencias() {
         $asistencias = $this->read_asistencias();
-        //es un paciente y se manda a la pantalla de paciente
-        $medicos = User::where('role', 2)->get();
-        return view('asistenciaspaciente')->with('medicos', $medicos)->with('asistencias', $asistencias);
+        return view('pacientes/asistenciaspaciente')
+        ->with('asistencias', $asistencias);
     }
 
     public function senddata_medico_pacientes() {
         $asistencias = $this->read_asistencias();
         //es un médico y se manda a la pantalla de los pacientes que tiene
-        return view('verpacientes')->with('asistencias', $asistencias);
+        return view('medicos/verpacientes')->with('asistencias', $asistencias);
     }
 
     //Valores aceptados por una asistencia: "aceptado", "rechazado", "enProceso", "cancelada"
@@ -160,7 +162,7 @@ class HomeController extends Controller
         $user = User::find($id);
         $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
         //dd($prediagnostico);
-        return view('perfilp')
+        return view('pacientes/perfilp')
         ->with('user', $user)
         ->with('prediagnostico', $prediagnostico);
     }
@@ -170,7 +172,7 @@ class HomeController extends Controller
         $user = User::find($id);
         //$prediagnostico = prediagnostico::find($id);
         $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
-        return view('perfilpedit')
+        return view('pacientes/perfilpedit')
         ->with('user', $user)
         ->with('prediagnostico', $prediagnostico);
     }
@@ -236,7 +238,7 @@ class HomeController extends Controller
         $user = User::find($id);
         $consultorio = consultorio::where('medico_id', $id)->first();
         //dd($consultorio);
-        return view('perfilm')
+        return view('medicos/perfilm')
         ->with('user', $user)
         ->with('consultorio', $consultorio);
     }
@@ -246,7 +248,7 @@ class HomeController extends Controller
         $user = User::find($id);
         $consultorio = consultorio::where('medico_id', $id)->first();
         //dd($consultorio);
-        return view('perfilmedit')
+        return view('medicos/perfilmedit')
         ->with('user', $user)
         ->with('consultorio', $consultorio);
     }
@@ -298,7 +300,7 @@ class HomeController extends Controller
         //dd($asistencia);
         $paciente = User::find($asistencia->paciente_id);
         //dd($paciente);
-        return view('formulariodiagnostico')
+        return view('medicos/formulariodiagnostico')
         ->with('asistencia', $asistencia)
         ->with('paciente', $paciente);
     }
@@ -309,7 +311,7 @@ class HomeController extends Controller
         $paciente = User::find($asistencia->paciente_id);
         $diagnostico = diagnostico::find($request->diagnostico_id);
         //dd($diagnostico);
-        return view('formularioeditdiagnostico')
+        return view('medicos/formularioeditdiagnostico')
         ->with('asistencia', $asistencia)
         ->with('paciente', $paciente)
         ->with('diagnostico', $diagnostico);
@@ -381,7 +383,7 @@ class HomeController extends Controller
             $diagnostico->fecha = $request->fecha
         ]);
         //dd($request);
-        return redirect()->route('verasistencia', ['id' => $request->asistencia_id]);
+        return redirect()->route('medicos/verasistencia', ['id' => $request->asistencia_id]);
     }
 
     public function send_diagnosticos_paciente($paciente_id)
@@ -399,7 +401,7 @@ class HomeController extends Controller
             }
         }
         
-        return view('listaDiagnosticosMedico')
+        return view('pacientes/listaDiagnosticosMedico')
         ->with('asistencias', $asistencias);
     }
 

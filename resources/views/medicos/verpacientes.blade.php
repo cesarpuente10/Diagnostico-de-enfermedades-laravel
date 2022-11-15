@@ -19,7 +19,6 @@
                 <tbody>
 
                     
-                    @php($cont = 0)
                     @foreach ($asistencias as $asistencia)
                     @if(Auth::user()->id == $asistencia->medico_id && $asistencia->estado == 'aceptado'  )
                     

@@ -8,7 +8,9 @@
         
         <h1>Asistencias Pendientes</h1>
             <section class="iniciom-listaAsis principal-list overflow-auto col-lg-4">
-                
+                @php
+                    $cont = 0;
+                @endphp
                 @foreach ($asistencias as $asistencia)
                 @if ($asistencia->estado == 'pendiente')
                     <div class=" border rounded justify-content-between p-3 mb-2 mt-2 iniciom-asistencia">
@@ -19,13 +21,18 @@
                         <form method="post" action="{{ route('updateasistencia') }}">
                             @csrf
                             <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                            <button type = "submit" name ="estado" value ="aceptado">Aceptar</button>
-                            <button type = "submit" name ="estado" value ="rechazado">Rechazar</button>
+                            <button class="btn btn-primary" type = "submit" name ="estado" value ="aceptado">Aceptar</button>
+                            <button class="btn btn-outline-danger" type = "submit" name ="estado" value ="rechazado">Rechazar</button>
                         </form>
-                        
                     </div>
+                    @php
+                        $cont ++;
+                    @endphp
                 @endif
                 @endforeach
+                @if ($cont<=0)
+                    <h2>No hay asistencias pendientes por el momento</h2>
+                @endif
                 
             </section>
         </div>

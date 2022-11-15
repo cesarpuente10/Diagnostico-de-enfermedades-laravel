@@ -23,17 +23,15 @@
                 <tbody>
 
                     
-                    @php($cont = 0)
                     @foreach ($asistencias as $asistencia)
-                    @foreach ($medicos as $medico)
-                    @if($medico->id == $asistencia->medico_id && Auth::user()->id == $asistencia->paciente_id  )
+                    @if(Auth::user()->id == $asistencia->paciente_id)
                     
-                    <tr data-bs-toggle="collapse" href="#collapseExample{{ $medico->id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <tr data-bs-toggle="collapse" href="#collapseExample{{ $asistencia->medico_id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-                        <th scope="row">{{ $medico->id }}</th>
-                        <td>{{ $medico->name }} {{ $medico->lastnamef }} {{ $medico->lastnamem }}</td>
+                        <th scope="row">{{ $asistencia->medico_id }}</th>
+                        <td>{{ $asistencia->nombremedico }}</td>
                         
-                        <td><div class="collapse" id="collapseExample{{ $medico->id }}">
+                        <td><div class="collapse" id="collapseExample{{ $asistencia->medico_id }}">
                             <div class="card card-body drop">
                                 <p>
                                 <i class="fa-solid fa-user fa-4x"></i>
@@ -44,12 +42,12 @@
                                     
                                     @if($asistencia->estado == "aceptado")
                                         <p> Asistencia Aceptada <br> Se aceptó el: <br> {{ $asistencia->updated_at}}</p>
-                                        <a href="/perfilm/{{ $medico->id }}">
+                                        <a href="/perfilm/{{ $asistencia->medico_id }}">
                                           <p>Ver información de medico</p>
                                         </a>
                                         
                                     @elseif($asistencia->estado == "pendiente")
-                                        <p> La asistencia no ha sido aceptada por el Dr. {{ $medico->name }}  <br> Se solicitó el: <br> {{ $asistencia->created_at}}</p>
+                                        <p> La asistencia no ha sido aceptada por el Dr. {{ $asistencia->nombremedico }}  <br> Se solicitó el: <br> {{ $asistencia->created_at}}</p>
                                         
                                     @elseif($asistencia->estado == "cancelada")
                                         La asistencia fue cancelada por el médico <br> Elimínala para poder solicitar otra <br> al mismo médico
@@ -82,7 +80,6 @@
                         </div></td>  
                     </tr>
                     @endif
-                    @endforeach
                     @endforeach
                     
                 </tbody>

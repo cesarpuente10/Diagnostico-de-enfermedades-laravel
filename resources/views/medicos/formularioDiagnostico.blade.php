@@ -10,9 +10,6 @@
 
     </div>
 
-    @php
-        //dd($diagnostico);
-    @endphp
     <form method="POST" action="{{ route('diagnostico') }}" enctype="multipart/form-data">
     @csrf
     <div class="mb-2">
@@ -48,7 +45,7 @@
     <div class="mb-2">
         <a href=" http://diagnostico-de-enfermedades-laravel.test/verpacientes">
             <button class="col-12 btn btn-outline-danger d-flex justify-content-center "> Cancelar </button>
-            </a>
+        </a>
         
     </div>
 

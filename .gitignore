@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/cedulas
+/public/reportes
+/public/senalesemg
 /public/storage
 /storage/*.key
 /vendor
