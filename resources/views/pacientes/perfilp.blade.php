@@ -60,21 +60,26 @@
                     <p>{{ $prediagnostico->estatura}}</p>
                 </div>
                 
-
+                @if ($prediagnostico->tel_fijo)
                 <div>
                     <label class="edit-titulo">Número telefónico de casa:</label>
                     <p>{{$prediagnostico->tel_fijo}}</p>
                 </div>
-
+                @endif
+                
+                @if ($prediagnostico->celular)
                 <div>
                     <label class="edit-titulo">Número telefónico del celular:</label>
                     <p>{{$prediagnostico->celular}}</p>
-                </div><br>
-                @if (Auth::user()->id == $user->id)
+                </div>
+                @endif
+                <br>
+                @if (Auth::user()->id == $user->id || Auth::user()->role == 3)
                     <div class="">
                         <a href="/perfilp/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
                     </div>
                 @endif
+                <br><br>
                 
             </div>
 

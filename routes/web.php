@@ -63,14 +63,14 @@ Route::post('/editm', [HomeController::class, 'update_info_medico'])
 ->middleware('auth')->name('editm');
 
 //Ver pantalla para crear el prediagnóstico
-Route::view('/formulario', 'pacientes/formularioprediagnostico') -> name('prediagnostico');
+Route::view('/formulario', 'pacientes/formularioprediagnostico')->name('prediagnostico');
 
 //Creación del prediagnóstico
 Route::post('/createprediagnostico', [HomeController::class, 'create_info_paciente'])
 ->middleware('auth')->name('createprediagnostico');
 
 //Ver pantalla para crear el consultorio
-Route::view('/consultorio', 'medicos/FormConsultorio') -> name('consultorio');
+Route::view('/consultorio', 'medicos/FormConsultorio')->name('consultorio');
 
 //Creación del consultorio
 Route::post('/createinfoconsultorio', [HomeController::class, 'create_info_medico'])
@@ -125,7 +125,6 @@ Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de
 Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
 
 Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
-Route::view('/formulario', 'formularioprediagnostico') -> name('prediagnostico');
 
 
 
