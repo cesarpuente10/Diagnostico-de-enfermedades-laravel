@@ -41,7 +41,22 @@ class HomeController extends Controller
         if(Auth::user()->role == 1){
             $hasPrediagnostico = false;
             //es un paciente y se manda a la pantalla de paciente
-            $medicos = User::where('role', 2)->orderBy('n_asist', 'ASC')->limit(10)->get();
+            $medicos = User::where('role', 2)->orderBy('n_asist', 'ASC')->limit(15)->get();
+            foreach($medicos as $key => $medico) {
+                foreach($asistencias as $asistencia) {
+                    if($asistencia->medico_id == $medico->id) {
+                        $medicos->pull($key);
+                    }
+                }
+            }
+            $consultorios = consultorio::all();
+            foreach($medicos as $medico) {
+                foreach($consultorios as $consultorio) {
+                    if($consultorio->medico_id == $medico->id) {
+                        $medico->consultorio = $consultorio;
+                    }
+                }
+            }
             $prediagnostico = prediagnostico::where('paciente_id', Auth::user()->id)->first();
             if($prediagnostico != null)
                 $hasPrediagnostico = true;

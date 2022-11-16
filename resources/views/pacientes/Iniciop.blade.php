@@ -26,30 +26,11 @@
         </div>
 
 
-            <!-- Modal para ver información del médico -->
+            <!-- seccion para ver información del médico -->
 
         <section class="principal-list overflow-auto col-lg-4">
 
-            @php
-                $medicosdisponibles = 0;
-            @endphp
             @foreach ($medicos as $medico)
-                @php
-                    $asistido = 0;
-                @endphp
-                @foreach ($asistencias as $asistencia)
-                    @if ($asistencia->medico_id == $medico->id)
-                        @php
-                            if ($asistencia->medico_id == $medico->id) {
-                                $asistido = 1;
-                            }
-                        @endphp
-                    @endif
-                @endforeach
-                @if ($asistido == 0)
-                @php
-                    $medicosdisponibles += 1;
-                @endphp
                     <div class="border rounded justify-content-between d-flex p-3 mb-2 mt-2">
                         <div class="d-flex align-items-center">
                         <i class="fa-solid fa-user-doctor fa-2xl me-2"></i>
@@ -60,14 +41,13 @@
 
                     </div>
 
-                @endif
             @endforeach
-            @if ($medicosdisponibles == 0)
+            @if ($medicos->count() == 0)
                 <div>No hay medicos diponibles en este momento</div>
             @endif
 
-            @if ($medicosdisponibles > 10)
-                <button>Ver más médicos</button>
+            @if ($medicos->count() >= 10)
+                <button class="btn btn-secondary">Ver más médicos</button>
             @endif
 
 
@@ -91,9 +71,11 @@
                             <p>{{ $medico->name }}  {{  $medico->lastnamef }} {{  $medico->lastnamem }}</p>
 
                             <p>Direccion de consultorio</p>
-                            <p>Numero de telefono</p>
+                            <p>calle: {{ $medico->consultorio->calle }}</p>
+                            <p>Número exterior: {{ $medico->consultorio->numero_ext }}</p>
+                            <p>Teléfono: {{ $medico->consultorio->tel_fijo }}</p>
+                            <p>{{ $medico->email }}</p>
 
-                            <p>{{  $medico->email }}</p>
                                 <form method="post" action="{{ route('asistencia') }}">
                                     @csrf
                                     <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
