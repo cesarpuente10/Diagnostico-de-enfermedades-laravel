@@ -29,13 +29,13 @@
                   @csrf
                   <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
                   <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
-                  <button type="submit" class="btn btn-primary">Editar</button>
+                  <button type="submit" class="btn btn-outline-primary">Editar</button>
                 </form>
                 <form action="{{ route('deletediagnostico') }}" method="POST">
                   @csrf
                   <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
                   <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
-                  <button type="submit" class="btn btn-danger">Eliminar</button>
+                  <button type="submit" class="btn btn-outline-danger">Eliminar</button>
                 </form>
                 </div>
               </td>

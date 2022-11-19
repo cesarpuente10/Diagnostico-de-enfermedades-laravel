@@ -49,17 +49,17 @@
                                     <form method="post" action="{{ route('updateasistencia') }}">
                                         @csrf
                                         <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                                        <button class="btn-alert" type = "submit" name ="estado" value ="cancelada">Cancelar Asistencia</button>
+                                        <button class="btn btn btn-outline-danger" type = "submit" name ="estado" value ="cancelada">Cancelar Asistencia</button>
                                     </form>
                                 </div>
                                 
                             <div class="lineaCont"></div>
                             <div class="buttons-verPacientes">
                                 <a href="/formularioDiagnostico/{{ $asistencia->id }}">
-                                    <button>Generar Diagnóstico</button> 
+                                    <button class="btn btn-outline-primary">Generar Diagnóstico</button> 
                                 </a>
                                 <a href="/verasistencia/{{ $asistencia->id }}">
-                                    <button>Ver Diagnósticos</button>
+                                    <button class="btn btn-outline-primary">Ver Diagnósticos</button>
                                 </a>
                             </div>
                             

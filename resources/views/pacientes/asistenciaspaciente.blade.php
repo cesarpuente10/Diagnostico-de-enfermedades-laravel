@@ -59,19 +59,19 @@
                                 <form method="post" action="{{ route('deleteasistencia') }}">
                                     @csrf
                                         <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                                        <button class="btn btn-danger" type = "submit">Cancelar y eliminar Asistencia</button>
+                                        <button class="btn btn-outline-danger" type = "submit">Cancelar y eliminar Asistencia</button>
                                     </form>
                                 @elseif($asistencia->estado == "pendiente")
                                     <form method="post" action="{{ route('deleteasistencia') }}">
                                     @csrf
                                         <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                                        <button class="btn btn-danger" type = "submit">Cancelar petición</button>
+                                        <button class="btn btn-outline-danger" type = "submit">Cancelar petición</button>
                                     </form>
                                 @elseif($asistencia->estado == "cancelada")
                                     <form method="post" action="{{ route('deleteasistencia') }}">
                                     @csrf
                                         <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                                        <button class="btn btn-danger" type = "submit">Eliminar Asistencia</button>
+                                        <button class="btn btn-outline-danger" type = "submit">Eliminar Asistencia</button>
                                     </form>
                                 @endif
                                 

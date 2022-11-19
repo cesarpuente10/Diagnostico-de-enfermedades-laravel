@@ -63,8 +63,8 @@
           ¿Seguro desea generar un diagnóstico para este paciente?
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <a href="indexPaciente.blade.php"><button type="button" class="btn btn-primary">Generar diagnóstico</button></a>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cerrar</button>
+          <a href="indexPaciente.blade.php"><button type="button" class="btn btn-outline-primary">Generar diagnóstico</button></a>
         </div>
       </div>
     </div>

@@ -10,14 +10,14 @@
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <img class="image" src="{{url('/images/Medical prescription-pana.png')}}" alt="Image"/> <br>
                 <a href=" {{ route('prediagnostico') }}">
-                <button type="button" class="btn btn-secondary principal-btn">Prediagnóstico</button>
+                <button type="button" class="btn btn-outline-secondary principal-btn">Prediagnóstico</button>
                 </a>
             </div>
 
 
             <div class="vstack gap-2 col-sm-3 principal-card">
                 <img class="image" src="{{url('/images/Medical prescription-bro.png')}}" alt="Image"/> <br>
-                <a href="#" type="button" class="btn btn-secondary principal-btn">Solicitar Diagnóstico</a>
+                <a href="#" type="button" class="btn btn-outline-secondary principal-btn">Solicitar Diagnóstico</a>
             </div>
         </section>
 
@@ -37,7 +37,7 @@
                             <div class="text-uppercase me-3">{{ $medico->name }} {{ $medico->lastnamef }}</div>
                         </div>
 
-                        <button type="button" class="btn btn-secondary principal-btn"  data-bs-toggle="modal" data-bs-target="#modalInfoMedico{{$medico->id}}">Mostrar Información del Médico</button>
+                        <button type="button" class="btn btn-outline-secondary principal-btn"  data-bs-toggle="modal" data-bs-target="#modalInfoMedico{{$medico->id}}">Mostrar Información del Médico</button>
 
                     </div>
 
@@ -47,7 +47,7 @@
             @endif
 
             @if ($medicos->count() >= 10)
-                <button class="btn btn-secondary">Ver más médicos</button>
+                <button class="btn btn-outline-secondary">Ver más médicos</button>
             @endif
 
 
@@ -81,9 +81,9 @@
                                     <input type="hidden" name="paciente_id" value ="{{ Auth::user()->id }}">
                                     <input type="hidden" name="medico_id" value ="{{ $medico->id }}">
                                     @if($hasPrediagnostico)
-                                        <button type="submit" class="btn btn-secondary principal-btn">Agendar cita</button>
+                                        <button type="submit" class="btn btn-outline-secondary principal-btn">Agendar cita</button>
                                     @else
-                                        <button type="button" disabled="true" class="btn btn-secondary principal-btn">Agendar cita</button>
+                                        <button type="button" disabled="true" class="btn btn-outline-secondary principal-btn">Agendar cita</button>
                                         <p>Para agendar una cita debe llenar el formulario de prediagnóstico</p>
                                         <p class="">Favor de llenarlo <a href=" {{ route('prediagnostico') }}">
                                             Aquí
