@@ -27,7 +27,7 @@
                 
                     @if (Auth::user()->role == 1)
                         <a href ="/diagnosticospaciente/{{ Auth::user()->id }}">
-                            <h6 class="fa-xl">Diagnosticos</h6>
+                            <h6 class="fa-xl">Diagnósticos</h6>
                         </a>
                         <a href ="{{ route('asistenciaspaciente') }}">
                             <h6 class="fa-xl">Asistencias</h6>

@@ -43,7 +43,7 @@
                                 <input type="password" id="password_confirmation" name="password_confirmation">
                                 <div>
                                 <input type="checkbox" id="check">
-                                <label id="size" for="check">Acepto Terminos y Condiciones</label>
+                                <label id="size" for="check">Acepto Términos y Condiciones</label>
                                 </div>
                                 <button type="submit">{{ __('Registrar') }}</button>
                             </form>
@@ -81,7 +81,7 @@
 
                                 <div>
                                 <input type="checkbox" id="check">
-                                <label id="size" for="check">Acepto Terminos y Condiciones</label>
+                                <label id="size" for="check">Acepto Términos y Condiciones</label>
                                 </div>
                                 <button type="submit">{{ __('Registrar') }}</button>
                             </form>

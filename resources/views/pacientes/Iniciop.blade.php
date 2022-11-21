@@ -70,7 +70,7 @@
                             <h3>INFORMACIÓN DEL MÉDICO</h3>
                             <p>{{ $medico->name }}  {{  $medico->lastnamef }} {{  $medico->lastnamem }}</p>
 
-                            <p>Direccion de consultorio</p>
+                            <p>Dirección del consultorio</p>
                             <p>calle: {{ $medico->consultorio->calle }}</p>
                             <p>Número exterior: {{ $medico->consultorio->numero_ext }}</p>
                             <p>Teléfono: {{ $medico->consultorio->tel_fijo }}</p>
