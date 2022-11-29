@@ -47,4 +47,30 @@
     </div>
   </div>
 </div>
+
+    <!-- Modal -->
+    @foreach ($diagnosticos as $diagnostico)
+    <div class="modal fade" id="GenericalCancelationModal{{$asistencia->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$asistencia->id}}" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel{{$asistencia->id}}">Cancelar Asistencia</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>¿Seguro que deseas {{ $mensajeP }} con el médico {{ $asistencia->nombremedico }}?</p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <form method="post" action="{{ route('deleteasistencia') }}">
+                @csrf
+                    <input type="hidden" name="id" value ="{{ $asistencia->id }}">
+                    <button class="btn btn-outline-danger" type = "submit">{{ $mensajebtn }}</button>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+@endforeach
+
 </x-app-layout>
