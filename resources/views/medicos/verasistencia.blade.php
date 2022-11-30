@@ -31,12 +31,7 @@
                   <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
                   <button type="submit" class="btn btn-outline-primary">Editar</button>
                 </form>
-                <form action="{{ route('deletediagnostico') }}" method="POST">
-                  @csrf
-                  <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
-                  <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
-                  <button type="submit" class="btn btn-outline-danger">Eliminar</button>
-                </form>
+                <button type="button" class="btn btn btn-outline-danger"  data-bs-toggle="modal" data-bs-target="#GenericalCancelationModal{{$asistencia->id}}">Eliminar</button>
                 </div>
               </td>
             </tr>
@@ -58,14 +53,16 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>¿Seguro que deseas {{ $mensajeP }} con el médico {{ $asistencia->nombremedico }}?</p>
+                <p>¿Seguro que deseas eliminar el diagnóstico?</p>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <form method="post" action="{{ route('deleteasistencia') }}">
-                @csrf
-                    <input type="hidden" name="id" value ="{{ $asistencia->id }}">
-                    <button class="btn btn-outline-danger" type = "submit">{{ $mensajebtn }}</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+            <form action="{{ route('deletediagnostico') }}" method="POST">
+              @csrf
+              <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
+              <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
+              
+              <button type="submit" class="btn btn-outline-danger">Continuar</button>
             </form>
             </div>
         </div>

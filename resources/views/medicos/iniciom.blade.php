@@ -51,7 +51,7 @@
                 <p>¿Rechazar la asistencia del paciente {{ $asistencia->nombrepaciente }}?</p>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
             <form method="post" action="{{ route('updateasistencia') }}">
                 @csrf
                 <input type="hidden" name="id" value ="{{ $asistencia->id }}">

@@ -106,7 +106,7 @@
                 <p>¿Seguro que deseas {{ $mensajeP }} con el médico {{ $asistencia->nombremedico }}?</p>
             </div>
             <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
             <form method="post" action="{{ route('deleteasistencia') }}">
                 @csrf
                     <input type="hidden" name="id" value ="{{ $asistencia->id }}">
