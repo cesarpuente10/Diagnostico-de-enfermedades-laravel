@@ -4,7 +4,6 @@
             <div class="box">
 
                 <div>
-                    <h3>UASLP</h3>
                     <h1>
                         SISTEMA WEB PARA REGISTRO DE PACIENTES CON ENFERMEDADES NEURO-MUSCULARES.
                     </h1>

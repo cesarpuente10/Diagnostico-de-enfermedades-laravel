@@ -39,7 +39,7 @@
                     </a>
                     
             </div>
-            <a href="{{ route('inicio') }}"><img src="{{url('/images/uaslp-vector-logo.png')}}" style="height:50px;" alt="Image"/></a>
+            <a href="{{ route('inicio') }}"><i class="fa-solid fa-house-chimney fa-2x"></i></a>
             
         </div>
         <div class="lineaNav"></div>
