@@ -37,6 +37,7 @@
 
 
         <div class="izquierdo">
+            @if ($consultorio)
             <h1 class="h1-titulo">Datos del consultorio:</h1>
             <div>
                 <label class="edit-titulo">Dirección del consultorio</label>
@@ -70,17 +71,25 @@
 
             </div><br>
 
+            @else
+                <p>Este usuario no tiene consultorio</p>
+            @endif
          
-        <div class="btn-edit">
+            <div class="btn-edit">
                 <button class="btn btn-primary " type="submit">Guardar</button>
                 <a href="/perfilm/{{ $user->id }}" class="btn btn-secondary">Cancelar</a>
             </div>
+        </div>
 
     </form>
-    </div> 
 
-   
-
+    @if (Auth::user()->role == 3)
+        <form action="{{ route('eliminausuario') }}" method="POST">
+            @csrf
+            <input type="hidden" name="user_id" value="{{ $user->id }}">
+            <input class="btn btn-danger" type="submit" value="Eliminar usuario">
+        </form>
+    @endif
    
 
 </x-app-layout>

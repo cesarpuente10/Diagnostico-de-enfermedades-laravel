@@ -34,16 +34,8 @@
                   <tr>
                     <td>{{ date('d/M/Y', strtotime($diagnostico->fecha)) }}</td>
                     <td>{{ $diagnostico->diagnostico }}</td>
-                    @if ($diagnostico->reporte)
-                      <td><a href="{{ asset('reportes/'.$diagnostico->reporte) }}">Archivo del reporte</a></td>
-                    @else
-                        <td>No hay archivo de reporte</td>
-                    @endif
-                    @if ($diagnostico->senalesemg)
-                      <td><a href="{{ asset('senalesemg/'.$diagnostico->senalesemg) }}">Archivo de señales</a></td>
-                    @else
-                        <td>No hay archivo de señales</td>
-                    @endif
+                    <td><a href="{{ asset('reportes/'.$diagnostico->reporte) }}">Archivo del reporte</a></td>
+                    <td><a href="{{ asset('senalesemg/'.$diagnostico->senalesemg) }}">Archivo de señales</a></td>
                     <td>{{ $diagnostico->comentario }}</td>
                     <td>
                       <div class="btn-group" role="group">
@@ -62,33 +54,33 @@
     </div>
 
 
-
+    @endforeach
 
 
     <!-- Modal -->
-    @foreach ($asistencia->diagnosticos as $diagnostico)
-    <div class="modal fade" id="GenericalCancelationModal{{$asistencia->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$asistencia->id}}" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel{{$asistencia->id}}">Rechazar Asistencia</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>¿Seguro que deseas eliminar el diagnóstico?</p>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
-            <form action="{{ route('deletediagnostico') }}" method="POST">
-              @csrf
-              <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
-              <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
-              <button type="submit" class="btn btn-danger">Eliminar</button>
-            </form>
-            </div>
+@foreach ($asistencia->diagnosticos as $diagnostico)
+<div class="modal fade" id="GenericalCancelationModal{{$asistencia->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$asistencia->id}}" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel{{$asistencia->id}}">Rechazar Asistencia</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body">
+          <p>¿Seguro que deseas eliminar el diagnóstico?</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Regresar</button>
+        <form action="{{ route('deletediagnostico') }}" method="POST">
+          @csrf
+          <input type="hidden" name="asistencia_id" value="{{ $asistencia->id }}">
+          <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
+          <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
         </div>
     </div>
-    @endforeach
-  @endforeach
+    </div>
+</div>
+@endforeach
+
     </x-app-layout>

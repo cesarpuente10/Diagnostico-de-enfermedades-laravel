@@ -24,7 +24,7 @@
 
                     
                     @foreach ($asistencias as $asistencia)
-                    @if(Auth::user()->id == $asistencia->paciente_id)
+                    @if(Auth::user()->id == $asistencia->paciente_id || Auth::user()->role == 3)
                     
                     <tr data-bs-toggle="collapse" href="#collapseExample{{ $asistencia->medico_id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
 
@@ -94,7 +94,7 @@
 
     <!-- Modal -->
 @foreach ($asistencias as $asistencia)
-    @if(Auth::user()->id == $asistencia->paciente_id)
+    @if(Auth::user()->id == $asistencia->paciente_id || Auth::user()->role == 3)
     <div class="modal fade" id="GenericalCancelationModal{{$asistencia->id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$asistencia->id}}" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">

@@ -24,7 +24,6 @@ body{
     height: 85%;
     background-color: black;
     justify-content: left;
-    overflow-y: scroll;
 }
 
 .content-reg .register {

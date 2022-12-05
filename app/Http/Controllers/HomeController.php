@@ -36,9 +36,8 @@ class HomeController extends Controller
 
      //Se manda a los usuarios a sus respectivas pantallas de inicio con su información respectiva
     public function senddata_user_inicio() {
-        $asistencias = $this->read_asistencias();
-        //dd($asistencias);
         if(Auth::user()->role == 1){
+            $asistencias = $this->read_asistencias();
             $hasPrediagnostico = false;
             //Se toman los primeros 15 medicos para no sobrecargar la página
             $medicos = User::where('role', 2)->orderBy('n_asist', 'ASC')->limit(15)->get();
@@ -68,8 +67,11 @@ class HomeController extends Controller
             ->with('medicos', $medicos)
             ->with('hasPrediagnostico', $hasPrediagnostico);
         }elseif(Auth::user()->role == 2){
+            $asistencias = $this->read_asistencias();
             //es un medico y se manda a la pantalla de medico
             return view('medicos/iniciom')->with('asistencias',$asistencias);
+        }elseif(Auth::user()->role == 3){
+            return view('admin/inicioa');
         }
     }
 
@@ -112,19 +114,25 @@ class HomeController extends Controller
     //Se manda al perfil del paciente
     public function read_info_paciente($id)
     {
-        $permiso = 0;
-        $asistencias = $this->read_asistencias();
-        foreach($asistencias as $asistencia) {
-            if($asistencia->medico_id == Auth::id()) {
-                $permiso = 1;
+        $permiso = 1;
+        if(Auth::user()->role == 2){
+            $permiso = 0;
+            $asistencias = $this->read_asistencias();
+            foreach($asistencias as $asistencia) {
+                if($asistencia->medico_id == Auth::id()) {
+                    $permiso = 1;
+                }
             }
         }
+        
         if(Auth::id() == $id || $permiso || Auth::user()->role == 3) {
             $user = User::find($id);
             $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
-            //Si no se tiene el prediagnostico se manda a hacerlo
-            if(!$prediagnostico) {
-                return view('pacientes/formularioprediagnostico');
+            if(Auth::id() == $id){
+                //Si no se tiene el prediagnostico se manda a hacerlo
+                if(!$prediagnostico) {
+                    return view('pacientes/formularioprediagnostico');
+                }
             }
             return view('pacientes/perfilp')
             ->with('user', $user)
@@ -141,9 +149,11 @@ class HomeController extends Controller
         if(Auth::id() == $id || Auth::user()->role == 3) {
             $user = User::find($id);
             $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
-            //Si no se tiene el prediagnostico se manda a hacerlo
-            if(!$prediagnostico) {
-                return view('pacientes/formularioprediagnostico');
+            if(Auth::id() == $id){
+                //Si no se tiene el prediagnostico se manda a hacerlo
+                if(!$prediagnostico) {
+                    return view('pacientes/formularioprediagnostico');
+                }
             }
             return view('pacientes/perfilpedit')
             ->with('user', $user)
@@ -172,9 +182,11 @@ class HomeController extends Controller
         if(Auth::id() == $request->paciente_id || Auth::user()->role == 3) {
             $user = User::where('id', $request->paciente_id)->first();
             $prediagnostico = prediagnostico::where('paciente_id', $request->paciente_id)->first();
-            //Si no se tiene el prediagnostico se manda a hacerlo
-            if(!$prediagnostico) {
-                return view('pacientes/formularioprediagnostico');
+            if(Auth::id() == $id){
+                //Si no se tiene el prediagnostico se manda a hacerlo
+                if(!$prediagnostico) {
+                    return view('pacientes/formularioprediagnostico');
+                }
             }
             $user->update([
                 $user->name = $request->name,
@@ -197,27 +209,15 @@ class HomeController extends Controller
         }
     }
 
-    public function delete_info_paciente(Request $request)
+    public function delete_info_paciente($id)
     {
-        if(Auth::id() == $request->id || Auth::user()->role == 3) {
-            $user = User::first($request->id);
-            $prediagnostico = prediagnostico::where('paciente_id', $request->id)->first();
-            $consultorio = consultorio::where('medico_id', $request->id)->first();
-            //Buscar y borrar cosas del usuario
-            $asistencias = $this->read_asistencias();
-            foreach($asistencias as $asistencia) {
-                $this->delete_asistencia($asistencia);
-            }
-            if($consultorio) {
-                $pathcedula = public_path() . '/cedulas/' . $consultorio->cedula;
-                File::delete($pathcedula);
-                $consultorio->delete();
-            }
+        if(Auth::id() == $id || Auth::user()->role == 3) {
+            $user = User::find($id);
+            $prediagnostico = prediagnostico::where('paciente_id', $id)->first();
             if($prediagnostico) {
                 $prediagnostico->delete();
             }
             $user->delete();
-            return redirect()->back();
         }
     }
 
@@ -246,11 +246,14 @@ class HomeController extends Controller
 
     public function read_info_medico($id)
     {
-        $permiso = 0;
-        $asistencias = $this->read_asistencias();
-        foreach($asistencias as $asistencia) {
-            if($asistencia->paciente_id == $id) {
-                $permiso = 1;
+        $permiso = 1;
+        if(Auth::user()->role == 2){
+            $permiso = 0;
+            $asistencias = $this->read_asistencias();
+            foreach($asistencias as $asistencia) {
+                if($asistencia->medico_id == Auth::id()) {
+                    $permiso = 1;
+                }
             }
         }
         if(Auth::id() == $id || $permiso || Auth::user()->role == 3) {
@@ -279,40 +282,46 @@ class HomeController extends Controller
 
     public function update_info_medico(Request $request)
     {
-        $user = User::where('id', $request->medico_id)->first();
-        $consultorio = consultorio::where('medico_id', $request->medico_id)->first();
-        $user->update([
-            $user->name = $request->name,
-            $user->lastnamef = $request->lastnamef,
-            $user->lastnamem = $request->lastnamem,
-            $user->email = $request->email
-        ]);
-        $consultorio->update([
-            $consultorio->medico_id = $request->medico_id,
-            $consultorio->calle = $request->calle,
-            $consultorio->cp = $request->cp,
-            $consultorio->numero_ext = $request->numero_ext,
-            $consultorio->numero_int = $request->numero_int,
-            $consultorio->tel_fijo = $request->tel_fijo
-        ]);
-        if($request->hasFile("cedula")){
-            $file = $request->file('cedula');
-            $filename = $consultorio->cedula;
-            $file-> move(public_path('cedulas'), $filename);
+        if(Auth::id() == $user->id || Auth::user()->role == 3){
+            $user = User::where('id', $request->medico_id)->first();
+            $consultorio = consultorio::where('medico_id', $request->medico_id)->first();
+            $user->update([
+                $user->name = $request->name,
+                $user->lastnamef = $request->lastnamef,
+                $user->lastnamem = $request->lastnamem,
+                $user->email = $request->email
+            ]);
+            
+            if($consultorio) {
+                $consultorio->update([
+                    $consultorio->medico_id = $request->medico_id,
+                    $consultorio->calle = $request->calle,
+                    $consultorio->cp = $request->cp,
+                    $consultorio->numero_ext = $request->numero_ext,
+                    $consultorio->numero_int = $request->numero_int,
+                    $consultorio->tel_fijo = $request->tel_fijo
+                ]);
+            }
+        
+            if($request->hasFile("cedula")){
+                $file = $request->file('cedula');
+                $filename = $consultorio->cedula;
+                $file-> move(public_path('cedulas'), $filename);
+            }
         }
         return redirect()->route('perfilm', ['id' => $request->medico_id]);
     }
 
-    public function delete_info_medico($request)
+    public function delete_info_medico($id)
     {
-        $user = User::where('user_id', $request->medico_id)->get();
-        $consultorio = consultorio::where('medico_id', $request->medico_id)->get();
-        //Buscar y borrar cosas del medico
-
-        $consultorio->delete();
+        $user = User::find($id);
+        $consultorio = consultorio::where('medico_id', $id)->first();
+        if($consultorio){
+            $pathcedula = public_path() . '/cedulas/' . $consultorio->cedula;
+            File::delete($pathcedula);
+            $consultorio->delete();
+        }
         $user->delete();
-        return redirect()->back();
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -345,6 +354,8 @@ class HomeController extends Controller
                 $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
                 $asistencia->nombremedico = $name;
             }
+        }else{
+            $asistencias = "No tiene porque es administrador";
         }
         return $asistencias;
     }
@@ -408,11 +419,14 @@ class HomeController extends Controller
     //Creación del Diagnostico
     public function create_diagnostico(Request $request)
     {
+        $request->validate([
+            'asistencia_id' => 'required',
+            'fecha' => 'required',
+            'diagnostico' => 'required',
+        ]);
         $asistencias = $this->read_asistencias();
-        //dd($request);
         $asistencia = asistencia::find($request->asistencia_id);
-        $asistencia->ndiagnosticos += 1;
-        $diagnostico= new diagnostico();
+        $diagnostico = new diagnostico();
         $diagnostico->asistencia_id = $request->asistencia_id;
         $diagnostico->fecha = $request->fecha;
         $diagnostico->diagnostico = $request->diagnostico;
@@ -429,41 +443,49 @@ class HomeController extends Controller
         }
         $diagnostico->comentario = $request->comentario;
         $diagnostico->save();
-        //dd(return view('formulariodiagnostico')->with('diagnostico', $diagnostico)->with('asistencia', $asistencia)->with('paciente', $paciente););
-        return redirect()->route('verpacientes');
-        
-        //return redirect()->route('formulariodiagnostico',['diagnostico']);
+        $asistencia->update([
+            $asistencia->ndiagnosticos += 1
+        ]);
+        return redirect()->back();
     }
 
     public function send_diagnosticos_paciente($paciente_id)
     {
-        $asistencias = asistencia::where('paciente_id', $paciente_id)->get();
+        if(Auth::user()->role == 3 || Auth::user()->id == $paciente_id){
+            $asistencias = asistencia::where('paciente_id', $paciente_id)->get();
         
-        foreach ($asistencias as $key => $asistencia) {
-            if($asistencia->estado == 'aceptado') {
-                $asistencia->diagnosticos = diagnostico::where('asistencia_id', $asistencia->id)->get();
-                $user = User::where('id', $asistencia->medico_id)->first();
-                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
-                $asistencia->nombremedico = $name;
-            }else {
-                $asistencias->pull($key);
+            foreach ($asistencias as $key => $asistencia) {
+                if($asistencia->estado == 'aceptado') {
+                    $asistencia->diagnosticos = diagnostico::where('asistencia_id', $asistencia->id)->get();
+                    $user = User::where('id', $asistencia->medico_id)->first();
+                    $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+                    $asistencia->nombremedico = $name;
+                }else {
+                    $asistencias->pull($key);
+                }
             }
+            
+            return view('pacientes/listaDiagnosticosMedico')
+            ->with('asistencias', $asistencias);
         }
         
-        return view('pacientes/listaDiagnosticosMedico')
-        ->with('asistencias', $asistencias);
     }
 
     public function send_diagnosticos($asistencia_id)
     {
         $asistencia = asistencia::find($asistencia_id);
-        $user = User::where('id', $asistencia->paciente_id)->first();
-        $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
-        $asistencia->nombrepaciente = $name;
-        $diagnosticos = diagnostico::where('asistencia_id', $asistencia_id)->get();
-        return view('medicos/verasistencia')
-        ->with('asistencia', $asistencia)
-        ->with('diagnosticos', $diagnosticos);
+        if(Auth::user()->role == 3 || Auth::user()->id == $asistencia->medico_id){
+            $user = User::where('id', $asistencia->paciente_id)->first();
+            $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+            $asistencia->nombrepaciente = $name;
+            $diagnosticos = diagnostico::where('asistencia_id', $asistencia_id)->get();
+            return view('medicos/verasistencia')
+            ->with('asistencia', $asistencia)
+            ->with('diagnosticos', $diagnosticos);
+        }else{
+            return redirect()->route('inicio');
+        }
+        
     }
 
     public function info_asistencia($asistencia_id)
@@ -538,7 +560,9 @@ class HomeController extends Controller
         //checar que el diagnostico si sea del paciente
         //borrar el diagnostico
         $asistencia = asistencia::find($request->asistencia_id);
-        $asistencia->ndiagnosticos -= 1;
+        $asistencia->update([
+            $asistencia->ndiagnosticos -= 1
+        ]);
         $diagnostico = diagnostico::find($request->diagnostico_id);
         $pathreporte = public_path() . '/reportes/' . $diagnostico->reporte;
         $pathsenalesemg = public_path() . '/senalesemg/' . $diagnostico->senalesemg;
@@ -548,6 +572,115 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //Administrador
+
+    public function buscar_usuario(Request $request)
+    {
+        $users = User::where('name', 'LIKE', '%' . $request->name. '%')
+            ->where('lastnamef', 'LIKE', '%' . $request->lastnamef. '%')
+            ->where('lastnamem', 'LIKE', '%' . $request->lastnamem. '%')
+            ->get();
+        return view('admin/usuarios')
+        ->with('users', $users);
+
+    }
     
+    public function eliminar_usuario(Request $request)
+    {
+        $user = User::find($request->user_id);
+        if($user->role == 1){
+            $asistencias = asistencia::where('paciente_id', $user->id)->get();
+        }elseif($user->role == 2){
+            $asistencias = asistencia::where('medico_id', $user->id)->get();
+        }elseif($user->role == 3){
+            $user->delete();
+        }
+
+        foreach($asistencias as $asistencia){
+            $diagnosticos = diagnostico::where('asistencia_id', $asistencia->id)->get();
+            foreach($diagnosticos as $diagnostico) {
+                $pathreporte = public_path() . '/reportes/' . $diagnostico->reporte;
+                $pathsenalesemg = public_path() . '/senalesemg/' . $diagnostico->senalesemg;
+                File::delete($pathreporte);
+                File::delete($pathsenalesemg);
+                $diagnostico->delete();
+            }
+            $asistencia->delete();
+        }
+
+        if($user->role == 1){
+            $this->delete_info_paciente($user->id);
+        }elseif($user->role == 2){
+            $this->delete_info_medico($user->id);
+        }
+
+        return redirect()->route('inicio');
+    }
     
+    public function ver_pacientes($id)
+    {
+        $user = User::find($id);
+        if($user->role == 2)
+        {
+            $asistencias = asistencia::where('medico_id', $user->id)->get();
+            foreach ($asistencias as $asistencia) {
+                $user = User::where('id', $asistencia->paciente_id)->first();
+                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+                $asistencia->nombrepaciente = $name;
+            }
+        }else if($user->role == 1){
+            $asistencias = asistencia::where('paciente_id', $user->id)->get();
+            foreach ($asistencias as $asistencia) {
+                $user = User::where('id', $asistencia->medico_id)->first();
+                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+                $asistencia->nombremedico = $name;
+            }
+        }
+        
+        return view('medicos/verpacientes')
+        ->with('asistencias', $asistencias);
+    }
+
+    public function ver_asistencias_paciente($id)
+    {
+        $user = User::find($id);
+        if($user->role == 2)
+        {
+            $asistencias = asistencia::where('medico_id', $user->id)->get();
+            foreach ($asistencias as $asistencia) {
+                $user = User::where('id', $asistencia->paciente_id)->first();
+                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+                $asistencia->nombrepaciente = $name;
+            }
+        }else if($user->role == 1){
+            
+            $asistencias = asistencia::where('paciente_id', $user->id)->get();
+            foreach ($asistencias as $asistencia) {
+                $user = User::where('id', $asistencia->medico_id)->first();
+                $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+                $asistencia->nombremedico = $name;
+            }
+        }
+        return view('pacientes/asistenciaspaciente')
+        ->with('asistencias', $asistencias);
+    }
+
+    public function buscar_asistencia(Request $request)
+    {
+        $asistencia = asistencia::find($request->asistencia_id);
+        if(Auth::user()->role == 3 && $asistencia){
+            $user = User::where('id', $asistencia->paciente_id)->first();
+            $name = $user->name . " " . $user->lastnamef . " " . $user->lastnamem;
+            $asistencia->nombrepaciente = $name;
+            $diagnosticos = diagnostico::where('asistencia_id', $request->asistencia_id)->get();
+            return view('medicos/verasistencia')
+            ->with('asistencia', $asistencia)
+            ->with('diagnosticos', $diagnosticos);
+        }else{
+            return redirect()->route('inicio');
+        }
+    }
+
 }

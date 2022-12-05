@@ -38,8 +38,9 @@
 
 
 
-             <div class="izquierdo">
-              <h1 class="h1-titulo">Datos del consultorio:</h1>
+            <div class="izquierdo">
+                @if ($consultorio)
+                <h1 class="h1-titulo">Datos del consultorio:</h1>
                      <div>
                          <label class="edit-titulo">Dirección del consultorio:</label>
                          <p>{{ $consultorio->calle}}</p>
@@ -71,10 +72,12 @@
                             <label class="edit-titulo" for="cedula"><strong>Cédula profesional:</strong></label>
                             <p>Cedula: <a href="{{ asset('cedulas/'.$consultorio->cedula) }}">{{ $consultorio->cedula }}</a></p>
                         </div>
-                    
-                     @if (Auth::user()->id == $user->id)
+                        @else
+                        <p>Este usuario no tiene consultorio</p>
+                        @endif
+                     @if (Auth::user()->id == $user->id || Auth::user()->role == 3)
                          <div>
-                           <a href="/perfilm/edit/{{ Auth::user()->id }}" class="btn btn-secondary">Editar</a>
+                           <a href="/perfilm/edit/{{ $user->id }}" class="btn btn-secondary">Editar</a>
                         </div>
                     @endif 
         

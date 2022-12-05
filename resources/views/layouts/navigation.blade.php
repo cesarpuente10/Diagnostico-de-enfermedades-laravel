@@ -32,7 +32,7 @@
                         <a href ="{{ route('asistenciaspaciente') }}">
                             <h6 class="fa-xl">Asistencias</h6>
                         </a>
-                    @else
+                    @elseif(Auth::user()->role == 2)
                     <a href="{{ route('verpacientes') }}">
                         <h6 class="fa-xl">Pacientes</h6>
                     @endif

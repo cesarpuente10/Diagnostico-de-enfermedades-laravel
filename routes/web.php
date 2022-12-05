@@ -119,12 +119,25 @@ Route::view('/DatosUsuario', 'DatosUsuario') -> name('DatosUsuario');
 Route::get('/verpacientes', [HomeController::class, 'senddata_medico_pacientes'])
 ->middleware('auth')->name('verpacientes');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Admin
 
-Route::view('/vermasmedicospaciente', 'verMasMedicosPaciente') -> name('lista_de_medicos');
+//Buscador de usuarios
+Route::post('/buscausuario', [HomeController::class, 'buscar_usuario'])
+->middleware('auth')->name('buscausuario');
 
-Route::view('/registradiagnosticomedico', 'registraDiagnosticoMedico') -> name('RegistraDiagnosticoMedico');
+//Eliminador de pacientes
+Route::post('/eliminarusuario', [HomeController::class, 'eliminar_usuario'])
+->middleware('auth')->name('eliminausuario');
 
-Route::view('/registroExitoso', 'successlogin') -> name('successlogin');
+//Ver pacientes de los médicos
+Route::get('/pacientes/{id}', [HomeController::class, 'ver_pacientes'])
+->middleware('auth')->name('pacientes');
 
+//Ver asistencias de los pacientes
+Route::get('/asistenciaspaciente/{id}', [HomeController::class, 'ver_asistencias_paciente'])
+->middleware('auth')->name('pacientes');
 
-
+//Buscar asistencia
+Route::post('/asistenciabuscada', [HomeController::class, 'buscar_asistencia'])
+->middleware('auth')->name('getasistencia');

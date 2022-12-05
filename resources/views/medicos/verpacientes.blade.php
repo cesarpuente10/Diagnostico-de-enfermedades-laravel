@@ -18,9 +18,8 @@
                 </thead>
                 <tbody>
 
-                    
                     @foreach ($asistencias as $asistencia)
-                    @if(Auth::user()->id == $asistencia->medico_id && $asistencia->estado == 'aceptado'  )
+                    @if((Auth::user()->id == $asistencia->medico_id || Auth::user()->role == 3) && $asistencia->estado == 'aceptado' )
                     
                     <tr data-bs-toggle="collapse" href="#collapseExample{{ $asistencia->paciente_id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
 
