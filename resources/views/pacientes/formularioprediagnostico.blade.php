@@ -16,54 +16,54 @@
 
     <div class="mb-2">
         <label class="form-label">Nombre del paciente: *</label>
-        <input name="name" type="text" class="name form-control" value="{{ Auth::user()->name }}">
+        <input required name="name" type="text" class="name form-control" value="{{ Auth::user()->name }}">
 
     <div class="mb-2">
         <label class="form-label">Apellido Paterno: *</label>
-        <input name="lastnamef" type="text" class="lastnamef form-control" value="{{ Auth::user()->lastnamef }}">
+        <input required name="lastnamef" type="text" class="lastnamef form-control" value="{{ Auth::user()->lastnamef }}">
     </div>
     <div class="mb-2">
         <label class="form-label">Apellido Materno  </label>
-        <input name="lastnamem" type="text" class="lastnamem form-control" value="{{ Auth::user()->lastnamem }}">
+        <input required name="lastnamem" type="text" class="lastnamem form-control" value="{{ Auth::user()->lastnamem }}">
     </div>
     </div>
 
     <div class="mb-2">
         <label class="form-label">Sexo: *</label>
-        <input type="radio" name="sexo" id="hombre" value="Masculino"> Masculino
-        <input type="radio" name="sexo" id="mujer" value="Femenino"> Femenino
+        <input required type="radio" name="sexo" id="hombre" value="Masculino"> Masculino
+        <input required type="radio" name="sexo" id="mujer" value="Femenino"> Femenino
     </div>
 
     <div class="mb-2">
-        <label class="form-label">Numero de teléfono: *</label>
+        <label class="form-label">Numero de teléfono:</label>
         <input type="text" name="tel_fijo" class="form-control">
     </div>
     <div class="mb-2">
-        <label class="form-label">Numero de celular: *</label>
+        <label class="form-label">Numero de celular:</label>
         <input type="text" name="celular" class="form-control">
     </div>
 
     <div>
         <label class="form-label">Edad: (años) *</label>
-        <input type="number" name="edad" class="form-control" ><!--disabled="true"-->
+        <input required type="number" name="edad" class="form-control" ><!--disabled="true"-->
         <label class="form-label">Fecha de nacimiento: *</label>
-        <input type="date" name="fecha" class="form-control">
+        <input required type="date" name="fecha" class="form-control">
     </div>
 
 
 
     <div class="mb-2">
         <label class="form-label">Peso: (Kg) *</label>
-        <input type="number" name="peso" min="0" max="200" class="form-control">
+        <input required type="number" name="peso" min="0" max="200" class="form-control">
     </div>
     <div class="mb-2">
         <label class="form-label">Estatura: (cm) *</label>
-        <input type="number" name="estatura" min="0" max="300" class="form-control">
+        <input required type="number" name="estatura" min="0" max="300" class="form-control">
     </div>
 
 
     <div class="mb-2">
-        <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center ">
+        <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center" value="Guardar">
     </div>
 </div>
     </form>

@@ -18,12 +18,12 @@
     <input type="hidden" name="diagnostico_id" value="{{ $diagnostico->id }}">
     <div class="mb-2">
         <label class="form-label">Fecha del diagnóstico </label>
-        <input type="date" name="fecha" class="form-control" value="{{ $diagnostico->fecha }}">
+        <input required type="date" name="fecha" class="form-control" value="{{ $diagnostico->fecha }}">
     </div>
 
     <div class="mb-2">
         <label class="form-label"> Diagnóstico: </label><br>
-        <textarea name="diagnostico" class="name form-control">
+        <textarea required name="diagnostico" class="name form-control">
             {{ $diagnostico->diagnostico }}
         </textarea>
     </div>

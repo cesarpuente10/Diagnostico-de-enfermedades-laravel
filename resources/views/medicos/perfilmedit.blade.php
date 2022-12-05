@@ -14,22 +14,22 @@
             <input type="hidden" name="medico_id" value="{{ $user->id }}">
             <div>
                 <label class="edit-titulo">Nombre(s)</label>
-                <input name="name" type="text" class="form-control" value="{{ $user->name }}">
+                <input required name="name" type="text" class="form-control" value="{{ $user->name }}">
             </div>
 
             <div>
                 <label class="edit-titulo">Apellido paterno:</label>
-                <input name="lastnamef" type="text" class="form-control" value="{{ $user->lastnamef }}">
+                <input required name="lastnamef" type="text" class="form-control" value="{{ $user->lastnamef }}">
             </div>
 
             <div>
                 <label class="edit-titulo">Apellido materno:</label>
-                <input name="lastnamem" type="text" class="form-control" value="{{ $user->lastnamem}}">
+                <input required name="lastnamem" type="text" class="form-control" value="{{ $user->lastnamem}}">
             </div>
 
             <div>
                 <label class="edit-titulo">Correo Electrónico:</label>
-                <input name="email" type="text" class="form-control"  value="{{ $user->email }}">
+                <input required name="email" type="text" class="form-control"  value="{{ $user->email }}">
             </div>
        
         </div>
@@ -41,12 +41,12 @@
             <h1 class="h1-titulo">Datos del consultorio:</h1>
             <div>
                 <label class="edit-titulo">Dirección del consultorio</label>
-                <input name="calle" type="text" class="form-control" value="{{ $consultorio->calle}}">
+                <input required name="calle" type="text" class="form-control" value="{{ $consultorio->calle}}">
             </div>
 
             <div>
                 <label class="edit-titulo">Número exterior:</label>
-                <input name="numero_ext" type="number" class="form-control" value="{{ $consultorio->numero_ext}}">
+                <input required name="numero_ext" type="number" class="form-control" value="{{ $consultorio->numero_ext}}">
             </div>
 
             <div>
@@ -57,12 +57,12 @@
 
             <div>
                 <label class="edit-titulo">Código postal:</label>
-                <input name="cp" type="number" class="form-control" value="{{ $consultorio->cp}}">
+                <input required name="cp" type="number" class="form-control" value="{{ $consultorio->cp}}">
             </div>
 
             <div>
                 <label class="edit-titulo">Número telefónico del consultorio:</label>
-                <input name="tel_fijo" type="number" class="form-control" value="{{ $consultorio->tel_fijo}}">
+                <input required name="tel_fijo" type="number" class="form-control" value="{{ $consultorio->tel_fijo}}">
             </div>
 
             <div><br>

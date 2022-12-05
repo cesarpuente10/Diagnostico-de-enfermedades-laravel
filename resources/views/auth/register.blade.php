@@ -25,25 +25,33 @@
                                 <input type="hidden" name="role" value="2">
 
                                 <label for="name">Nombre(s)</label>
-                                <input type="text" id="name" name="name">
+                                <input required type="text" id="name" name="name">
                                 
                                 <label for="lastnamef">Apellido Paterno</label>
-                                <input type="text" id="lastnamef" name="lastnamef">
+                                <input required type="text" id="lastnamef" name="lastnamef">
 
                                 <label for="lastnamem">Apellido Materno</label>
-                                <input type="text" id="lastnamem" name="lastnamem">
+                                <input required type="text" id="lastnamem" name="lastnamem">
 
                                 <x-label for="email" :value="__('Correo Electrónico')" />
-                                <input type="email" id="email" name="email">
+                                <input required type="email" id="email" name="email">
 
                                 <label for="pass">Contraseña</label>
-                                <input type="password" id="password" name="password">
+                                <input required type="password" id="password" name="password">
 
                                 <label for="pass">Confirmar Contraseña</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation">
-                                <div>
-                                <input type="checkbox" id="check">
-                                <label id="size" for="check">Acepto Términos y Condiciones</label>
+                                <input required type="password" id="password_confirmation" name="password_confirmation">
+                                
+                                <div class="col-12">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                      <label class="form-check-label" for="invalidCheck">
+                                        Acepto términos y condiciones
+                                      </label>
+                                      <div class="invalid-feedback">
+                                        Debes aceptar los términos y condiciones antes de continuar
+                                      </div>
+                                    </div>
                                 </div>
                                 <button type="submit">{{ __('Registrar') }}</button>
                             </form>
@@ -57,31 +65,38 @@
                     <div class="content-reg">
                         <section class="register">
                             <h1>Registro Paciente</h1>
-                            <form method="POST" action="{{ route('register') }}">
+                            <form class="needs-validation" method="POST" action="{{ route('register') }}">
                             @csrf
                                 <input type="hidden" name="role" value="1">
 
                                 <label for="name">Nombre(s)</label>
-                                <input type="text" id="name" name="name">
+                                <input type="text" id="name" name="name" required>
 
                                 <label for="lastnamef">Apellido Paterno</label>
-                                <input type="text" id="lastnamef" name="lastnamef">
+                                <input required type="text" id="lastnamef" name="lastnamef">
 
                                 <label for="lastnamem">Apellido Materno</label>
-                                <input type="text" id="lastnamem" name="lastnamem">
+                                <input required type="text" id="lastnamem" name="lastnamem">
 
                                 <label for="correo">Correo Electrónico</label>
-                                <input type="email" id="email" name="email">
+                                <input required type="email" id="email" name="email">
 
                                 <label for="pass">Contraseña</label>
-                                <input type="password" id="password" name="password">
+                                <input required type="password" id="password" name="password">
 
                                 <label for="pass">Confirmar Contraseña</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation">
+                                <input required type="password" id="password_confirmation" name="password_confirmation">
 
-                                <div>
-                                <input type="checkbox" id="check">
-                                <label id="size" for="check">Acepto Términos y Condiciones</label>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                      <label class="form-check-label" for="invalidCheck">
+                                        Acepto términos y condiciones
+                                      </label>
+                                      <div class="invalid-feedback">
+                                        Debes aceptar los términos y condiciones antes de continuar
+                                      </div>
+                                    </div>
                                 </div>
                                 <button type="submit">{{ __('Registrar') }}</button>
                             </form>

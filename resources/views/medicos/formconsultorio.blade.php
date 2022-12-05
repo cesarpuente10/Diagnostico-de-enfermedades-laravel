@@ -10,14 +10,14 @@
 
     <div class="mb-2">
         <label class="form-label">Calle: </label>
-        <input type="text" name="calle" class="form-control">
+        <input required type="text" name="calle" class="form-control">
     </div>
 
     
 
     <div class="mb-2">
         <label class="form-label">No. Exterior: </label>
-        <input type="number" name="numero_ext" class="form-control">
+        <input required type="number" name="numero_ext" class="form-control">
     </div>
 
     <div class="mb-2">
@@ -27,22 +27,22 @@
 
     <div class="mb-2" >
             <label class="form-label">Código Postal: </label>    
-            <input type="number" name="cp" class="form-control">
+            <input required type="number" name="cp" class="form-control">
     </div>
     <div class="mb-2">
         <label class="form-label">Número de teléfono: </label>
-        <input type="number" name="tel_fijo" class="form-control">
+        <input required type="number" name="tel_fijo" class="form-control">
         
     </div>
 
 
     <div class="mb-2">
         <label class="form-label">Subir Cédula Profesional(.pdf)</label>
-        <input type="file" class="form-control" name="cedula" accept=".pdf">
+        <input required type="file" class="form-control" name="cedula" accept=".pdf">
     </div>
 
     <div class="mb-2">
-        <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center">
+        <input required type="submit" class="col-12 btn btn-primary d-flex justify-content-center">
     </div>
     
     <div class="mb-2">

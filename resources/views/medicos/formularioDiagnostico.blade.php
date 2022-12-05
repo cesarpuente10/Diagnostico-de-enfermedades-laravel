@@ -14,18 +14,19 @@
     @csrf
     <div class="mb-2">
         <label class="form-label">Fecha del diagnóstico </label>
-        <input type="date" name="fecha" class="form-control">
+        <input required type="date" name="fecha" class="form-control">
     </div>
 
     <div class="mb-2">
         <label class="form-label"> Diagnóstico: </label><br>
-        <textarea name="diagnostico" class="name form-control"></textarea>
+        <textarea required name="diagnostico" class="name form-control"></textarea>
     </div>
 
     <div class="mb-2">
         <label class="form-label">Subir Reporte(.pdf)</label>
         <input type="file" class="form-control" name="reporte" accept=".pdf">
     </div>
+    
     <div class="mb-2">
         <label class="form-label">Archivo de señales EMG(.txt .bin)</label>
         <input type="file" class="form-control" name="senalesemg" accept=".txt">
