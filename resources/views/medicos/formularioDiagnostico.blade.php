@@ -29,7 +29,7 @@
     
     <div class="mb-2">
         <label class="form-label">Archivo de señales EMG(.txt .bin)</label>
-        <input type="file" class="form-control" name="senalesemg" accept=".txt">
+        <input type="file" class="form-control" name="senalesemg" accept=".txt,.bin">
     </div>
 
     <div class="mb-2">
@@ -39,7 +39,7 @@
 
     <input type="hidden" name="asistencia_id" value ="{{ $asistencia->id }}">
     <div class="mb-2">
-        <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center">
+        <input type="submit" class="col-12 btn btn-primary d-flex justify-content-center" value="Subir Diagnóstico">
     </div>
 
     </form>

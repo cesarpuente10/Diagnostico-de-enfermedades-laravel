@@ -355,7 +355,7 @@ class HomeController extends Controller
                 $asistencia->nombremedico = $name;
             }
         }else{
-            $asistencias = "No tiene porque es administrador";
+            $asistencias = "Admin";
         }
         return $asistencias;
     }
@@ -424,7 +424,6 @@ class HomeController extends Controller
             'fecha' => 'required',
             'diagnostico' => 'required',
         ]);
-        $asistencias = $this->read_asistencias();
         $asistencia = asistencia::find($request->asistencia_id);
         $diagnostico = new diagnostico();
         $diagnostico->asistencia_id = $request->asistencia_id;
